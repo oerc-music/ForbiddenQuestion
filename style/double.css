@@ -1,0 +1,57 @@
+body {
+		min-width: 1024px;
+}
+
+svg.orchestralRibbon {
+  display: none;
+}
+#http\3A \/\/meld\.linkedmusic\.org\/companion\/mei\/F2\.mei {
+  left: 680px;
+/*  position:absolute;*/
+}
+.scorepane  {
+  top: 180px;
+  position: absolute;
+}
+#F2 {
+  left: 680px;
+  top: 10px;
+}
+#F1 {
+  left: 10px;
+  top: 10px;
+}
+audio {
+  top: 850px;
+  position: absolute;
+}
+audio:nth-of-type(2) {
+  left: 680px;
+}
+.leftbuttonblock {
+		position: fixed;
+		left:580px;
+		top: 10px;
+		z-index:120;
+		background-color: white;
+}
+a.anchorbutton {
+		margin: 3px;
+		padding: 4px;
+		border: 1px solid grey;
+		border-radius: 5px;
+}
+a.anchorbutton:hover {
+		background-color: #EEE;
+		font-weight: bold;
+}
+a.anchorbutton:active, a.anchorbutton:hover {
+		margin: 5px 5px 1px 1px;
+}
+.rightbuttonblock {
+		position: fixed;
+		right: 20px;
+		top: 10px;
+		z-index: 120;
+		background-color: white;
+}

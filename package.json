@@ -1,0 +1,40 @@
+{
+   "name": "meld-forbidden-question",
+   "version": "0.0.1",
+   "description": "Musicological digital companion for Lohengrin article",
+   "main": "index.js",
+   "scripts": {
+      "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 127.0.0.1"
+   },
+   "author": "Davids Weigl and Lewis, University of Oxford e-Research Centre",
+   "license": "BSD-3-Clause",
+   "devDependencies": {
+      "babel-core": "^6.2.1",
+      "babel-loader": "^6.2.0",
+      "jsdom": "^8.1.0",
+      "babel-preset-es2015": "^6.1.18",
+      "babel-preset-react": "^6.1.18"
+   },
+   "dependencies": {
+      "axios": "^0.15.3",
+      "babel-preset-stage-1": "^6.1.18",
+      "jsonld": "^0.4.11",
+      "lodash": "^3.10.1",
+      "n3": "^0.10.0",
+      "querystring": "^0.2.0",
+      "webpack": "^1.12.9",
+      "webpack-dev-server": "^1.14.0",
+      "meld-client": "git+ssh://git@github.com:oerc-music/meld-clients-core.git#modalUI",
+      "react": "^0.14.3",
+      "react-3d-carousel": "0.0.6",
+      "react-dom": "^0.14.3",
+      "react-iiif-image": "^1.0.1",
+      "react-media-player": "^0.6.1",
+      "react-redux": "^4.0.0",
+      "react-router": "^2.8.1",
+      "redux": "^3.0.4",
+      "redux-promise": "^0.5.3",
+      "redux-thunk": "~2.2.0",
+      "svg-inline-react": "~1.0.3"
+   }
+}
