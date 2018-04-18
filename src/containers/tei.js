@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchTEI } from 'meld-client/src/actions/index';
+import { fetchTEI } from 'meld-clients-core/src/actions/index';
 import { 
 	MARKUP_EMPHASIS, 
 	handleEmphasis,
@@ -12,7 +12,7 @@ import {
 	handleHighlight2,
 	CUE_IMAGE,
 	handleCueImage
-} from 'meld-client/src/actions/meldActions';
+} from 'meld-clients-core/src/actions/meldActions';
 
 class TEI extends Component { 
 	constructor(props) { 

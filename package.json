@@ -24,7 +24,7 @@
       "querystring": "^0.2.0",
       "webpack": "^1.12.9",
       "webpack-dev-server": "^1.14.0",
-      "meld-client": "git+ssh://git@github.com:oerc-music/meld-clients-core.git#modalUI",
+      "meld-clients-core": "oerc-music/meld-clients-core.git",
       "react": "^0.14.3",
       "react-3d-carousel": "0.0.6",
       "react-dom": "^0.14.3",

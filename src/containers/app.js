@@ -8,12 +8,12 @@ import AudioPlayer from '../components/audioPlayer';
 import Score from '../containers/score';
 import OrchestralRibbon from '../containers/orchestralRibbon';
 import TEI from '../containers/tei';
-import MyImage from 'meld-client/src/containers/image';
+import MyImage from 'meld-clients-core/src/containers/image';
 import MEICarousel from '../containers/carousel';
 import MEITimeline from '../containers/timeline';
 import TwinControls from '../containers/controls';
 import SingleControls from '../containers/single-view-controls';
-import { fetchGraph } from 'meld-client/src/actions/index';
+import { fetchGraph } from 'meld-clients-core/src/actions/index';
 
 const MEIManifestation = "meldterm:MEIManifestation";
 const TEIManifestation = "meldterm:TEIManifestation";

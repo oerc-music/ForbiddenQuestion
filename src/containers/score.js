@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import { setScoreReducerVerovioOptions } from 'meld-client/src/reducers/reducer_score';
-import { fetchScore, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-client/src/actions/index';
+import { setScoreReducerVerovioOptions } from 'meld-clients-core/src/reducers/reducer_score';
+import { fetchScore, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-clients-core/src/actions/index';
 import { 
 	MARKUP_EMPHASIS, 
 	handleEmphasis,
@@ -18,7 +18,7 @@ import {
 	handleChoiceMuzicode,
 	handleChallengePassed,
 	handleDisklavierStart
-} from 'meld-client/src/actions/meldActions';
+} from 'meld-clients-core/src/actions/meldActions';
 
 
 import InlineSVG from 'svg-inline-react';
