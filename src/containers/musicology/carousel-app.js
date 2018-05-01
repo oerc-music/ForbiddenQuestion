@@ -13,7 +13,7 @@ export default class ForbiddenQuestion extends Component {
 		  <div> 
 		  	<link rel="stylesheet" href="../../style/carousel.css" type="text/css" />
 		  	<App graphUri="http://meld.linkedmusic.org/annotations/FrageverbotCarousel.json-ld"
-						 motif={motif} location={this.props.location}/>
+						 motif={motif} location={this.props.location} role="carousel"/>
       </div>
 		);
 	}

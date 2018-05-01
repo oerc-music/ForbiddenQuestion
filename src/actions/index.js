@@ -1,7 +1,7 @@
 import {browserHistory} from 'react-router';
 import axios from 'axios';
 import jsonld from 'jsonld'
-import { ANNOTATION_PATCHED, ANNOTATION_POSTED, ANNOTATION_HANDLED, ANNOTATION_NOT_HANDLED, ANNOTATION_SKIPPED } from '../../../meld-client/src/actions/meldActions';
+import { ANNOTATION_PATCHED, ANNOTATION_POSTED, ANNOTATION_HANDLED, ANNOTATION_NOT_HANDLED, ANNOTATION_SKIPPED } from 'meld-clients-core/src/actions/meldActions';
 
 export const HAS_BODY = "oa:hasBody"
 export const FETCH_SCORE = 'FETCH_SCORE';
@@ -297,11 +297,20 @@ export function fetchTargetExpression(compacted) {
 			// found an expression
 			// Do we have a harmony declaration?
 			let chords = [];
+			let chordObj = {};
 			console.log("no harmony?", target);
 			if(HARMONY in target){
 				if(!Array.isArray(target[HARMONY])){
 					target[HARMONY] = [target[HARMONY]];
 				}
+				if(PART_OF in target){
+					chordObj.motif = target[PART_OF];
+					chordObj.chords = chords;
+					chordObj['@id'] = target['@id'];
+					chordObj.segment = target[REALIZATION_OF];
+					chodObj.n = parseInt(/\d*$/.exec(target['@id'][0]));
+				}
+				console.log(">>>", chordObj);	
 				var counter=1;
 				var urlBegins = "http://www.w3.org/1999/02/22-rdf-syntax-ns#_";
 				console.log("harmony check", target[HARMONY]);
@@ -350,7 +359,8 @@ export function fetchWork(target, parts, work, chords) {
 			payload: { 
 				target: target,
 				parts: parts,
-				works: work
+				works: work,
+				chords: chords
 			}
 		});
 		axios.get(work).then((data) => { 

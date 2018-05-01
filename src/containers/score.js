@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import { setScoreReducerVerovioOptions } from 'meld-clients-core/src/reducers/reducer_score';
-import { fetchScore, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-clients-core/src/actions/index';
+import { writeInfoToScore } from '../containers/musicology/drawingAroundScores';
+import { fetchScore, fetchGraph, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-clients-core/src/actions/index';
 import { 
 	MARKUP_EMPHASIS, 
 	handleEmphasis,
@@ -22,11 +22,11 @@ import {
 
 
 import InlineSVG from 'svg-inline-react';
-setScoreReducerVerovioOptions({
-	ignoreLayout:1,
+const defaultVrvOptions = {
+	breaks:'auto',
 	adjustPageHeight:1,
 	spacingStaff: 0,
-	spacingSystem: 4,
+	spacingSystem: 13,
 	spacingLinear: 0.2,
 	spacingNonLinear: 0.55,
 	noFooter: 1,
@@ -34,7 +34,7 @@ setScoreReducerVerovioOptions({
 	scale: 30,
 	pageHeight: 3000,
 	pageWidth: 1800
-});
+};
 
 class Score extends Component { 
 	constructor(props) { 
@@ -42,17 +42,36 @@ class Score extends Component {
 
 		this.state = { 
 			score: {},
-            annotations:{}
+			MEI: false,
+			SVG: false,
+			options: false,
+			vrvTk: new verovio.toolkit(),
+      annotations:{}
 		};
 	}
 
 	render() {
-		if(Object.keys(this.props.score).length) { 
+		if(Object.keys(this.props.score).length) {
+			if(!this.state.MEI || this.state.MEI!== this.props.score.MEI[this.props.uri] || (this.props.options && this.props.options!== this.state.options)){
+				if(this.props.score.MEI[this.props.uri]) {
+					var svg = this.state.vrvTk.renderData(this.props.score.MEI[this.props.uri], this.props.options ? this.props.options : defaultVrvOptions);
+					this.setState({MEI: this.props.score.MEI[this.props.uri], SVG: svg});
+					if(this.props.options) this.setState({options: this.props.options});
+				} else /*if (this.props.score.SVG[this.props.uri]) {
+					svg = this.props.score.SVG[this.props.uri];
+					this.setState({SVG: svg});
+				} else */{
+					svg = '';
+				}
+			} else {
+				svg = this.state.SVG;
+			}
+			window.setTimeout(this.drawInfo.bind(this), 500);
 			return (
 				<div id={this.props.uri} className="scorepane">
 					<div className="controls" />
 					<div className="annotations" />
-					<InlineSVG className="score" src={ this.props.score["SVG"][this.props.uri] } />
+					<InlineSVG className="score" src={svg }/>
 				</div>
 			);
 		}
@@ -102,6 +121,25 @@ class Score extends Component {
 			});
 		});
 			
+	}
+	drawInfo(){
+		if(this.props.graph.info){
+			// FIXME: I'm drawing on the score now, but this may not be the best place
+			var segments = Object.keys(this.props.graph.info);
+			var segLabels = [];
+			for(var i=0; i<segments.length; i++){
+				if(segments[i] in this.props.score.componentTargets){
+					if(!segLabels[this.props.graph.info[segments[i]]]) segLabels[this.props.graph.info[segments[i]]] = 1;
+					var meiIds = this.props.score.componentTargets[segments[i]].MEI.map((x)=>x.split("#")).filter((x) => x[0]==this.props.uri).map((x) =>x[1]);
+					if(meiIds && document.getElementById(meiIds[0])){
+						var meiThings = meiIds.map((x) => document.getElementById(x));
+						writeInfoToScore(this.props.graph.info[segments[i]], meiThings,
+														 segLabels[this.props.graph.info[segments[i]]]);
+					} 
+					segLabels[this.props.graph.info[segments[i]]]++;
+				}
+			}
+		}
 	}
 
 	handleMELDActions(annotation, fragments) { 
@@ -154,16 +192,16 @@ class Score extends Component {
 			});
 		// FIXME: the above should be phased out as we move into
 		// using motivations instead of bodies for rendering instructions
-		} else { console.log("Skipping annotation without rendering instructions: ", annotation) }
+	 } else { console.log("Skipping annotation without rendering instructions: ", annotation) }
 	}
 }
 
-function mapStateToProps({ score }) {
-	return { score };
+function mapStateToProps({ graph, score }) {
+	return { graph, score };
 }
 
 function mapDispatchToProps(dispatch) { 
-	return bindActionCreators({ fetchScore, handleEmphasis, handleHighlight, handleHighlight2, handleCueAudio, scorePrevPage, scoreNextPage, handleQueueNextSession, handleIdentifyMuzicode, handleChoiceMuzicode, handleChallengePassed, handleDisklavierStart}, dispatch);
+	return bindActionCreators({ fetchScore, fetchGraph, handleEmphasis, handleHighlight, handleHighlight2, handleCueAudio, scorePrevPage, scoreNextPage, handleQueueNextSession, handleIdentifyMuzicode, handleChoiceMuzicode, handleChallengePassed, handleDisklavierStart}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Score);

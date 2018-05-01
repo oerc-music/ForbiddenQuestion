@@ -78,3 +78,20 @@ a.anchorbutton:active, a.anchorbutton:hover {
 		z-index: 120;
 		background-color: white;
 }
+text.label, .infoLabel {
+	font-size: 450px;
+	font-family: georgia, serif;
+	font-style: italic;
+}
+.chordType .figure {
+	font-size: 380px;
+}
+rect.labelabove {
+		fill: rgba(192, 168, 247, 0.5);
+}
+rect.labelabove.x {
+		fill: rgba(255, 127, 192, 0.5);
+}
+div.scorepane{
+		margin-top: -20px;
+}

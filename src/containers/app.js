@@ -36,14 +36,28 @@ class App extends Component {
 		if(this.props.graphUri) { 
 			const graphUri = this.props.graphUri;
 			this.props.fetchGraph(graphUri);
+			window.addEventListener("resize", this.updateDimensions.bind(this));
 		}
 	}
 	handleMotifChange(motif){
 		this.setState({currentMotif: motif});
 	}
 	
+  updateDimensions() {
+    this.setState({width: document.documentElement.clientWidth,
+									 height: document.documentElement.clientHeight});
+  }
+  componentWillMount() {
+    this.updateDimensions();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+	
 	render() { 
-		// Build an array of JSX objects corresponding to the annotation targets in our topLevel
+		// Build an array of JSX objects corresponding to the annotation
+		// targets in our topLevel
+		var textBoxHeight = Math.max(this.state.height/5, 200);
 		if(this.props.graph.targetsById) { 
 			console.log("Props: ", this.props);
             const byId = this.props.graph.targetsById;
@@ -79,10 +93,10 @@ class App extends Component {
 							return(<div>
 								<MEICarousel layout="prism"/>
 										 </div>);
-						case MEIManifestation:
-							if(this.props.score.scoreMapping[id]){
+							case MEIManifestation:
+							if(this.props.score.scoreMapping[id] && !this.props.role!=="carousel"){
 								if(FOR_ORCHESTRA in this.props.score.scoreMapping[id]){
-									return <OrchestralRibbon key={ id } uri={ id } width={400} height={600}/>;
+									return <OrchestralRibbon key={ id+"ribbon" } uri={ id } width={400} height={this.state.height - textBoxHeight - 50}/>;
 								} else if (HAS_PIANO in this.props.score.scoreMapping[id]){
 									return <Score key={ id } uri={ id } annotations={ byId[id]["annotations"] } />;
 								} else {
@@ -94,10 +108,12 @@ class App extends Component {
 								return;
 //								return <Score key={ id } uri={ id } annotations={ byId[id]["annotations"] } />;
 							}
-						case TEIManifestation:
+							case TEIManifestation:
+								
 								if(id.indexOf('libretto')>-1) return false;
 							if(this.props.motif){
 								return <TEI key={ id } uri={ id } motif={this.state.currentMotif}
+								heigh={textBoxHeight}
 														onMotifChange={this.handleMotifChange.bind(this)}
 							            	annotations={ byId[id]["annotations"] } />;
 							} else {

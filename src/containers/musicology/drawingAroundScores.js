@@ -1,4 +1,6 @@
 var SVGNS = "http://www.w3.org/2000/svg";
+import {svgRoundedRect, svgText} from '../../library/svgUtils';
+/*
 function svgText(svgEl, x, y, cname, id, style, content){
   var el = document.createElementNS(SVGNS, "text");
   if(content) var textNode = document.createTextNode(content);
@@ -10,7 +12,7 @@ function svgText(svgEl, x, y, cname, id, style, content){
   if(content) el.appendChild(textNode);
   if(svgEl) svgEl.appendChild(el);
   return el;
-}
+}*/
 function groupByMeasures(meiThings){
 	var measures = [];
 	var systems = [];
@@ -27,7 +29,7 @@ function groupByMeasures(meiThings){
 		} else if (measures[barNo]){
 			measures[barNo].bits.push(thing);
 		} else {
-			measures[barno] = {bar: measureCandidate, bits: [thing], system: measureCandidate.parentNode};
+			measures[barNo] = {bar: measureCandidate, bits: [thing], system: measureCandidate.parentNode};
 		}
 	}
 	return measures;
@@ -36,7 +38,7 @@ function groupByMeasures(meiThings){
 function groupBySystemsAndMeasures(meiThings){
 	var systems = {};
 	var measures = groupByMeasures(meiThings);
-	for(barNo in measures){
+	for(var barNo in measures){
 		var sysId = measures[barNo].system.id;
 		if(systems[sysId]){
 			systems[sysId].push(measures[barNo]);
@@ -44,6 +46,7 @@ function groupBySystemsAndMeasures(meiThings){
 			systems[sysId] = [measures[barNo]];
 		}
 	}
+	return systems;
 }
 
 function elementBBoxReducer(size, el){
@@ -80,6 +83,67 @@ function mergeBar(soFar, measure){
 		return thisSize;
 	} 
 }
+function chordToString(harmony){
+	switch(harmony['@id']){
+		case "http://dbpedia.org/resource/Root_position":
+			return "5/3";
+		case "http://dbpedia.org/resource/Second_inversion":
+			return "6/4";
+		default:
+			return harmony['@id'];
+	} 
+}
+function cadenceToString(degree, type){
+	var basicDegree = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii'][degree-1];
+	var alteration = '';
+	switch (type){
+		case "http://dbpedia.org/resource/Major_chord":
+			return "→"+ alteration+basicDegree.toUpperCase()+" Major";
+		case "http://dbpedia.org/resource/Minor_chord":
+			return "→"+ alteration+basicDegree+" Minor";
+		case "http://dbpedia.org/resource/Diminished_seventh_chord":
+			return "→"+ alteration+basicDegree+" dim7";
+		default:
+			var chord = /\/(.*)$/.exec(type);
+			return "→"+alteration+basicDegree+" "+chord[1].replace('_', ' ');
+	}
+}
+
+export function writeInfoToScore(info, meiThings, segmentn){
+	var isx = info.segment.indexOf("frageverbot-x")>-1;
+	var label = {height: 600, className: 'info'+(isx ? ' x' : ''), label:info};
+	return rangeLabelAbove(meiThings, label);
+	var segment = /frageverbot-(.*)/.exec(info.segment) ? /frageverbot-(.*)/.exec(info.segment)[1]+'-segment ' : '';
+	var string = segment;
+	if(info.chords){
+		for(var i=0; i<info.chords.length; i++){
+			string+=chordToString(info.chords[i]);
+			string += i==info.chords.length-1 ? ' ' : ', ';
+		}
+	}
+	if(info.cadence){
+		console.log(info.cadence, "xoxox");
+		string += cadenceToString(info.cadence.degree, info.cadence.chordType);
+	}
+	label.label = string;
+	rangeLabelAbove(meiThings, label);
+}
+function writeInfoToPlace(x, y, SVG, info){
+	var group = document.createElementNS(SVGNS, "g");
+	group.setAttributeNS(null, 'class', 'infoLabel');
+	SVG.appendChild(group);
+	var segmentInfo = svgText(group, x, y, false, false, false,
+														/frageverbot-(.*)/.exec(info.segment) ? /frageverbot-(.*)/.exec(info.segment)[1]+'-segment ' : '');
+	x += segmentInfo.getBBox().width;
+	if(info.chords){
+		for(var i=0; i<info.chords.length; i++){
+			x = chordToSVG(x, y, group, info.chords[i]);
+		}
+	}
+	if(info.cadence){
+		svgText(group, x, y, false, false, false, cadenceToString(info.cadence.degree, info.cadence.chordType));
+	}
+}
 function rangeLabelAbove(meiThings, label){
 	var systems = groupBySystemsAndMeasures(meiThings);
 	var svgCandidate = document.getElementById(Object.keys(systems)[0]);
@@ -88,20 +152,25 @@ function rangeLabelAbove(meiThings, label){
 	}
 	var top = false;
 	var topv = false;
-	for(sysid in systems){
+	for(var sysid in systems){
 		var soFar = false;
 		// assume contiguousness
-		for(bno in systems[sysid]){
+		for(var bno in systems[sysid]){
 			soFar = mergeBar(soFar, systems[sysid][bno]);
 		}
-		svgRoundedRect(svgCandidate, soFar.left, soFar.top-label.height, soFar.right - soFar.left, label.height,
+		svgRoundedRect(svgCandidate, Math.max(0, soFar.left), soFar.top-label.height,
+									 soFar.right - soFar.left, label.height,
 									 label.height/3, label.height/3, "labelabove "+label.className, false);
 		if(!topv || soFar.top < topv) {
 			topv = soFar.top;
 			top = [sysid, soFar.left, soFar.right, soFar.top];
 		}
 	}
-	svgText(svgCandidate, top[1], topv-label.height, "label", false, "", label.label);
+	if(typeof(label.label)=='string'){
+		svgText(svgCandidate, top[1], topv, "label", false, "", label.label);
+	} else {
+		writeInfoToPlace(Math.max(100, top[1]), topv, svgCandidate, label.label);
+	}
 }
 	
 function systemLabelBelow(meiThing, label){
@@ -124,14 +193,29 @@ function systemLabelBelow(meiThing, label){
 		chordLabel(label.main, label.figures, y, meiThing.getBBox().x, svgCandidate);
 	}
 }
-var ch = document.getElementsByClassName('chordLabel');
-if(ch.length) {
-	for(var i=0; i<ch.length; i++){
-    ch[i].parentNode.removeChild(ch[i]);
+function chordToSVG(x, y, SVG, chord){
+	var group = document.createElementNS(SVGNS, "g");
+	group.setAttributeNS(null, 'class', 'chordType');
+	SVG.appendChild(group);
+	var figures = [];
+	switch(chord['@id']){
+		case "http://dbpedia.org/resource/Root_position":
+			figures = [5, 3];
+			break;
+		case "http://dbpedia.org/resource/Second_inversion":
+			figures =  [6, 4];
+			break;
+		default:
+			var t = svgText(group, x, y, false, false, false, chord['@id']);
+			return x + t.getBBox().width;
 	}
+	var newx = x;
+	for(var i=0; i<figures.length; i++){
+		var figtext = svgText(group, x, y-270+(i*270), "figure", false, false, figures[i]);
+		newx = Math.max(newx, x+figtext.getBBox().width);
+	}
+	return newx;
 }
-var notes = document.getElementsByClassName('note');
-systemLabelBelow(notes[23], {main: "I", figures: [6, 4]});
 
 function chordLabel(main, figures, top, left, SVG){
 	var group = document.createElementNS(SVGNS, "g");

@@ -6,7 +6,7 @@ function ensureURI(motif){
 	if(motif.indexOf('http://')>-1 || motif.indexOf('https://')>-1){
 		return motif;
 	} else {
-		return 'http://meld.linkedmusic.org/annotations/'+motif+'.json-ld';
+		return 'https://meld.linkedmusic.org/annotations/'+motif+'.json-ld';
 	}
 }
 function ensureURIs(list){
@@ -19,7 +19,7 @@ export default class ForbiddenQuestion extends Component {
 	
 
 	render() { 
-		var motifs = ['http://meld.linkedmusic.org/annotations/Frageverbot1.json-ld'];
+		var motifs = ['https://meld.linkedmusic.org/annotations/Frageverbot1.json-ld'];
 		if(this.props.location.query.motif){
 			if(typeof(this.props.location.query.motif)==='string'){
 				motifs = [ensureURI(this.props.location.query.motif)];
@@ -29,7 +29,7 @@ export default class ForbiddenQuestion extends Component {
 				  <div className="twins"> 
 				  	<link rel="stylesheet" href="../../style/forbiddenQuestion.css" type="text/css" />
 						<link rel="stylesheet" href="../../style/double.css" type="text/css" />
-				  	<App graphUri={'http://meld.linkedmusic.org/annotations/double-demo.json-ld'} twins={'true'} location={this.props.location}/>
+				  	<App graphUri={'http://meld.linkedmusic.org/annotations/double-demo.json-ld'} twins="true" role="twins" location={this.props.location}/>
 		      </div>
 				);
 			} else {
@@ -39,7 +39,7 @@ export default class ForbiddenQuestion extends Component {
 		return (
 		  <div> 
 		  	<link rel="stylesheet" href="../../style/forbiddenQuestion.css" type="text/css" />
-		  	<App graphUri={motifs[0]} location={this.props.location} singlet={'true'} />
+		  	<App graphUri={motifs[0]} location={this.props.location} role="singlet" singlet={'true'} />
       </div>
 		);
 	}

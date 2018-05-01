@@ -26,7 +26,6 @@ class TEI extends Component {
 	}
 
   scrollToMotif(motifNo){
-		console.log("scrolling");
 		var targetClass = "annotation__AskingForbidden_"+motifNo+"_1";
 		var textBox = ReactDOM.findDOMNode(this);
 		var targetElements = textBox.getElementsByClassName(targetClass);
@@ -35,6 +34,20 @@ class TEI extends Component {
 			 textBox.scrollTop = targetElements[0].offsetTop - textBox.offsetTop + (textBox.clientHeight / 2);
 		}
 	}
+
+	resize(){
+		var newHeight = this.props.height;
+		var newWidth = this.props.width-50;
+		var rules = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
+		var i=0;
+		while(!rules[i].selectorText || rules[i].selectorText.indexOf(".TEIContainer")===-1){
+			i++;
+		}
+		var declaration = rules[i].style;
+		declaration.setProperty('height', newHeight+"px");
+		declaration.setProperty('width', newWidth+"px");
+	}
+
 	render() { 
 		if(Object.keys(this.props.tei.TEI).length && this.props.uri in this.props.tei.TEI) { 
 			// HACK //

@@ -86,3 +86,21 @@ svg.timeline-overview {
 line.annotation {
   cursor: pointer;
 }
+
+.AFlatMinor, .AMinor, .AMajor {
+		fill: #006633;
+		stroke: #006633;
+}
+
+.FSharpMinor, .FMinor {
+		fill: #AA0077;
+		stroke: ##AA0077
+}
+.unspecifiedKey {
+		fill: rgba(86, 86, 86, 0.6);
+		stroke: rgba(86, 86, 86, 0.6);
+}
+path.selected.annotation {
+		stroke-width: 2;
+		stroke: #000;
+}
