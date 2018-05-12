@@ -47,7 +47,7 @@ class OrchestralRibbon extends Component {
 				var bars = drawBarLines(orch.measureCount, width, height);
 				return <svg width={width} height={height} className="orchestralRibbon">{bars}{boxes}{captions}</svg>;
 			}
-			return <div>Sad </div>;/*
+			return <div class="ribbon empty"></div>;/*
 			//			return <InlineSVG className="score" src={ this.props.score["MEI"][this.props.uri] } />;*/
 		}
 		return <div>Loading...</div>;

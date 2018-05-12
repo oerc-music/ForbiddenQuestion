@@ -113,20 +113,6 @@ export function writeInfoToScore(info, meiThings, segmentn){
 	var isx = info.segment.indexOf("frageverbot-x")>-1;
 	var label = {height: 600, className: 'info'+(isx ? ' x' : ''), label:info};
 	return rangeLabelAbove(meiThings, label);
-	var segment = /frageverbot-(.*)/.exec(info.segment) ? /frageverbot-(.*)/.exec(info.segment)[1]+'-segment ' : '';
-	var string = segment;
-	if(info.chords){
-		for(var i=0; i<info.chords.length; i++){
-			string+=chordToString(info.chords[i]);
-			string += i==info.chords.length-1 ? ' ' : ', ';
-		}
-	}
-	if(info.cadence){
-		console.log(info.cadence, "xoxox");
-		string += cadenceToString(info.cadence.degree, info.cadence.chordType);
-	}
-	label.label = string;
-	rangeLabelAbove(meiThings, label);
 }
 function writeInfoToPlace(x, y, SVG, info){
 	var group = document.createElementNS(SVGNS, "g");
@@ -147,7 +133,10 @@ function writeInfoToPlace(x, y, SVG, info){
 function rangeLabelAbove(meiThings, label){
 	var systems = groupBySystemsAndMeasures(meiThings);
 	var svgCandidate = document.getElementById(Object.keys(systems)[0]);
-	while(svgCandidate.nodeName.toLowerCase()!=="svg"){
+	/*while(svgCandidate.nodeName.toLowerCase()!=="svg"){
+		svgCandidate = svgCandidate.parentNode;
+		}*/
+	while(svgCandidate.nodeName.toLowerCase()!=="g" || svgCandidate.className.baseVal!=="page-margin"){
 		svgCandidate = svgCandidate.parentNode;
 	}
 	var top = false;

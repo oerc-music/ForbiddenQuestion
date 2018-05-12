@@ -66,7 +66,6 @@ class Score extends Component {
 			} else {
 				svg = this.state.SVG;
 			}
-			window.setTimeout(this.drawInfo.bind(this), 500);
 			return (
 				<div id={this.props.uri} className="scorepane">
 					<div className="controls" />
@@ -119,14 +118,27 @@ class Score extends Component {
 					this.handleMELDActions(annotation, null);
 				} 
 			});
+			this.drawInfo();
 		});
 			
+	}
+	deleteOldLabels(){
+		var labels = document.getElementsByClassName('infoLabel');
+		while(labels && labels.length) {
+			labels[0].remove();
+		}
+		var labels = document.getElementsByClassName('labelabove');
+		while(labels && labels.length)	{
+			labels[0].remove();
+		}
 	}
 	drawInfo(){
 		if(this.props.graph.info){
 			// FIXME: I'm drawing on the score now, but this may not be the best place
+			this.deleteOldLabels();
 			var segments = Object.keys(this.props.graph.info);
 			var segLabels = [];
+			console.log("ooo", segments, this.props.score.componentTargets);
 			for(var i=0; i<segments.length; i++){
 				if(segments[i] in this.props.score.componentTargets){
 					if(!segLabels[this.props.graph.info[segments[i]]]) segLabels[this.props.graph.info[segments[i]]] = 1;
