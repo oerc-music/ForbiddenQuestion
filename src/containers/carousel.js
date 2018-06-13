@@ -1,76 +1,81 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import Carousel from 'react-3d-carousel';
+import Swiper from 'react-id-swiper';
 
 class MEICarousel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            score: {},
-          width: 350,
-					motifSortFunction: sortByContainedNum,
-            layout: this.props.layout,
-            ease: 'linear',
-            duration: 400
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			images: ["http://meld.linkedmusic.org/companion/mei/F1.svg","http://meld.linkedmusic.org/companion/mei/F2.svg","http://meld.linkedmusic.org/companion/mei/F3.svg","http://meld.linkedmusic.org/companion/mei/F4.svg","http://meld.linkedmusic.org/companion/mei/F5.svg","http://meld.linkedmusic.org/companion/mei/F6.svg","http://meld.linkedmusic.org/companion/mei/F7.svg","http://meld.linkedmusic.org/companion/mei/F8.svg","http://meld.linkedmusic.org/companion/mei/F9.svg","http://meld.linkedmusic.org/companion/mei/F10.svg"]
+		}
+	}
 
-    /*
-    componentWillMount() {
-        this.onSides = function (event) {
-            this.setState( { images: this.props.images }});
-        }.bind(this);
-        this.onLayout = function (event) {
-            this.setState({layout: event.target.value});
-        }.bind(this);
-        this.onDuration = function (event) {
-            this.setState({duration: parseInt(event.target.value) });
-        }.bind(this);
-       // this.onEase = function (event) {
-       //     this.setState({ease:  event.target.value});
-       // }.bind(this);
-    }
-		*/
-	
-    render() {
-        console.log("Carousel sees :", this.props.score);
-        if("MEI" in this.props.score && Object.keys(this.props.score.MEI).length && Object.keys(this.props.score.scoreMapping).length) { 
-          var k = Object.keys(this.props.score.MEI);
-          var vs = k.filter((k) => { return !this.props.score.scoreMapping[k] || "http://id.loc.gov/authorities/performanceMediums/2013015550" in this.props.score.scoreMapping[k];}, this);
-					k.sort(this.state.motifSortFunction);
-          var im = vs.map(k => k.replace(".mei", ".svg"));
-          im.push("http://localhost:8080/companion/mei/blank.svg");
-          im.push("http://localhost:8080/companion/mei/blank.svg");
-          im.push("http://localhost:8080/companion/title-page-top.png");
-					console.log("pix are", im);
-            return (
-                <div className="carouselWrapper">
-                    <Carousel width={this.state.width}
-                              images={ im }
-                              motif={this.props.motif}
-															onMotifChange={this.props.onMotifChange}
-															position={this.props.position}
-															supplements={this.props.supplements}
-                              ease={this.state.ease}
-                              duration={this.state.duration}
-                              layout={this.state.layout}/>
-                </div>
-            );
-        }
-        return <div />
-    }
-}
+	goNext() {
+		if (this.refs.swiperWrapper) { this.refs.swiperWrapper.swiper.slideNext() }
+	}
 
-function sortByContainedNum(x, y){
-	var nosx = /[0-9]+[.]/.exec(x);
-	var nosy = /[0-9]+[.]/.exec(y);
-	if(nosx.length && nosy.length){
-		return parseInt(nosx) - parseInt(nosy);
-	} else {
-		return x<y;
+	goPrev() {
+		if (this.refs.swiperWrapper) { this.refs.swiperWrapper.swiper.slidePrev() }
+	}
+
+	goTo(x) { 
+		if(this.refs.swiperWrapper) { this.refs.swiperWrapper.swiper.slideTo(x) }
+	}
+
+	goToURI(uri) { 
+		if(this.refs.swiperWrapper) { 
+			const ix = this.state.images.findIndex((imgUri) => { return imgUri === uri });
+			console.log("ix was ", ix);
+			if(ix > -1) {
+				this.goTo(ix);
+			}
+		}
+	}
+			
+
+
+	componentDidMount() { 
+		this.goToURI("http://meld.linkedmusic.org/companion/mei/F5.svg")
+	}
+
+	render() {
+		if(this.refs.swiperWrapper) { console.log("NOW ON: ", this.refs.swiperWrapper.activeIndex) }
+		const params = {
+effect: 'coverflow',
+		grabCursor: true,
+		centeredSlides: true,
+		slideToClickedSlide: true,
+		slidesPerView:3, 
+		coverflowEffect: {
+rotate: -30,
+		stretch: 0,
+		depth: 10,
+		modifier: 1,
+		slideShadows:false
+		},
+pagination: {
+el: '.swiper-pagination'
+			}
+		};
+		//if("MEI" in this.props.score && Object.keys(this.props.score["MEI"]).length ) { 
+
+
+
+			return (
+					<div className="carouselWrapper">
+					<Swiper {...params} ref="swiperWrapper">
+					{this.state.images.map( (m, ix) => 
+							<div key={ix}><img src={m} width="400px"/></div>
+							)}
+					</Swiper>
+					</div>
+				   );
+		//}
+		//return <div />
 	}
 }
+
 
 function mapStateToProps({ score }) {
 	return { score };
