@@ -176,7 +176,7 @@ img {
 	left: 762px;
 	position: absolute;
 	height:230px;
-	visibility:hidden;
+	visibility:hidden; 
     cursor:pointer;
     padding-left:40px;
 }
@@ -193,21 +193,39 @@ figure img {
 	visibility:visible;
 }
 
+
+img.carouselItem {
+	visibility: visible !important;
+	top:0px !important;
+	left:0px !important;
+	padding:0px !important;
+}
+
+.carouselItemWrapper {
+	position:relative;
+	top:80px;
+	width:800px;
+}
+
+
+/*
 .carousel img {
   border: none;
   padding: 0px;
 }
+
 
 .carouselWrapper {
   position:relative;
   top:80px;
   left:600px;
   margin-bottom:6000px;
-  width: 400px;
+  width: 800px;
 }
 .carouselWrapper figure {
             margin: 0
 }
+
 .react-3d-carousel {
     width: 400px;
     height: 300px;
@@ -288,7 +306,7 @@ figure img {
     width: 43px;
     height: 49px;
     margin: auto;
-}
+}*/
 
 audio {
     width:575px;
@@ -377,3 +395,4 @@ tei-span.denominator {
 .mnum {
 		display: none;
 }
+

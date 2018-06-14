@@ -7,7 +7,31 @@ class MEICarousel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-images: ["http://meld.linkedmusic.org/companion/mei/F1.svg","http://meld.linkedmusic.org/companion/mei/F2.svg","http://meld.linkedmusic.org/companion/mei/F3.svg","http://meld.linkedmusic.org/companion/mei/F4.svg","http://meld.linkedmusic.org/companion/mei/F5.svg","http://meld.linkedmusic.org/companion/mei/F6.svg","http://meld.linkedmusic.org/companion/mei/F7.svg","http://meld.linkedmusic.org/companion/mei/F8.svg","http://meld.linkedmusic.org/companion/mei/F9.svg","http://meld.linkedmusic.org/companion/mei/F10.svg"]
+			width: 350,
+			motifSortFunction: sortByContainedNum,
+			carouselParams: {
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slideToClickedSlide: true,
+					slidesPerView:3, 
+					coverflowEffect: {
+									rotate: -30,
+									stretch: 0,
+									depth: 10,
+									modifier: 1,
+									slideShadows:false
+					},
+					pagination: {
+							el: '.swiper-pagination',
+							clickable: true
+					},
+					navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev'
+					}
+
+			}
 		}
 	}
 
@@ -46,63 +70,56 @@ images: ["http://meld.linkedmusic.org/companion/mei/F1.svg","http://meld.linkedm
 		return ix > -1 ? this.state.images[ix] : false
 	}
 
-	componentDidMount() { 
-		this.refs.swiperWrapper.swiper.on('slideChange', () => { 
-			console.log("slide changed: ", this.getActiveURI())
-		})
-		this.goToURI("http://meld.linkedmusic.org/companion/mei/F5.svg")
-	}
+//	componentDidMount() { 
+//		this.refs.swiperWrapper.swiper.on('slideChange', () => { 
+//			console.log("slide changed: ", this.getActiveURI())
+//		})
+//	}
 
 	render() {
-		if(this.refs.swiperWrapper) { console.log("NOW ON: ", this.refs.swiperWrapper.activeIndex) }
-		const params = {
-				effect: 'coverflow',
-				grabCursor: true,
-				centeredSlides: true,
-				slideToClickedSlide: true,
-				slidesPerView:3, 
-				coverflowEffect: {
-								rotate: -30,
-								stretch: 0,
-								depth: 10,
-								modifier: 1,
-								slideShadows:false
-				},
-				pagination: {
-						el: '.swiper-pagination',
-						clickable: true
-				},
-				navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev'
-				}
-
-		};
-		//if("MEI" in this.props.score && Object.keys(this.props.score["MEI"]).length ) { 
-
-
-
-		return (
-				<div className="carouselWrapper">
-				<Swiper {...params} ref="swiperWrapper">
-				{this.state.images.map( (m, ix) => 
-						<div key={ix} className="carouselItemWrapper"><img src={m} className="carouselItem"/></div>
+		console.log("Carousel sees :", this.props.score);
+		if("MEI" in this.props.score && Object.keys(this.props.score.MEI).length && Object.keys(this.props.score.scoreMapping).length) { 
+			var k = Object.keys(this.props.score.MEI);
+			var vs = k.filter((k) => { return !this.props.score.scoreMapping[k] || "http://id.loc.gov/authorities/performanceMediums/2013015550" in this.props.score.scoreMapping[k];}, this);
+			k.sort(this.state.motifSortFunction);
+			var im = vs.map(k => k.replace(".mei", ".svg"));
+			im.push("http://localhost:8080/companion/mei/blank.svg");
+			im.push("http://localhost:8080/companion/mei/blank.svg");
+			im.push("http://localhost:8080/companion/title-page-top.png");
+			console.log("pix are", im);
+			return (
+					<div className="carouselWrapper">
+						<Swiper {...this.state.carouselParams} ref="swiperWrapper">
+						{im.map( (m, ix) => 
+								<div key={ix} className="carouselItemWrapper">
+									<img src={m} className="carouselItem"/>
+								</div>
 						)}
-				</Swiper>
-				</div>
-				);
-		//}
-		//return <div />
+						</Swiper>
+					</div>
+			);
+		}
+		return <div />
+	}
+}
+
+function sortByContainedNum(x, y){
+	var nosx = /[0-9]+[.]/.exec(x);
+	var nosy = /[0-9]+[.]/.exec(y);
+	if(nosx.length && nosy.length){
+		return parseInt(nosx) - parseInt(nosy);
+	} else {
+		return x<y;
 	}
 }
 
 
-function mapStateToProps({ score }) {
-	return { score };
-}
+	function mapStateToProps({ score }) {
+		return { score };
+	}
 
-function mapDispatchToProps(dispatch) { 
-	return bindActionCreators({ }, dispatch);
-}
+	function mapDispatchToProps(dispatch) { 
+		return bindActionCreators({ }, dispatch);
+	}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MEICarousel);
