@@ -57,10 +57,10 @@ div.TEIContainer {
   left: 300px;
   max-height: 300px;
 	height: 25%;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 800px;
   font-size: 100%;
-	overflow: scroll;
+	overflow: auto;
 	text-overflow: ellipsis;
 }
 

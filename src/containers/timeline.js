@@ -120,7 +120,7 @@ class MEITimeline extends Component {
 								scenes = scenes.slice(1);
 							}
 							var motifString = motif[0].substring(1);
-							this.state.bubble = <div style={{left: (72+-10+curx+motif[1]*scale)+"px", bottom: (15+boxHeight*6)+"px", position: "absolute"}} className="bubble">Frageverbot {motifString} ({act[1]}:{scenes[0][1]})</div>;
+							this.state.bubble = <div style={{left: (72+-10+curx+motif[1]*scale)+"px", bottom: (40+boxHeight*6)+"px", position: "absolute"}} className="bubble">Frageverbot {motifString} {key.replace(/(.)([A-Z])/g, "$1 $2")} ({act[1]}:{scenes[0][1]})</div>;
 							motifLines.push(<path className={"annotation selected "+key+" annotation__AskingForbidden_"+motif[0]+"_1"+currentClass}
 															onClick={ fun } onMouseEnter={ funh } onTouchStart={ funh } onMouseLeave={ funend }
 															d={"M"+x+" "+(boxTop-2)+" L "+extrasx+" "+(boxTop-12)
@@ -136,7 +136,7 @@ class MEITimeline extends Component {
 								scenes = scenes.slice(1);
 							}
 							motifString = motif[0].substring(1);
-							var hoverbubble = <div style={{left: (72+-10+curx+motif[1]*scale)+"px", bottom: (15+boxHeight*6)+"px", position: "absolute"}} className="hover bubble">Frageverbot {motifString} ({act[1]}:{scenes[0][1]})</div>;
+							var hoverbubble = <div style={{left: (72+-10+curx+motif[1]*scale)+"px", bottom: (15+boxHeight*6)+"px", position: "absolute"}} className="hover bubble">Frageverbot {motifString} {key.replace(/(.)([A-Z])/g, "$1 $2")} ({act[1]}:{scenes[0][1]})</div>;
 							motifLines.push(<path className={"annotation "+key+" annotation__AskingForbidden_"+motif[0]+"_1"+currentClass}
 															onClick={ fun } onMouseEnter={ funh } onTouchStart={ funh } onMouseLeave={ funend }
 															d={"M"+x+" "+(boxTop-2)+" L "+extrasx+" "+(boxTop-12)

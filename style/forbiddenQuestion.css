@@ -32,15 +32,24 @@ div.TEIContainer {
 	100% { transform: rotate(0deg); }
 }
 
-div.TEIContainer {
+div.TEIContainer.commentary {
   left: 630px;
   top: 15px;
   width: 370px;
   font-size: 91%;
-}
-div.TEIContainer.commentary {
   display: block;
 }
+div.TEIContainer.libretto {
+		display: block;
+		width: auto;
+	top: 15px;
+	left: 5px;
+	height: 100px;
+}
+div.TEIContainer.libretto tei-teiheader {
+	display:none;
+}
+
 svg.orchestralRibbon {
   position: absolute;
   left: 640px;

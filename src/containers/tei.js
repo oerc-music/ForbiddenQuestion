@@ -44,11 +44,22 @@ class TEI extends Component {
 			i++;
 		}
 		var declaration = rules[i].style;
-		declaration.setProperty('height', newHeight+"px");
-		declaration.setProperty('width', newWidth+"px");
+		declaration.setProperty('max-height', newHeight+"px");
+		declaration.setProperty('max-width', newWidth+"px");
 	}
 
-	render() { 
+	render() {
+		if(this.props.tei.librettoTargets && this.props.tei.librettoTargets['en'] && this.props.uri in this.props.tei.librettoTargets['en']){
+			// this is a translated libretto entry
+			if(this.props.librettoElements && this.props.librettoElements.includes(this.props.uri)) {
+				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className="TEIContainer english libretto" id={"english-libretto-"+this.props.uri.substr(this.props.uri.lastIndexOf("/")+1)} />;
+			} else {
+				return <div/>;
+			}
+		} else if (this.props.tei.librettoTargets && this.props.tei.librettoTargets['de'] && this.props.uri in this.props.tei.librettoTargets['de']){
+			// this is a German libretto entry
+			return <div/>
+		}
 		if(Object.keys(this.props.tei.TEI).length && this.props.uri in this.props.tei.TEI) { 
 			// HACK //
 			if(this.props.uri.indexOf("commentaries") > -1) { 
