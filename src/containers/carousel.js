@@ -7,7 +7,7 @@ class MEICarousel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			images: ["http://meld.linkedmusic.org/companion/mei/F1.svg","http://meld.linkedmusic.org/companion/mei/F2.svg","http://meld.linkedmusic.org/companion/mei/F3.svg","http://meld.linkedmusic.org/companion/mei/F4.svg","http://meld.linkedmusic.org/companion/mei/F5.svg","http://meld.linkedmusic.org/companion/mei/F6.svg","http://meld.linkedmusic.org/companion/mei/F7.svg","http://meld.linkedmusic.org/companion/mei/F8.svg","http://meld.linkedmusic.org/companion/mei/F9.svg","http://meld.linkedmusic.org/companion/mei/F10.svg"]
+images: ["http://meld.linkedmusic.org/companion/mei/F1.svg","http://meld.linkedmusic.org/companion/mei/F2.svg","http://meld.linkedmusic.org/companion/mei/F3.svg","http://meld.linkedmusic.org/companion/mei/F4.svg","http://meld.linkedmusic.org/companion/mei/F5.svg","http://meld.linkedmusic.org/companion/mei/F6.svg","http://meld.linkedmusic.org/companion/mei/F7.svg","http://meld.linkedmusic.org/companion/mei/F8.svg","http://meld.linkedmusic.org/companion/mei/F9.svg","http://meld.linkedmusic.org/companion/mei/F10.svg"]
 		}
 	}
 
@@ -32,45 +32,65 @@ class MEICarousel extends Component {
 			}
 		}
 	}
-			
 
+	getActiveIndex() { 
+			if(this.refs.swiperWrapper) { 
+				return this.refs.swiperWrapper.swiper.activeIndex;
+			} else { 
+				return -1
+			}
+	}
+
+	getActiveURI() { 
+		const ix = this.getActiveIndex();
+		return ix > -1 ? this.state.images[ix] : false
+	}
 
 	componentDidMount() { 
+		this.refs.swiperWrapper.swiper.on('slideChange', () => { 
+			console.log("slide changed: ", this.getActiveURI())
+		})
 		this.goToURI("http://meld.linkedmusic.org/companion/mei/F5.svg")
 	}
 
 	render() {
 		if(this.refs.swiperWrapper) { console.log("NOW ON: ", this.refs.swiperWrapper.activeIndex) }
 		const params = {
-effect: 'coverflow',
-		grabCursor: true,
-		centeredSlides: true,
-		slideToClickedSlide: true,
-		slidesPerView:3, 
-		coverflowEffect: {
-rotate: -30,
-		stretch: 0,
-		depth: 10,
-		modifier: 1,
-		slideShadows:false
-		},
-pagination: {
-el: '.swiper-pagination'
-			}
+				effect: 'coverflow',
+				grabCursor: true,
+				centeredSlides: true,
+				slideToClickedSlide: true,
+				slidesPerView:3, 
+				coverflowEffect: {
+								rotate: -30,
+								stretch: 0,
+								depth: 10,
+								modifier: 1,
+								slideShadows:false
+				},
+				pagination: {
+						el: '.swiper-pagination',
+						clickable: true
+				},
+				navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev'
+				}
+
 		};
 		//if("MEI" in this.props.score && Object.keys(this.props.score["MEI"]).length ) { 
 
 
 
-			return (
-					<div className="carouselWrapper">
-					<Swiper {...params} ref="swiperWrapper">
-					{this.state.images.map( (m, ix) => 
-							<div key={ix}><img src={m} width="400px"/></div>
-							)}
-					</Swiper>
-					</div>
-				   );
+		return (
+				<div className="carouselWrapper">
+				<Swiper {...params} ref="swiperWrapper">
+				{this.state.images.map( (m, ix) => 
+						<div key={ix} className="carouselItemWrapper"><img src={m} className="carouselItem"/></div>
+						)}
+				</Swiper>
+				</div>
+				);
 		//}
 		//return <div />
 	}

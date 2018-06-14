@@ -104,3 +104,13 @@ path.selected.annotation {
 		stroke-width: 2;
 		stroke: #000;
 }
+
+.carouselItemWrapper { 
+		background: #ffc;
+		height:300px;
+		width:200px;
+}
+
+.carouselItem { 
+		max-width:400px;
+}
