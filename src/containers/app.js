@@ -110,14 +110,15 @@ class App extends Component {
 							}
 							case TEIManifestation:
 								
-								if(id.indexOf('libretto')>-1) return false;
+//								if(id.indexOf('libretto')>-1) return false;
 							if(this.props.motif){
 								return <TEI key={ id } uri={ id } motif={this.state.currentMotif}
-								heigh={textBoxHeight}
+								height={textBoxHeight}
 														onMotifChange={this.handleMotifChange.bind(this)}
 							            	annotations={ byId[id]["annotations"] } />;
 							} else {
-								return <TEI key={ id } uri={ id } annotations={ byId[id]["annotations"] } />;
+								return <TEI key={ id } uri={ id } annotations={ byId[id]["annotations"] }
+								librettoElements={this.props.librettoElements} />;
 							}/**/
 						case VideoManifestation: 
 							return <MediaPlayer key={ id } uri={ id } />;

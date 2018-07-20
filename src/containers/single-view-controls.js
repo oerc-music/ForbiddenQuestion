@@ -10,7 +10,6 @@ export default class SingleControls extends Component {
 	render(){
 		if(this.props.location){
 			var replaceuri = "TimeMachine";
-			console.log(this.props.location.query);
 			var adduri = 'TimeMachine?position=right&supplements='+this.props.location.query.motif;
 			return (
 				<div className="control leftbuttonblock">

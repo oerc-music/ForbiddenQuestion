@@ -76,13 +76,37 @@ class Score extends Component {
 		}
 		return <div>Loading...</div>;
 	}
-
+	addExtras() {
+		let ct = this.props.score.componentTargets;
+		let ctKeys = Object.keys(ct);
+		for(let i=0; i<ctKeys.length; i++){
+			let MEITargets = ct[ctKeys[i]]['MEI'];
+			let TEITargets = ct[ctKeys[i]]['TEI'];
+			let lyricElements = [];
+			if(TEITargets.length){
+				for(let j=0; j<MEITargets.length; j++){
+					if(MEITargets[j].substring(0, MEITargets[j].indexOf("#"))===this.props.uri){
+						// This MEITarget is in this music example
+						let el = document.getElementById(MEITargets[j].substring(MEITargets[j].indexOf("#")+1));
+						if(el){
+							let lyric = el.getElementsByClassName('verse');
+							if(lyric){
+								lyricElements = lyricElements.concat(Array.from(lyric));
+							}
+						}
+					}
+				}
+				this.props.showLibretto(lyricElements, TEITargets);
+			}
+		}
+	}
 	componentDidMount() { 
 		this.props.fetchScore(this.props.uri);
 	}
 
 	componentDidUpdate() {
 		let annotations = this.props.annotations;
+		this.addExtras();
 		if(!Array.isArray(annotations)) { 
 			annotations = [annotations]
 		}
@@ -161,36 +185,13 @@ class Score extends Component {
 			case "oa:highlighting":
 				this.props.handleHighlight(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
 			break;
-			case "motivation:muzicodeIdentify":
-				this.props.handleIdentifyMuzicode(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
-			break;
-			case "motivation:muzicodeChoice":
-				this.props.handleChoiceMuzicode(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
-			break;
-			case "motivation:muzicodeChallengePassed":
-				this.props.handleChallengePassed(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
-			break;
-			case "motivation:muzicodeDisklavierStart":
-				this.props.handleDisklavierStart(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
-			break;
-			case "motivation:nextPageOrPiece":	
-				console.log("----", this.props);
-				this.props.scoreNextPage(this.props.session, this.props.nextSession, this.props.etag, annotation, this.props.uri, this.props.score.pageNum, this.props.score.MEI[this.props.uri]);
-			break;
-			case "motivation:prevPageOrPiece":	
-				console.log("----", this.props);
-				this.props.scorePrevPage(this.props.session, this.props.nextSession, this.props.etag, annotation, this.props.uri, this.props.score.pageNum, this.props.score.MEI[this.props.uri]);
-			break;
-			case "motivation:queueNextSession":
-				this.props.handleQueueNextSession(this.props.session, this.props.etag, annotation);
-			break;
 			default:
 				console.log("Unknown motivation: ", annotation["oa:motivatedBy"]);
 			}
 	 } else if(HAS_BODY in annotation) { 
 			annotation[HAS_BODY].map( (b) => {
 				// TODO convert to switch statement
-				if(b["@id"] === MARKUP_EMPHASIS) { 
+				if(b["@id"] === MARKUP_EMPHASIS) {
 					this.props.handleEmphasis(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
 				} else if(b["@id"] === MARKUP_HIGHLIGHT) { 
 					this.props.handleHighlight(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments["MEI"]);
