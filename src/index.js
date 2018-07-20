@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 import { Router, Route, browserHistory } from 'react-router'
 
-import { rootReducer as reducers } from 'meld-clients-core/src/reducers';
+import { reducers } from 'meld-clients-core/src/reducers';
 import App from './containers/app';
 import ForbiddenQuestion from './containers/musicology/forbiddenQuestion';
 import Carousel from './containers/musicology/carousel-app';
