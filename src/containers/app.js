@@ -94,13 +94,14 @@ class App extends Component {
 								<MEICarousel layout="prism"/>
 										 </div>);
 							case MEIManifestation:
-							if(this.props.score.scoreMapping[id] && !this.props.role!=="carousel"){
-								if(FOR_ORCHESTRA in this.props.score.scoreMapping[id]){
-									return <OrchestralRibbon key={ id+"ribbon" } uri={ id } width={400} height={this.state.height - textBoxHeight - 50}/>;
-								} else if (HAS_PIANO in this.props.score.scoreMapping[id]){
-									return <Score key={ id } uri={ id } annotations={ byId[id]["annotations"] } />;
-								} else {
-									return;
+								if(this.props.score.scoreMapping[id] && !this.props.role!=="carousel"){
+									if(FOR_ORCHESTRA in this.props.score.scoreMapping[id]){
+										return <OrchestralRibbon key={ id+"ribbon" } uri={ id } width={400} height={this.state.height - textBoxHeight - 50}/>;
+									} else if (HAS_PIANO in this.props.score.scoreMapping[id]){
+										return <Score key={ id } uri={ id } annotations={ byId[id]["annotations"] }
+										showLibretto={this.props.showLibretto} />;
+									} else {
+										return;
 //									return <Score key={ id } uri={ id } annotations={ byId[id]["annotations"] } />;
 								}
 							} else {
