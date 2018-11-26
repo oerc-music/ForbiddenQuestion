@@ -52,9 +52,9 @@ class TEI extends Component {
 		if(this.props.tei.librettoTargets && this.props.tei.librettoTargets['en'] && this.props.uri in this.props.tei.librettoTargets['en']){
 			// this is a translated libretto entry
 			if(this.props.librettoElements && this.props.librettoElements.includes(this.props.uri)) {
-				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className="TEIContainer english libretto" id={"english-libretto-"+this.props.uri.substr(this.props.uri.lastIndexOf("/")+1)} />;
+				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className={(this.props.className ? this.props.className+" " : "" )+"TEIContainer english libretto"} id={"english-libretto-"+this.props.uri.substr(this.props.uri.lastIndexOf("/")+1)} />;
 			} else {
-				return <div/>;
+				return false;
 			}
 		} else if (this.props.tei.librettoTargets && this.props.tei.librettoTargets['de'] && this.props.uri in this.props.tei.librettoTargets['de']){
 			// this is a German libretto entry
@@ -66,9 +66,9 @@ class TEI extends Component {
 				if(this.props.onMotifChange && (!this.props.motif || !this.props.uri.endsWith(this.props.motif))){
 					return <div/>;
 				}
-				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className="TEIContainer commentary" id={this.props.uri.substr(this.props.uri.indexOf("commentaries/")+13)} />;
+				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className={(this.props.className ? this.props.className+" " : "" )+"TEIContainer commentary"} id={this.props.uri.substr(this.props.uri.indexOf("commentaries/")+13)} />;
 			} else { 
-				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className="TEIContainer other" />;
+				return <div dangerouslySetInnerHTML={ this.returnHTMLizedTEI() } className={(this.props.className ? this.props.className+" " : "" )+"TEIContainer other"} />;
 			}
 			// END HACK //
 		}

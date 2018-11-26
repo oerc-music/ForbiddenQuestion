@@ -111,11 +111,11 @@ class Score extends Component {
 			annotations = [annotations]
 		}
 		if(annotations.length && typeof annotations[0] !== "undefined" && "@type" in annotations[0] && annotations[0]["@type"].includes("meldterm:topLevel")) { 
-			console.log("Found old Larry-meld style topLevel annotation, converting...")
+//			console.log("Found old Larry-meld style topLevel annotation, converting...")
 			annotations = annotations[0]["oa:hasBody"]
 		}
 		annotations.map( (annotation) => {
-			console.log("annotation is: ", annotation)
+//			console.log("annotation is: ", annotation)
 			if(typeof annotation === 'undefined') { return }
 			// each annotation...
 			const frags = annotation["oa:hasTarget"].map( (annotationTarget) => { 
@@ -162,7 +162,6 @@ class Score extends Component {
 			this.deleteOldLabels();
 			var segments = Object.keys(this.props.graph.info);
 			var segLabels = [];
-			console.log("ooo", segments, this.props.score.componentTargets);
 			for(var i=0; i<segments.length; i++){
 				if(segments[i] in this.props.score.componentTargets){
 					if(!segLabels[this.props.graph.info[segments[i]]]) segLabels[this.props.graph.info[segments[i]]] = 1;

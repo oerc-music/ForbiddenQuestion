@@ -49,12 +49,12 @@ class MEITimeline extends Component {
   }
   motifChangeClickHandler(event){
     var el = event.target;
-    var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/);
+    var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/)[0];
     this.props.onMotifChange(motif);
   }
 	motifHoverOrTouchHandler(event){
 		var el = event.target;
-		var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/);
+		var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/)[0];
 		this.setState({hover:motif});
 		/*
 		var bub = document.getElementsByClassName('bubble')[0];
@@ -106,7 +106,7 @@ class MEITimeline extends Component {
             var fun = this.motifChangeClickHandler.bind(this);
 						var funh = this.motifHoverOrTouchHandler.bind(this);
 						var funend = this.motifFocusLeavesHandler.bind(this);
-						var motifUri = 'http://meld.linkedmusic.org/companion/'+motif[0];
+						var motifUri = 'https://meld.linkedmusic.org/companion/'+motif[0];
 						var key = "unspecifiedKey";
 						if((motifUri in this.props.graph.info) && ('key' in this.props.graph.info[motifUri])){
 							key = URIFragment(this.props.graph.info[motifUri].key);
