@@ -110,14 +110,14 @@ img.carouselItem {
 	left:0px !important;
 	padding:0px !important;
 	position:relative;
-	width: 550px;
+	width: 450px;
 	height: auto;
 }
 
 .carouselItemWrapper {
 	position:relative;
 	top:80px;
-	width:550px;
+	width:450px;
 }
 
 .carousel img {
