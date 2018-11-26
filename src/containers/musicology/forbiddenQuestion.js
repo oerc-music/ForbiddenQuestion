@@ -16,6 +16,25 @@ function twinURI(list){
 	let n = /[0-9]+/.exec(list[1])[0];
 	return 'https://meld.linkedmusic.org/annotations/'+list[0]+'-'+list[1]+'.json-ld';
 }
+function motifName(pageURI){
+	// FIXME: hardwiring
+	return pageURI.substring(41, pageURI.indexOf('.json-ld'));
+	
+}
+function annotationName(pageURI){
+	console.log('annotation:'+motifName(pageURI), pageURI);
+	return 'annotation:'+motifName(pageURI);
+}
+function motifURI(pageURI){
+	// Yes, I know this is stupid, but it made sense to me at the time
+	var pagePrefix = 'https://meld.linkedmusic.org/annotations/Frageverbot';
+	var pageSuffix = '.json-ld';
+	var motifURIs = {};
+	for(var i=1; i<18; i++){
+		motifURIs[pagePrefix+i+pageSuffix] = 'https://meld.linkedmusic.org/companion/F'+i;
+	}
+	return motifURIs[pageURI];
+}
 export default class ForbiddenQuestion extends Component { 
 	constructor(props) {
 		super(props);
@@ -48,11 +67,13 @@ export default class ForbiddenQuestion extends Component {
 			} else if(this.props.location.query.motif.length===2) {
 				motifs = ensureURIs(this.props.location.query.motif);
 				let graphURI = twinURI(this.props.location.query.motif);
+				let left = annotationName(motifs[0]);
+				let right = annotationName(motifs[1]);
 				return (
 				  <div className="twins"> 
 				  	<link rel="stylesheet" href="../../style/forbiddenQuestion.css" type="text/css" />
 						<link rel="stylesheet" href="../../style/double.css" type="text/css" />
-				  	<App graphUri={graphURI} twins="true" role="twins" location={this.props.location} librettoElements={this.state.librettoElements} showLibretto={this.showLibretto.bind(this)}/>
+				  	<App graphUri={graphURI} twins="true" role="twins" location={this.props.location} librettoElements={this.state.librettoElements} showLibretto={this.showLibretto.bind(this)} leftMotif={left} rightMotif={right}/>
 		      </div>
 				);
 			} else {

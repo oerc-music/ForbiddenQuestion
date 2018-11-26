@@ -13,13 +13,23 @@ svg.orchestralRibbon {
   top: 180px;
   position: absolute;
 }
-#F2 {
+/* #F2 { */
+/*   left: 680px; */
+/*   top: 10px; */
+/* } */
+/* #F1 { */
+/*   left: 10px; */
+/*   top: 10px; */
+/* } */
+.scorepane.right, .right{
   left: 680px;
-  top: 10px;
 }
-#F1 {
-  left: 10px;
-  top: 10px;
+.scorepane.left, {
+	left: 15px;
+}
+
+.twins .left, .twins div.TEIContainer.commentary.left{
+  left: 5px;
 }
 audio {
   top: 850px;

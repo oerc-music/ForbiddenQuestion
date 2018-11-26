@@ -66,8 +66,9 @@ class Score extends Component {
 			} else {
 				svg = this.state.SVG;
 			}
+			var classes = this.props.className ? this.props.className+" scorepane" : "scorepane";
 			return (
-				<div id={this.props.uri} className="scorepane">
+				<div id={this.props.uri} className={classes}>
 					<div className="controls" />
 					<div className="annotations" />
 					<InlineSVG className="score" src={svg }/>
