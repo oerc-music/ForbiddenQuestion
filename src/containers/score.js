@@ -26,7 +26,7 @@ const defaultVrvOptions = {
 	breaks:'auto',
 	adjustPageHeight:1,
 	spacingStaff: 0,
-	spacingSystem: 13,
+	spacingSystem: 12,
 	spacingLinear: 0.2,
 	spacingNonLinear: 0.55,
 	noFooter: 1,

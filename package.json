@@ -19,6 +19,7 @@
       "axios": "^0.15.3",
       "babel-preset-stage-1": "^6.1.18",
       "jsonld": "^0.4.11",
+      "jsum": "^0.1.4",
       "lodash": "^3.10.1",
       "n3": "^0.10.0",
       "querystring": "^0.2.0",
