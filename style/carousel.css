@@ -1,13 +1,12 @@
-div.TEIContainer.other {
-  display: none;
-}
+/* div.TEIContainer.other { */
+/*   display: none; */
+/* } */
 
-div.TEIContainer.commentary tei-titlestmt {
-  /*display: none;*/
-}
+/* div.TEIContainer.commentary tei-titlestmt { */
+/*   /\*display: none;*\/ */
+/* } */
 
 div.TEIContainer.commentary * {
-  font-family: georgia times serif;
   animation-duration: 0.5s;
   animation-name: appear;
 }
@@ -52,7 +51,7 @@ div.TEIContainer {
   top: 10px;
   left: 300px;
   max-height: 300px;
-	height: 25%;
+	/* height: 25%; */
   overflow-y: auto;
   width: 800px;
   font-size: 100%;
@@ -60,38 +59,138 @@ div.TEIContainer {
 	text-overflow: ellipsis;
 }
 
-div.scorepane {
-  display: none;
-  width: 1px;
-  max-width: 0px;
-  height: 1px;
-  margin: 0px;
-  padding: 0px;
-  position: fixed;
-  top: 0px;
-}
+/* div.scorepane { */
+/*   display: none; */
+/*   width: 1px; */
+/*   max-width: 0px; */
+/*   height: 1px; */
+/*   margin: 0px; */
+/*   padding: 0px; */
+/*   position: fixed; */
+/*   top: 0px; */
+/* } */
 
 html {
   max-height: 1024px;
 }
-
+.timelineFooter {
+		/* height: calc(100% - 790px); */
+	/* min-height: 180px; */
+	height: 197px;
+		background-color: #20202F;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		padding: 0 15px;
+		z-index:5;
+		overflow-x:auto;
+}
+.zoomieButton {
+	position: fixed;
+	right: 14px;
+	bottom: 14px;
+	color: #868695;
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+}
 svg.timeline-overview {
   position: absolute;
   bottom: 15px;
 }
+.timelineFooter #timelineLegend {
+	position: fixed;
+	/* bottom: calc(100% - 750px); */
+	/* right: 15px; */
+	bottom: 197px;
+	right: 30px;
+}
+.timelineFooter #timelineLegend .background{
+	fill: #20202F;
+}
+.timelineFooter #timelineLegend text.legend,
+.timeline-overview text.legend {
+	fill: #DBDBEA;
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+}
+
 line.annotation {
   cursor: pointer;
 }
-
-.AFlatMinor, .AMinor, .AMajor {
-		fill: #006633;
-		stroke: #006633;
+.timeline-overview rect {
+		stroke: #424251;
+		fill: #424251;
+}
+.timeline-overview rect.motifBubble, .timeline-overview path.motifBubble  {
+		stroke: #3333FF;
+		fill: #3333FF;
+}
+.timeline-overview text.motifBubbleText {
+		fill: #FFFFFF;
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+		text-anchor: middle;
+}
+.timeline-overview text.keyLabel {
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+		text-anchor: middle;
+		fill: orange;
+}
+.timeline-overview g.keyButton {
+	cursor: pointer;
+	pointer-events: bounding-box;
+}
+.timeline-overview g.keyButton:hover rect {
+	fill: #444466;
+}
+.timeline-overview g.keyButton rect{
+	stroke: orange;
+	stroke-width: 2;
+	fill: #000022;
+}
+.timeline-overview text.title {
+	fill: #B9B9C8;
+	font-size: 14px;
+	font-weight: normal;
+	text-anchor: middle;
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+}
+.timeline-overview text.actName, .timeline-overview text.scenename {
+		fill: #868695;
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+}
+.timeline-overview line.scene.division {
+		stroke: #000022;
+		stroke-width: 1;
+}
+.timeline-overview rect.progressToNow {
+		fill: #FFA500;
 }
 
-.FSharpMinor, .FMinor {
-		fill: #AA0077;
-		stroke: ##AA0077
+.timeline-overview line.annotation {
+		stroke-width: 2.5;
 }
+
+line.annotation.unperformed {
+	stroke-dasharray: 2,2;
+}
+
+.timeline-overview line.annotation.AFlatMinor,
+.timeline-overview line.annotation.AMinor,
+.timeline-overview line.annotation.AMajor,
+#timelineLegend circle.AKeys,
+.timeline-overview circle.AKeys,
+.timeline-overview circle.magicRealm{
+		/* fill: #006633; */
+		/* stroke: #006633; */
+		fill: #00B2B2;
+		stroke: #00B2B2;
+}
+.timeline-overview line.FSharpMinor,
+.timeline-overview line.FMinor,
+#timelineLegend circle.FKeys,
+.timeline-overview circle.FKeys {
+		fill: #FF4DFF;
+		stroke: #FF4DFF
+}
+
 .unspecifiedKey {
 		fill: rgba(86, 86, 86, 0.6);
 		stroke: rgba(86, 86, 86, 0.6);
@@ -100,41 +199,63 @@ path.selected.annotation {
 		stroke-width: 2;
 		stroke: #000;
 }
-div.carouselWrapper {
-	/* top: 180px; */
-  /* left: 450px; */
-x}
 img.carouselItem {
 	visibility: visible !important;
 	top:0px !important;
 	left:0px !important;
 	padding:0px !important;
 	position:relative;
-	width: 450px;
+	//	width: 350px;
+	width: 100%;
 	height: auto;
 }
-
+.carouselItemWrapper:not(.swiper-slide-active) img, .carouselItemWrapper:not(.swiper-slide-active) *{
+		-webkit-filter: contrast(20%);
+		-moz-filter: contrast(20%);
+		-o-filter: contrast(20%);
+		-ms-filter: contrast(20%);
+		filter: contrast(20%);
+}
 .carouselItemWrapper {
 	position:relative;
-	top:80px;
 	width:450px;
+	background-color: white;
+	padding-left: 5px;
+	min-height: 600px
+}
+.carouselItemWrapper tei-teiheader {
+	display:none
+}
+.carouselItemWrapper .TEIContainer {
+	position: relative;
+	display: block;
+	margin: 20px;
+	left: 0;
+	top: 0;
+	width: calc(100% - 80px);
+}
+.carouselItemWrapper .TEIContainer:nth-child(2) {
+	border-top: 1px solid #000022;
+}
+
+.carouselWrapper {
+	background-color: #EEE;
+	padding-top:5px;
+	padding-bottom: 5px;
+	height: calc(100% - 80px - 150px);
+	min-height: 700px;
+	position:relative;
+	top:80px;
 }
 
 .carousel img {
   border: none;
   padding: 0px;
 }
-
-.carouselWrapper {
-  position:relative;
-  top:80px;
-	width: 96%;
-	height: 80%;
-	min-height: 800px;
-  /* left:600px; */
-  /* margin-bottom:6000px; */
-  /* width: 400px; */
+.carouselWrapper tei-lyric {
+	width: 100%;
 }
+
 .carouselWrapper figure {
   margin: 0
 }
@@ -220,3 +341,89 @@ img.carouselItem {
 /*     margin: auto; */
 /* } */
 
+.swiper-wrapper svg.orchestralRibbon {
+		position: static;
+}
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  /* width: 36px; */
+  /* height: 30px; */
+  /* left: 36px; */
+  /* top: 36px; */
+  width: 24px;
+  height: 20px;
+  left: 24px;
+  top: 24px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  /* background: #373a47; */
+  background: #EEE;
+	border-radius: 10px;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  /* background: #a90000; */
+  background: #000022;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: white;
+  padding: 0 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+ 	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+	height: 5vh;
+	color: #FFF;
+	line-height: 5vh;
+}
+.bm-item:hover {
+	color: white;
+	background-color: #444466
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}

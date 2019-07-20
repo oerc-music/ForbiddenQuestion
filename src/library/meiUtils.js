@@ -10,8 +10,10 @@ function duration(event, MEIObject){
   var base = event.getAttributeNS(null, 'dur');
   if(!base){
     // Probably a chord – get dur from parent
-    base = MEIObject.evaluate('./ancestor::*[@dur][1]', event, nsResolver,
-      XPathResult.NUMBER_TYPE, null).numberValue;
+    /*base = MEIObject.evaluate('./ancestor::*[@dur][1]', event, nsResolver,
+															XPathResult.NUMBER_TYPE, null).numberValue;*/
+		var chord = event.closest('chord');
+		if(chord) base = chord.getAttributeNS(null, 'dur');
   }
   base = 1/Number(base);
   var dur = base;
@@ -82,12 +84,12 @@ function InstrumentMeasure(barStaff, MEIObject){
     nsResolver, XPathResult.NUMBER_TYPE, null).numberValue;
   this.events = [];
   this.duration = 0;
-  var eventObjs = this.MEIObject.evaluate('./mei:layer/mei:note | ./mei:layer/mei:rest | ./mei:layer/mei:chord', barStaff, nsResolver, XPathResult.ORDERED_NODE_ITERATORTYPE, null);
+  var eventObjs = this.MEIObject.evaluate('./mei:layer//mei:note | ./mei:layer//mei:rest | ./mei:layer//mei:chord', barStaff, nsResolver, XPathResult.ORDERED_NODE_ITERATORTYPE, null);
   var event = eventObjs.iterateNext();
   var t = 0;
   var newt = false;
   while(event){
-    newt = t+duration(event);
+    newt = t+duration(event, MEIObject);
     if(this.events.length && this.events[this.events.length-1].extends(event)){
       // Just extend the previous thing in events
       this.events[this.events.length-1].extend(t, newt, event);
@@ -103,16 +105,18 @@ function InstrumentMeasure(barStaff, MEIObject){
 //////////
 //
 // Some information about instruments
-function InstrumentType(proto, name, shortname, section, shortplural){
+function InstrumentType(proto, name, shortname, section, plural, shortplural){
   if(proto){
     this.name=proto.name;
     this.shortname=proto.shortname;
     this.section=proto.section;
+		this.plural=proto.plural;
 		this.shortplural = proto.shortplural;
   } else {
     this.name=name;
     this.shortname=shortname;
     this.section=section;
+		this.plural=plural;
 		this.shortplural=shortplural;
   }
 	this.eq = function(instType) {
@@ -121,29 +125,57 @@ function InstrumentType(proto, name, shortname, section, shortplural){
 }
 
 var Instruments = {
-  "flute": new InstrumentType(false,'Flute', 'fl', 'Woodwind', 'fls'),
-  "piccolo": new InstrumentType(false,'Piccolo', 'pic', 'Woodwind', 'pics'),
-  "oboe": new InstrumentType(false,'Oboe', 'hb', 'Woodwind', 'hbs'),
-  "cor anglais": new InstrumentType(false,'Cor anglais', 'ca', 'Woodwind', 'cas'),
-  "english horn": new InstrumentType(false,'Cor anglais', 'ca', 'Woodwind', 'cas'),
-  "a clarinet": new InstrumentType(false,'Clarinet in A', 'cl.A', 'Woodwind', 'cls.A'),
-  "bassoon": new InstrumentType(false,'Bassoon', 'fg', 'Woodwind', 'fgs'),
-  "horn in e": new InstrumentType(false,'Horn in E', 'cr.E', 'Brass', 'cr.E'),
-  "violin": new InstrumentType(false,'Violin', 'vln', 'Strings', 'vlns'),
-  "viola": new InstrumentType(false,'Viola', 'vla', 'Strings', 'vlas'),
-  "cello": new InstrumentType(false,'Cello', 'vc', 'Strings', 'vcs'),
-  "violoncello": new InstrumentType(false,'Cello', 'vc', 'Strings', 'vcs'),
-  "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', 'Elsa'),
-  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', 'Loh')
+  "flute": new InstrumentType(false,'Flute', 'fl', 'Woodwind', 'Flutes', 'fls'),
+  "piccolo": new InstrumentType(false,'Piccolo', 'pic', 'Woodwind', 'Piccolos', 'pics'),
+  "oboe": new InstrumentType(false,'Oboe', 'hb', 'Woodwind', 'Oboes', 'hbs'),
+  "cor anglais": new InstrumentType(false,'Cor anglais', 'ca', 'Woodwind', 'Cors anglais', 'cas'),
+  "english horn": new InstrumentType(false,'Cor anglais', 'ca', 'Woodwind', 'Cors anglais', 'cas'),
+  "a clarinet": new InstrumentType(false,'A Clarinet', 'cl.A', 'Woodwind', 'A Clarinets', 'cls.A'),
+  "b♭ clarinet": new InstrumentType(false,'B♭ Clarinet', 'cl.B♭', 'Woodwind', 'B♭ Clarinets', 'cls.♭'),
+  "bass clarinet": new InstrumentType(false,'Bass Clarinet', 'Bscl.', 'Woodwind', 'Bass Clarinets', 'Bscls.'),
+  "a bass clarinet": new InstrumentType(false,'A Bass Clarinet', 'Bscl.A', 'Woodwind', 'A Bass Clarinet', 'Bscls.A'),
+  "bassoon": new InstrumentType(false,'Bassoon', 'fg', 'Woodwind', 'Bassoons', 'fgs'),
+  "horn in e": new InstrumentType(false,'Horn in E', 'cr.E', 'Brass', 'E Horns', 'crs.E'),
+  "horn in c": new InstrumentType(false,'Horn in C', 'cr.C', 'Brass', 'C Horns', 'crs.C'),
+  "horn in f": new InstrumentType(false,'Horn in F', 'cr.', 'Brass', 'F Horns', 'crs'),
+  "f horn": new InstrumentType(false,'Horn in F', 'cr.', 'Brass', 'F Horns', 'crs'),
+  "horn": new InstrumentType(false,'Horn', 'cr.', 'Brass', 'Horns', 'crs'),
+  "f trumpet": new InstrumentType(false,'F Trumpet', 'trp.F', 'Brass', 'F Trumpets', 'trps.F'),
+  "f trumpets (1-3)": new InstrumentType(false,'F Trumpets (1-3)', 'trps.F', 'Brass', null, 'trps.F'),
+  "trombone": new InstrumentType(false,'Trombone', 'trb.', 'Brass', 'Trombones', 'trbs.'),
+  "trombones (1-3)": new InstrumentType(false,'Trombones (1-3)', 'trbs.F', 'Brass', null, 'trbs.F'),
+  "bass tuba in e♭": new InstrumentType(false,'E♭ Bass tuba', 'Bstb', 'Brass', 'E♭ Bass tubas', 'Bstbs.'),
+  "timpani": new InstrumentType(false,'Timpani', 'timp', 'Percussion', 'Timpani', 'timp'),
+  "organ": new InstrumentType(false,'Organ', 'org', 'Percussion', 'Organs', 'org'),
+  "violin": new InstrumentType(false,'Violin', 'vln', 'Strings', 'Violins', 'vlns'),
+  "viola": new InstrumentType(false,'Viola', 'vla', 'Strings', 'Violas', 'vlas'),
+  "cello": new InstrumentType(false,'Cello', 'vc', 'Strings', 'Cellos', 'vcs'),
+  "violoncello": new InstrumentType(false,'Cello', 'vc', 'Strings', 'Cellos', 'vcs'),
+  "contrabass": new InstrumentType(false,'Contrabass', 'vc', 'Strings', 'Contrabassi', 'Cb'),
+  "men": new InstrumentType(false,'Men', 'Men', 'Cast', null, 'Men'),
+  "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', null, 'Elsa'),
+  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', null, 'Loh'),
 };
 // Working with InstrumentType objects
-function instrumentMatch(type){
+function instrumentMatch(type, multiplicity){
   if(Instruments[type.toLowerCase()]){
-    return new InstrumentType(Instruments[type.toLowerCase()]);
+		var it = new InstrumentType(Instruments[type.toLowerCase()]);
+		if(multiplicity) it.multiplicity = multiplicity;
+    return it;
   }
 }
 function getInstrumentType(instLabel){
 	// find an InstrumentType to match the MEI label
+	if(!instLabel) {
+		console.log("no label");
+		return false;
+	}
+	var multiplicity = false;
+	if(/^[0-9]+/.test(instLabel)){
+		var pos = instLabel.search(/[^0-9 ]+/);
+		multiplicity = Number(instLabel.substring(0,pos));
+		instLabel = instLabel.substring(pos);
+	}
   var type=instLabel;
   var no=false;
   var pos=instLabel.search(/ +[0-9]+/);
@@ -153,8 +185,12 @@ function getInstrumentType(instLabel){
     pos = instLabel.search(/[0-9]/);
     no = parseInt(instLabel.substr(pos), 10);
   }
-  var instr = instrumentMatch(type);
-  if(!instr) return false;
+  var instr = instrumentMatch(type, multiplicity);
+  if(!instr) {
+		console.log("missed", type, noString);
+		instr = new InstrumentType(false, type, type.substring(0, 3), 'Cast', type.substring(0,3));
+//		return false;
+	}
   instr.no = no;
   return instr;
 }
@@ -165,14 +201,31 @@ function Instrument(staffDef, MEIObject){
   this.MEIObject = MEIObject;
   this.name = staffDef.getAttributeNS(null, 'label');
   this.n = staffDef.getAttributeNS(null, 'n');
-  this.type = getInstrumentType(this.name);
+	if(!this.name){
+		var label = staffDef.querySelector('label');
+		if(label){
+			this.name = label.textContent.trim();
+		}
+	}
+	if(this.name){
+		this.type = getInstrumentType(this.name);
+	} else {
+		console.log("No label", staffDef);
+	}
   this.number = false;
   this.measures = findMeasures(this.n, MEIObject);
 	this.caption = function(SVG, x, y, active) {
 		if(!this.type)  this.type=getInstrumentType(this.name);
 		if(this.type){
-			return(<text x={x} y={y}>{active ? this.name
-																: this.type.shortname}</text>);
+			if(this.type.multiplicity){
+				return (<text x={x} y={y}>{this.type.multiplicity} {this.type.plural}</text>);
+			} else {
+				return (<text x={x} y={y}>{this.type.name}</text>)
+			}
+/*			return(<text x={x} y={y}>{active ? this.name
+																: this.type.shortname}</text>);*/
+		} else if(this.name){
+			return (<text x={x} y={y}>{this.name}</text>);
 		} else {
 			return(<div/>);
 		}
@@ -198,7 +251,7 @@ function Instrument(staffDef, MEIObject){
 		for(var i=0; i<this.measures.length; i++){
 			var measure = this.measures[i];
 			var n = measure.barNo-1;
-			if(start && prevn && prevn<n-1){
+			if((start || start===0) && (prevn || prevn===0) && prevn<n-1){
 				// There's been at least one empty bar. Need to close
 				onOffArray.push([start, prevn+1]);
 				start = false;
@@ -206,11 +259,11 @@ function Instrument(staffDef, MEIObject){
 			for(var j=0; j<measure.events.length; j++){
 				var event = measure.events[j];
 				if(event.sounding) {
-					if(!start){
+					if(!start && start!==0){
 						start = n+(event.start/measure.duration);
 					}
 				} else {
-					if(start){
+					if(start || start===0){
 						onOffArray.push([start, n+event.start/measure.duration]);
 						start = false;
 					}
@@ -218,7 +271,7 @@ function Instrument(staffDef, MEIObject){
 			}
 			prevn = n;
 		}
-		if(start) {
+		if(start || start===0) {
 			onOffArray.push([start, prevn+1]);
 		}
 		return onOffArray;
@@ -246,10 +299,10 @@ export function mergedInstruments(instruments){
 	return playingSets;
 }
 function singleInstrument(set){
-	return set.every(x => x.type.name===set[0].type.name) ? set[0].type.name : false;
+	return set.every(x => x.type && x.type.name===set[0].type.name) ? set[0].type.name : false;
 }
 function singleSection(set){
-	return set.every(x => x.type.section===set[0].type.section) ? set[0].type.section : false;
+	return set.every(x => x.type && x.type.section===set[0].type.section) ? set[0].type.section : false;
 }
 export function caption(set, orchestra, active, mover, mout, x, y, baseclass, n){
 	var inst = singleInstrument(set);
@@ -349,23 +402,26 @@ export function Orchestration (MEIString){
   this.instruments = findInstruments(this.MEIObject);
 }
 
-export function drawRibbons(blobs, y, rowHeight, step, classes, mover, mout, i){
+export function drawRibbons(blobs, y, rowHeight, step, classes, mover, mout, i, xoff){
 	var ribbons = [];
+	if(!xoff) xoff=0;
 	for(var i=0;i<blobs.length; i++){
-		ribbons.push(<rect y={y+rowHeight/8} x={blobs[i][0]*step}
+		ribbons.push(<rect y={y+rowHeight/8} x={(blobs[i][0])*step + xoff}
 								 width={step*(blobs[i][1]-blobs[i][0])}
-								 height={rowHeight*3/4}
+								 key={'ribbon '+i+y}
+								 height={rowHeight*7/8}
 								 rx="5" ry="5" className={'box '+classes+' nnn'+i}
 								 onMouseOver={mover} onMouseOut={mout}/>);
 	}
 	return <g>{ribbons}</g>;
 }
-export function drawBarLines(barcount, width, height){
-	var x = 40;
+export function drawBarLines(barcount, width, height, xoff, yoff){
+	var x = xoff ? xoff : 0;
+	var y = yoff ? yoff : 0;
 	var lines = [];
 	for(var i=0; i<barcount; i++){
-		lines.push(<line x1={x} x2={x} y1="0" y2={height} className={"ribbon-barline bar"+i}/>);
-		x+= (width-40) / barcount;
+		lines.push(<line key={"barline-"+i+"-"+x+"-"+height} x1={x} x2={x} y1={0} y2={height} className={"ribbon-barline bar"+i}/>);
+		x+= (width-xoff) / barcount;
 	}
 	return lines;
 }

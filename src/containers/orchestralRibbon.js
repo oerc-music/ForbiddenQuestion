@@ -10,7 +10,6 @@ import InlineSVG from 'svg-inline-react';
 class OrchestralRibbon extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.state = { active: false };
 	}
 
@@ -24,7 +23,47 @@ class OrchestralRibbon extends Component {
 	}
   render(){
     if(Object.keys(this.props.score).length) {
-			if(this.props.score["MEIfile"] && this.props.score["MEIfile"][this.props.uri]){
+			if(true && (this.props.score["MEIfile"] && this.props.score["MEIfile"][this.props.uri])){
+				var orch = new Orchestration(this.props.score["MEIfile"][this.props.uri]);
+				var startx = 120;
+				var starty = 20;
+				var height = this.props.height;
+				var width = this.props.width;
+				//				var rowHeight = (height - starty) / orch.instruments.length;
+				var rowHeight = (height - starty) / orch.instruments.filter(x=>x.type).length;
+				var boxes = [];
+				var captions = [];
+				var misses = 0;
+				var stop=Math.max(...Object.keys(orch.instruments))+1;
+				for (var i=0; i<stop; i++){
+					if(!orch.instruments[i]){
+						misses++;
+						continue;
+					}
+					var inst = orch.instruments[i].type;
+					if(!inst) {
+						console.log("can't find", orch.instruments[i]);
+						misses++
+						continue;
+					}
+					var xpos = 100;
+					var ypos = (rowHeight*(i - misses))+starty;
+					var instName  = inst.multiplicity ? inst.multiplicity + " " + inst.plural : inst.name;
+					var cap = (<g key={'instrLabel'+i}>
+										 <text x={xpos} y={ypos+2*rowHeight/3} 
+										       className={'instrLabel '+inst.section+" "+inst.name+" nnn"+i}>
+										 {instName}</text>
+										 </g>);
+					captions.push(cap);
+					boxes.push(drawRibbons(orch.instruments[i].onOffArray(), ypos, rowHeight,
+																 (width-120)/orch.measureCount, ' '+inst.section
+																 +" "+inst.name+" nnn"+i,
+																 false, false, i, 120));
+				}
+				var bars = drawBarLines(orch.measureCount, width, height, 120, starty);
+				var barNo = this.props.barNo ? <text x={startx-5} y={starty-10} className="barno">{this.props.barNo}</text> : false;
+				return <svg width={width} height={height} className="orchestralRibbon">{bars}{boxes}{captions}{barNo}</svg>;
+			} else if(this.props.score["MEIfile"] && this.props.score["MEIfile"][this.props.uri]){
 				var orch = new Orchestration(this.props.score["MEIfile"][this.props.uri]);
 				var mergedInst = mergedInstruments(orch.instruments);
 				var height = Math.min(this.props.height, window.innerHeight - 200);
@@ -35,7 +74,8 @@ class OrchestralRibbon extends Component {
 				var startx = 0;
 				for(var i=0; i<mergedInst.length; i++){
 					var xpos = 0;
-					var ypos = rowHeight*(i+0.875);
+					// var ypos = rowHeight*(i+0.875);
+					var ypos = rowHeight*i;
 					var mover = this.showLongName.bind(this);
 					var mout = this.showShortName.bind(this);
 					var iname = '';
@@ -68,4 +108,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrchestralRibbon);
-

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchTEI } from 'meld-clients-core/src/actions/index';
+import {prefix} from 'meld-clients-core/src/actions/index';
 import { 
 	MARKUP_EMPHASIS, 
 	handleEmphasis,
@@ -89,15 +90,20 @@ class TEI extends Component {
 
 		}
 		var mc = this.props.onMotifChange;
-		ReactDOM.findDOMNode(this).onclick = function(e){
-			var target = e.target;
-			if(target && target.className.match(/F[0-9]+/).length){
-				mc(target.className.match(/F[0-9]+/)[0]);
-			}
+		var domobj = ReactDOM.findDOMNode(this);
+		if(domobj){
+				domobj.onclick = function(e){
+					var target = e.target;
+					if(target && target.className.match(/F[0-9]+/).length){
+						mc(target.className.match(/F[0-9]+/)[0]);
+					}
+				}
 		}
+		if(!this.props.annotations) return;
+		/*
 		this.props.annotations.map( (annotation) => {
 			// each annotation...
-			const frags = annotation["oa:hasTarget"].map( (annotationTarget) => {
+			const frags = annotation[prefix.oa+"hasTarget"].map( (annotationTarget) => {
 				// each annotation target
 				if(annotationTarget["@id"] in this.props.tei.componentTargets) {
 					// if this is my target, grab any of MY fragment IDs
@@ -111,12 +117,12 @@ class TEI extends Component {
 					}
 				}
 			});
-		});
+		});*/
 	}
 		
 	handleMELDActions(annotation, fragments) { 
-		if("oa:hasBody" in annotation) { 
-			annotation["oa:hasBody"].map( (b) => {
+		if(prefix.oa+"hasBody" in annotation) { 
+			annotation[prefix.oa+"hasBody"].map( (b) => {
 				// TODO convert to switch statement
 				if(b["@id"] === MARKUP_EMPHASIS) { 
 					this.props.handleEmphasis(ReactDOM.findDOMNode(this), annotation, this.props.uri, fragments);

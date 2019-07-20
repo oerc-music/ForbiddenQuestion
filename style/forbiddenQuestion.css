@@ -1,6 +1,6 @@
-div.TEIContainer {
-  display: none;
-}
+/* div.TEIContainer { */
+/*   display: none; */
+/* } */
 /*
 @keyframes pulse_animation {
 	0% { transform: scale(1,1); }
@@ -33,13 +33,123 @@ div.TEIContainer {
 }
 
 div.TEIContainer.commentary {
-  left: 630px;
-  top: 15px;
-  width: 370px;
-  font-size: 91%;
+  /* left: 630px; */
+  /* top: 15px; */
+  /* width: 370px; */
+  /* font-size: 91%; */
+  font-size: 16px;
+	color: #525261;
   display: block;
 }
-div.TEIContainer.libretto {
+div.dark div.TEIContainer.commentary {
+	color: #FFF;
+}
+.inspector .inspectCommentary {
+	width: 100%;
+	position: relative;
+	padding-top: 10px;
+}
+.orchestralProseButton {
+	background-color: white;
+	float: right;
+	border: solid 2px #FFD24D;
+	width: 85px;
+	font-size: 80%;
+	border-radius: 15px;
+	padding: 4px 6px;
+	text-align: center;
+	cursor:pointer;
+}
+.orchestralProseButton.active, .orchestralProseButton:hover {
+	background-color: #FFD24D;
+	color: white;
+	font-weight: bold;
+}
+
+div.inspect.dark div.TEIContainer{
+	background-color: rgba(32,32,47,0.9);
+	color: white;
+	border: none;
+	border-radius: 3px;
+}
+div.TEIContainer tei-teiheader {
+	margin: 0.8em 0;
+}
+div.inspect.dark div.TEIContainer tei-titleStmt tei-title, div.dark div.TEIContainer tei-titleStmt tei-title {
+	color: white;
+}
+.inspect.orchestrationProse div.TEIContainer{
+	top: auto;
+	bottom: 0px;
+	border-radius: 6px;
+	width: 95%;
+	left: 0;
+	padding: 2% 4%;
+	background-color: white;
+	position: relative;
+	margin: 0;
+	height: 110px;
+}
+.inspect.orchestrationProse div.TEIContainer tei-teiheader {
+	display: none;
+}
+/* .inspect.orchestrationProse div.TEIContainer{ */
+/* 	top: auto; */
+/* 	bottom: 120px; */
+/* 	border-radius: 6px; */
+/* 	width: 90%; */
+/* 	left: 0; */
+/* 	padding: 2% 4%;	 */
+/* } */
+
+.inspectCommentary {
+	width: 45%;
+	left: 5%;
+	position: absolute;
+	/* bottom: 30px; */
+	bottom: 15px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+}
+.inspectCommentary.right {
+	left: 55%;
+}
+.inspectCommentary .media{
+	min-width: 300px;
+	display: inline-block;
+}
+.inspectCommentary .media-controls input{
+	width: 200px;
+}
+.inspectCommentary .media-info {
+	display: inline-block;
+}
+.inspectCommentary button{
+	display: inline-block;
+	padding: 2px;
+	margin: 4px auto;
+	font-size; 14px;
+}
+div.inspect.commentary {
+	width: 100%;
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.8);
+	/* height: calc(100% - 350px); */
+	height: calc(100% - 370px);
+	min-height: 170px;
+	/* bottom: 20px; */
+	bottom: 75px;
+	overflow-y: auto;
+	z-index: 25;
+}
+div.inspect.commentary div.TEIContainer {
+	width: 90%;
+	top: 0;
+	left: 0;
+	padding: 2% 4%;
+}
+div.TEIContainer.libretto, .carouselItemWrapper .librettoContainer {
 		display: block;
 		width: auto;
 	top: 15px;
@@ -51,13 +161,13 @@ div.TEIContainer.libretto tei-teiheader {
 }
 
 svg.orchestralRibbon {
-  position: absolute;
-  left: 640px;
-  bottom: 15px;
+  /* position: absolute; */
+  /* left: 640px; */
+  /* bottom: 15px; */
 }
 
 div.scorepane {
-  width: 620px;
+  /* width: 620px; */
 }
 
 .leftbuttonblock {
@@ -101,6 +211,299 @@ rect.labelabove {
 rect.labelabove.x {
 		fill: rgba(255, 127, 192, 0.5);
 }
-div.scorepane{
-		margin-top: -20px;
+/* div.scorepane{ */
+/* 		margin-top: -20px; */
+/* } */
+body {
+		width: 100%;
+		min-width: 1200px;
+		min-height: 800px;
+}
+html {
+		padding: 0;
+		margin: 0;
+}
+.TMcommentary {
+		position: fixed;
+		width: 30%;
+		min-width: 360px;
+		max-width: 600px;
+		left: 16px;
+		top: 96px;
+		border: #CCC solid 2px;
+		background-color: white;
+		height: 28%;
+		min-height: 250px;
+		z-index: 2;
+}
+.TMcommentary.carousel {
+	position: fixed;
+	bottom: 200px;
+	top: auto;
+	border-radius: 3px;
+	color: #FFF;
+}
+.TMcommentary.dark {
+	background-color: #373a47;
+	border: none;
+}
+
+.TMcommentary div.TEIContainer.commentary * {
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+}
+.TMcommentary div.TEIContainer.commentary {
+		left: 0;
+		top:0;
+		width: calc(100% - 40px);
+		/* height: 60%; */
+		/* height: 600px; */
+		height: calc(100% - 60px);
+		position: relative;
+		margin-top: 0px;
+}
+.TMcommentary .media {
+		padding: 0 15px 15px 15px;
+}
+.TMcommentary .media .media-controls input{
+		width: calc(100% - 130px);
+		margin-bottom: 5px;
+}
+.TMcommentary .media .media-controls .media-info{
+		display: inline-block;
+		vertical-align: middle;
+		height: 40px;
+}
+
+.TMcommentary .media .media-controls time, .TMcommentary .media .media-controls span{
+		color: #777;
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+}
+.topMenu {
+		width: 100%;
+		/* height: 80px; */
+		height: 84px;
+		top: 0;
+		position: fixed;
+}
+.hamburger {
+		position: fixed;
+		top: 15px;
+		left: 15px;
+}
+.title {
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+		/* color: #333; */
+		/* font-size: 110%; */
+		color: #444;
+		font-size: 19px;
+		font-weight: bold;
+		position: relative;
+		margin: 15px auto;
+		width: 200px;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+}
+.title span {
+	text-align: left;
+	margin-left: 26px;
+}
+.menu-item .icon {
+	position:absolute;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px 5px 0px -27px;
+}
+.title .icon {
+	position:absolute;
+	display: inline-block;
+	vertical-align: middle;
+	
+}
+.title .icon img , .menu-item .icon img {
+	height: 24px;
+	width: 24px;
+	top: 0;
+	left: 0;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	visibility: visible;
+}
+
+.optionBlock {
+		position: fixed;
+		right: 15px;
+		top: 0;
+		display: table;
+		height: 80px;
+}
+.inspector .optionBlock {
+	position: absolute;
+	right: 4%;
+	top: 35px;
+	display: table;
+	height: 40px;
+	z-index: 20;
+}
+
+.topMenu .option, .inspector .optionBlock .option{
+		font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;		
+		color: #888;
+		font-size: 14px;
+		margin: 0 1em;
+		display: table-cell;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center
+		z-index: 20;
+}
+.topMenu .separator, .inspector .optionBlock .separator{
+		display: table-cell;
+		width: 2em;
+}
+.librettoTab {
+	height: 100%;
+}
+
+.topMenu .option.active, .inspector .optionBlock .option.active {
+		/* color: orange; */
+		/* border-bottom: 4px solid orange; */
+		color: #DB6D00;
+		border-bottom: 4px solid #DB6D00;
+}
+		
+.topMenu .option.clickable, .inspector .optionBlock .option.clickable {
+	cursor: pointer;
+}
+div.inspectLibretto {
+	background-color: white;
+}
+.react-tabs div.inspectLibretto div.TEIContainer.other {
+/*	top: -40px;*/
+	position: relative;
+}
+div.inspectLibretto div.TEIContainer.other {
+	display: block;
+	left: 0;
+	top:0;
+	width: calc(100% - 10px);
+	padding: 0 5px;
+	margin: 35px 0 0 0;
+	background-color: white;
+	height: 100%;
+	max-height: auto;
+	font-size: 105%;
+}
+div.inspectLibretto .leftColumn {
+	width: 46%;
+	left: 2%;
+	position: relative;
+}
+div.inspectLibretto .rightColumn {
+	width: 46%;
+	left: 52%;
+	position: relative;
+}
+.inspectLibretto tei-teiheader {
+	display: none;
+}
+.inspectLibretto tei-body * {
+	width: 100%;
+}
+.wrapper.essay .TEIContainer {
+	left: calc( 50% - 344px);
+	top: 50px;
+	width: 687px;
+	padding: 8px;
+	background-color: white;
+	height: calc(100% - 16px );
+	max-height: max-content;
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+}
+.wrapper.essay .TEIContainer tei-p{
+	text-align: left;
+	padding: 0 69px;
+	line-height: 29px;
+}
+.wrapper.essay .TEIContainer tei-lg {
+	padding: 0 89px;
+}
+.wrapper.essay .TEIContainer tei-link{
+	text-decoration: none;
+	background-color: #FFD24D;
+}
+.wrapper.essay .TEIContainer tei-link:hover{
+	text-decoration: underline;
+}
+
+.wrapper.essay .TEIContainer tei-note:before {
+	content: "*";
+	font-size: 15px;
+	color: #006;
+	letter-spacing: normal;
+}
+
+.wrapper.essay .TEIContainer tei-note:hover{
+	font-size:15px;
+	color:#66F;
+	letter-spacing:normal;
+}
+
+.wrapper.essay .TEIContainer tei-note {
+	font-size: 1px;
+	letter-spacing: -1px;
+	//	color: transparent;
+	color: rgba(255, 255, 255, 0);
+}
+tei-quote[rend="block"] {
+	display: block;
+	padding: 4px 75px;
+}
+
+.wrapper.essay .TEIContainer tei-teiHeader {
+	padding: 4em;
+	line-height: 42px;
+}
+.linksTab {
+	width: calc(50% - 370px);
+	right: 8px;
+	position: absolute;
+}
+svg.score {
+	border: 1px solid #FFD24D;
+}
+.segment {
+	fill: none;
+	pointer-events:all;
+	stroke: #20202F;
+	stroke-width: 10px;
+}
+.segment:hover {
+	stroke: #FFD24D;
+	stroke-width: 30px;
+}
+g.systemSegmentInfo .segmentInfo {
+	fill: #20202F;
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+	font-size: 430px;
+}
+text.instrLabel, text.instrLabel.Woodwind, text.instrLabel.Strings,text.instrLabel.Percussion,
+text.instrLabel.Brass, text.instrLabel.Cast {
+	text-anchor: end;
+	font-weight: normal;
+	/* font-size: 12px; */
+	font-size: calc( 30% + 1vh);
+}
+.TMHeader {
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+	color: #525261;
+	text-align: center;
+}
+.TMHeader .TMMIName {
+	font-weight: bold;
+	color: #20202F;
+}
+.TMHeader .key, .TMHeader .form {
+	font-size: 80%;
 }

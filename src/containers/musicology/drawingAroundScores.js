@@ -1,5 +1,5 @@
 var SVGNS = "http://www.w3.org/2000/svg";
-import {svgRoundedRect, svgText} from '../../library/svgUtils';
+import {svgRoundedRect, svgText, nsResolver, svgGroup} from '../../library/svgUtils';
 /*
 function svgText(svgEl, x, y, cname, id, style, content){
   var el = document.createElementNS(SVGNS, "text");
@@ -216,4 +216,41 @@ function chordLabel(main, figures, top, left, SVG){
 	for(var i=0; i<figures.length; i++){
 		svgText(group, left+bbox.width, top+(bbox.height/2)+(i+2)*290, false, false, "font-style: normal; font-family: serif; font-size: 300px", figures[i]);
 	}
+}
+function getSystem(element){
+	var sysObj = element.closest('.system');
+//	var sysObj = element.evaluate('./ancestor::g[@class="system"][1]', element, nsResolver, XPathResult.singleNodeValue);
+	return sysObj.id;
+}
+export function boundingBoxesForElements(elements) {
+	var systems = {};
+	for(var i=0; i<elements.length; i++){
+		if(!elements[i]) continue;
+		var elementRect = elements[i].getBBox();
+		var system = getSystem(elements[i]);
+		if(systems[system]) {
+			systems[system].top = (systems[system].top || systems[system.top]===0) ? Math.min(elementRect.y, systems[system].top) : elementRect.y;
+			systems[system].bottom = systems[system].bottom ? Math.max(elementRect.y+elementRect.height, systems[system].bottom) : elementRect.height+elementRect.y;
+			systems[system].left = (systems[system].left || systems[system].left===0) ? Math.min(elementRect.x, systems[system].left) : elementRect.x;
+			systems[system].right = systems[system].right ? Math.max(elementRect.x+elementRect.width, systems[system].right) : elementRect.x+elementRect.width;
+		} else {
+			systems[system] = {top: elementRect.y, bottom: elementRect.y+elementRect.height,
+												 left: elementRect.x, right: elementRect.x+elementRect.width};
+		}
+	}
+	return systems;
+}
+export function drawMotifBoxes(segment, systemBoxes, segmentLabels){
+	var drawn = [];
+	Object.keys(systemBoxes).forEach((sys, i)=>
+																	 {var box=systemBoxes[sys];
+																		var sysG = document.getElementById(sys);
+																		var boxG = svgGroup(sysG, 'systemSegmentInfo');
+																		drawn.push(boxG);
+																		svgRoundedRect(boxG, box.left - 15, box.top - 500,
+																									 box.right - box.left + 30,
+																									 box.bottom - box.top + 550, 4, 4, 'segment');
+																		svgText(boxG, box.left+50, box.top-50, 'segmentInfo', false, false, segmentLabels[segment]+((i>0) ? ' (contd.)' : ''));
+																	 });
+	return drawn;						 
 }

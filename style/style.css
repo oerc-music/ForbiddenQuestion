@@ -10,7 +10,53 @@
 	cursor:pointer;
   font-weight: bold;
 }
-
+.container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.container > .wrapper {
+	height: 100%;
+	width: 100%;
+}
+.inspectorwrapper , .essay.wrapper{
+	font-family: Muli, "Gill Sans", Tahoma, Geneva, sans-serif;
+	background-color: #F7F9FA;
+	/* height: calc(100% - 80px - 180px); */
+	/* top:80px; */
+	height: calc(100% - 84px - 197px);
+	top:84px;
+	position: relative;
+}
+.inspectorwrapper .scorepane.inspect {
+	background-color: white;
+}
+.inspectorwrapper .motifHead .motifName {
+	display: inline-block;
+	padding: 20px 20px;
+	font-weight: bold;
+	/* font-size: 120%; */
+	font-size: 19px;
+	color: #444444;
+}
+.inspectorwrapper .motifHead {
+	display: block;
+	position: absolute;
+}
+.inspectorwrapper .motifHead.left {
+	left: 0;
+}
+.inspectorwrapper .motifHead.right {
+	left: 50%;
+}
+.inspectorwrapper .motifHead .motifPicker {
+	display: inline-block;
+	padding: 20px 20px;
+	cursor: pointer;
+	/* color: darkorange; */
+	color: #FF7f00;
+	font-size: 12px;
+}
 /* HACK HACK HACK *//*
 .TEIContainer.commentary#F1 {
 	position:absolute;
@@ -142,29 +188,11 @@
 
 .scorepane {
 	/*max-height: 250px;*/
-    margin-top:-60px;
-    margin-left: -50px;
-	max-width: 740px;
+  /*   margin-top:-60px; */
+  /*   margin-left: -50px; */
+	/* max-width: 740px; */
 	overflow-y:auto;
 }
-.scorepane[id="http://meld.linkedmusic.org/companion/mei/Rheingold2.mei"] {
-	/*max-height: 250px;*/
-    margin-top:-75px;
-    border-top: 1px solid #99A;
-}
-
-/*
-@keyframes pulse_animation {
-	0% { transform: scale(1,1); }
-	30% { transform: scale(1.01,1); }
-	40% { transform: scale(1.02,1); }
-	50% { transform: scale(1.01,1); }
-	60% { transform: scale(1.01,1); }
-	70% { transform: scale(1.02,1); }
-	80% { transform: scale(1.01,1); }
-	100% { transform: scale(1,1); }
-}
-*/
 tei-foreign {
 	font-style:italic;
 }
@@ -203,18 +231,21 @@ audio {
 
 /* Orchestral Ribbon */
 .Woodwind {
-  fill: #A6CEE3;
+  fill: #19c6c7;
 }
 .Strings {
-  fill: #1F78B4;
+  fill: #ee9771;
 }
 .Brass {
   fill: #B2DF8A;
 }
 .Cast {
-  fill: #33A02C;
+  fill: #a38be8;
 }
-text.Woodwind, text.Strings, text.Brass, text.Cast {
+.Percussion {
+	fill: #ff4dff;
+}
+text.Woodwind, text.Strings, text.Brass, text.Cast, text.Percussion {
 		font-weight: bold;
   fill: #000;
 }
@@ -231,9 +262,6 @@ line.scene {
 }
 line.act {
   stroke: #000;
-}
-line.annotation {
-  stroke: blue;
 }
 line.annotation:hover {
   stroke: #FA0;
@@ -279,4 +307,38 @@ tei-span.denominator {
 }
 .mnum {
 		display: none;
+}
+.inspector .orchestralRibbon {
+	background-color: white;
+}
+.orchestralRibbon .barno {
+	text-anchor: end;
+	font-size: 75%;
+	fill: #B9B9C8;
+}
+.linkBlock:nth-child(2n) {
+	//	background-color: #bccac6;
+}
+.linkBlock .inspectLink {
+	cursor:pointer;
+}
+.linkBlock {
+	padding: 12px;
+	border-bottom: #bccac6 solid 1px;
+}
+.motifList {
+	padding: 8px;
+	cursor: pointer;
+	border-bottom: #bccac6 solid 1px;
+}
+.motifList:hover {
+	background-color: #bccac6;
+}
+.motifBlock .motifName {
+	font-weight: bold;
+	padding-top: 12px;
+}
+.motifListBox {
+	height: calc(100vh - 330px);
+	overflow: auto;
 }
