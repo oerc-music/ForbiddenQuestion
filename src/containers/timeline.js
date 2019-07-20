@@ -97,7 +97,6 @@ class MEITimeline extends Component {
 		*/
 	}
 	expand(){
-		console.log("yaaay");
 		this.setState({zoom: true});
 	}
 	contract(){
