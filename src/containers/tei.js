@@ -96,8 +96,11 @@ class TEI extends Component {
 					var target = e.target;
 					if(target && target.className.match(/F[0-9]+/).length){
 						mc(target.className.match(/F[0-9]+/)[0]);
+					} else if(target.tagName=='tei-ref'){
+					} else {
+						console.log(target);
 					}
-				}
+					
 		}
 		if(!this.props.annotations) return;
 		/*

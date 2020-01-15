@@ -68,12 +68,16 @@ class Score extends Component {
 			if(!this.state.MEI || this.state.MEI!== this.props.score.MEI[this.props.uri] || (this.props.options && this.props.options!== this.state.options)){
 				if(this.props.score.MEI[this.props.uri]) {
 					var svg = '';
-					if(this.props.score.SVG[this.props.uri] && this.props.score.options && this.optionsEq(this.props.score.options[this.props.uri], (this.props.options || defaultVrvOptions))) {
+					var options = (this.props.longerOptions
+												 && ((this.props.score.MEI[this.props.uri].match(/<measure/g) || []).length) >8)
+							? this.props.longerOptions
+							: (this.props.options || defaultVrvOptions);
+					if(this.props.score.SVG[this.props.uri] && this.props.score.options && this.optionsEq(this.props.score.options[this.props.uri], options)) {
 						svg = this.props.score.SVG[this.props.uri];
 					} else {
-						svg = this.props.score.vrvTk.renderData(this.props.score.MEI[this.props.uri], this.props.options ? this.props.options : defaultVrvOptions);
+						svg = this.props.score.vrvTk.renderData(this.props.score.MEI[this.props.uri], options);
 						this.props.score.SVG[this.props.uri] = svg;
-						this.props.score.options[this.props.uri] = this.props.options ? this.props.options : defaultVrvOptions;
+						this.props.score.options[this.props.uri] = options;
 					}
 //					this.setState({MEI: this.props.score.MEI[this.props.uri], SVG: svg});
 //					if(this.props.options) this.setState({options: this.props.options});
@@ -168,8 +172,8 @@ class Score extends Component {
 				} else {
 				}
 			});
-		});*/
-		if(!document.getElementsByClassName('systemSegmentInfo').length){
+			});*/
+		if(!document.getElementsByClassName('systemSegmentInfo-'+this.props.position).length){
 			this.drawInfo();
 		}			
 	}
@@ -222,6 +226,7 @@ class Score extends Component {
 			for(i=0; i<this.props.iterationSegments.length; i++){
 				var parts = seqToArray(this.props.iterationSegments[i]["http://purl.org/vocab/frbr/core#part"]);
 				var madeOf = this.props.iterationSegments[i]["http://purl.org/vocab/frbr/core#realizationOf"]['@id'];
+				var highlight = this.props.highlight == this.props.iterationSegments[i]['@id'];
 				if(!fragments[madeOf]) {
 					fragments[madeOf] = [];
 					structures.push(madeOf);
@@ -232,9 +237,9 @@ class Score extends Component {
 				if(SVGElements[0]){ // null if SVG not yet drawn
 					var systemBoxes = boundingBoxesForElements(SVGElements);
 					//					drawMotifBoxes(this.props.iterationSegments[i], systemBoxes, this.props.segmentLabels);
-					var drawnBoxes = drawMotifBoxes(madeOf, systemBoxes, this.props.segmentLabels);
+					//					if(highlight) console.log(highlight, "****");
+					var drawnBoxes = drawMotifBoxes(madeOf, systemBoxes, this.props.segmentLabels, highlight, "systemSegmentInfo systemSegmentInfo-"+this.props.position);
 					var audioCue = this.audioCue(parts[0]);
-					if(audioCue.length>1) console.log('<------->');
 					var callback = this.callbackForSegment(audioCue[0]);
 					SVGElements.map(x=>(x ? x.onclick = callback : false));
 					//						SVGElements.map(x=>(x.onClick = callback));
@@ -250,7 +255,7 @@ class Score extends Component {
 			var audioUriParts = audioFragment.split("#");
 			var audioFragTime = parseFloat(audioUriParts[1].substr(audioUriParts[1].indexOf("t=")+2))
 			var myPlayers = document.querySelectorAll("audio[src='" + audioUriParts[0] + "']");
-			console.log('cueing', myPlayers, audioUriParts);
+//			console.log('cueing', myPlayers, audioUriParts);
 			Array.prototype.map.call(myPlayers, p=>{p.currentTime=audioFragTime});
 		}
 	}

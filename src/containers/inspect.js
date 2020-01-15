@@ -76,7 +76,27 @@ export default class InspectPane extends Component {
 		);
 	}
 	librettoPanel(){
-		if(this.props.libretto){
+		if(this.props.librettoTexts){
+			var buttonAction = this.props.showEnglish ? this.props.hideTranslation : this.props.showTranslation;
+			return (
+				<TabPanel>
+					<div className="librettoTab">
+						<div className="inspectLibretto">
+							<TEI key={this.props.position+"-"+this.props.libretto}
+									 annotations={this.props.annotations} uri={this.props.librettoTexts.de} />
+						</div>
+						{this.props.showEnglish ?
+							( <div className="English inspect dark">
+								<TEI key={this.props.position+"-"+this.props.libretto}
+											 annotations={this.props.annotations} uri={this.props.librettoTexts.en} />
+								</div>
+							) : null }
+					<button className="translationButton" onClick={buttonAction}>Translation</button>
+					{this.props.toggleCommentary ? this.mediaController() : false}
+				</div>
+				</TabPanel>
+			);
+		} else if(this.props.libretto){
 			var deDiv,enDiv;
 			if(this.props.language=='de'){
 				deDiv = <div className='option active'>German</div>;
@@ -153,7 +173,15 @@ export default class InspectPane extends Component {
 												pageHeight: 3000 * ((this.props.height-170) / 586),
 												pageWidth: 1800 * (this.props.width / 470)
 										 };
-		var paradigmTab = this.props.paradigm ? <TabPanel><Score key={this.props.position+"-"+this.props.paradigm} uri={this.props.paradigm}/></TabPanel> : false;
+		var vrvOptionsLonger = {	breaks:'auto', adjustPageHeight:1,
+															spacingStaff: 0, spacingSystem: 12,
+															spacingLinear: 0.2, spacingNonLinear: 0.55,
+															noFooter: 1, noHeader: 1, unit: 8,
+															scale: 24,
+															pageHeight: 3000 * ((this.props.height-170) / 586),
+															pageWidth: 1800 * (this.props.width / 470)
+										 };
+		var paradigmTab = this.props.paradigm ? <TabPanel><Score key={this.props.position+"-"+this.props.paradigm} uri={this.props.paradigm} position={this.props.position}/></TabPanel> : false;
 		var slm = this.props.details.segmentLineMembers.map(
 			function(x){
 				var em = x[prefix.frbr+'embodiment'];
@@ -165,12 +193,15 @@ export default class InspectPane extends Component {
 				(<TabPanel>
 				   <Score key={this.props.position+"-"+this.props.vocalScore}
 				          options={vrvOptions}
+									longerOptions={vrvOptionsLonger}
 				          extraClasses="inspect" uri={this.props.vocalScore}
                   annotations={this.props.annotations}
                   segmentLabels={this.props.segmentLabels}
          				  showSegments={true}
+									highlight={this.props.highlight}
 				          iterationSegments={this.props.details.iterationSegments}
-				 segmentLineMembers={slm}
+									segmentLineMembers={slm}
+									position={this.props.position}
 				          details={this.props.details}
 				 />
 				 {this.props.toggleCommentary ? this.mediaController() : false}
@@ -225,6 +256,7 @@ export default class InspectPane extends Component {
   }
 }
 function memberFragment(el, uri){
+	if(!uri) return false;
 	var ms = el['http://www.w3.org/2000/01/rdf-schema#member']
 	var matchend = uri.length;
 	for(var i=0; i<ms.length; i++){

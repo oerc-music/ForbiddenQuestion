@@ -240,17 +240,17 @@ export function boundingBoxesForElements(elements) {
 	}
 	return systems;
 }
-export function drawMotifBoxes(segment, systemBoxes, segmentLabels){
+export function drawMotifBoxes(segment, systemBoxes, segmentLabels, highlight, classString="systemSegmentInfo"){
 	var drawn = [];
 	Object.keys(systemBoxes).forEach((sys, i)=>
 																	 {var box=systemBoxes[sys];
 																		var sysG = document.getElementById(sys);
-																		var boxG = svgGroup(sysG, 'systemSegmentInfo');
+																		var boxG = svgGroup(sysG, classString);
 																		drawn.push(boxG);
 																		svgRoundedRect(boxG, box.left - 15, box.top - 500,
 																									 box.right - box.left + 30,
-																									 box.bottom - box.top + 550, 4, 4, 'segment');
+																									 box.bottom - box.top + 550, 4, 4, 'segment'+(highlight ? ' highlight' : ''));
 																		svgText(boxG, box.left+50, box.top-50, 'segmentInfo', false, false, segmentLabels[segment]+((i>0) ? ' (contd.)' : ''));
 																	 });
-	return drawn;						 
+	return drawn;			 
 }

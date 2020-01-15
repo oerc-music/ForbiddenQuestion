@@ -133,12 +133,15 @@ class MEITimeline extends Component {
 			var actBoxes = [];
 			var scenelines = [];
 			var currentBox = false;
+			var current2Box = false;
 			var currentBubble = false;
+			var currentBubble2 = false;
 			var actLabels = [];
 			var sceneLabels = [];
 			var key = false;
 			var actxx = [];
 			var passedCurrent = false;
+			var passedCurrent2 = false;
       for(var i=0; i<structures.length; i++){
         var act = structures[i];
         var actString = act[0]+"-"+act[1];
@@ -152,8 +155,15 @@ class MEITimeline extends Component {
 						var motifUri = shortnameToURI(motif[0]);
 						var x = curx+(motif[1]*scale);
             // var current = this.props.motif && this.props.motif==motif[0];
-						var current = this.props.motif && this.props.motif==motifUri;
+						var current = this.props.motif && (this.props.motif==motifUri
+																							 || (Array.isArray(this.props.motif)
+																									 && this.props.motif.indexOf(motifUri)>-1
+																									 && !passedCurrent)); // Compare view
+						var current2 = this.props.motif && Array.isArray(this.props.motif)
+								&& this.props.motif.indexOf(motifUri)>-1
+								&& passedCurrent;
 						if(current) passedCurrent=true;
+						if(current2 || (current && !Array.isArray(this.props.motif))) passedCurrent2 = true;
 						var hovered = this.state.hover && this.state.hover==motif[0];
             var currentClass = current ? " active" : "";
 						if(motif[2]) currentClass += " " +motif[2];
@@ -174,27 +184,45 @@ class MEITimeline extends Component {
 						if(current){
 							currentBubble =(
 								<g className="motifInfo" key={"cb-"+i+"-"+m}>
-									<rect className="motifBubble" x={Math.max(0, x-100)} y={bubbleTop} width={200} height={bubbleHeight} rx="2" ry="2"/>
+									<rect className="motifBubble" x={Array.isArray(this.props.motif) ? Math.max(0, x-150) : Math.max(0, x-80)} y={bubbleTop} width={160} height={bubbleHeight} rx="2" ry="2"/>
 									<path d={"M "+x+","+(bubbleTop-8)+" L "+(x-6)+","+bubbleTop+" L "+(x+6)+","+bubbleTop+" z"} className="motifBubble" />
-									<text className="motifBubbleText" x={Math.max(50, x)} y={bubbleTop+18}>{(motif[0].substring(0,1)=='F' ? 'Frageverbot ' : motif[0].substring(0, 1))+motif[0].substring(1)}</text>
+									<text className="motifBubbleText"
+												x={Array.isArray(this.props.motif) ? Math.max(50, x-70) : Math.max(50, x)} y={bubbleTop+18}>{(motif[0].substring(0,1)=='F' ? 'Frageverbot ' : motif[0].substring(0, 1))+motif[0].substring(1)}</text>
 								</g>);
 							;
-						currentBox = (
-							<rect className="progressToNow" key={"cbx-"+i+"-"+m} x={actxx[actxx.length-1][0]}
+							currentBox = (
+								<rect className="progressToNow" key={"cbx-"+i+"-"+m} x={actxx[actxx.length-1][0]}
 											y={progressTimelineTop} rx="2" ry="2"
 											width={x-actxx[actxx.length-1][0]} height={progressTimelineHeight}></rect>);
-						}  
+							passedCurrent = x;
+						}
+						if(current2){
+							currentBubble2 =(
+								<g className="motifInfo bubble2" key={"cb-"+i+"-"+m}>
+									<rect className="motifBubble bubble2" x={x-10} y={bubbleTop} width={160} height={bubbleHeight} rx="2" ry="2"/>
+									<path d={"M "+x+","+(bubbleTop-8)+" L "+(x-6)+","+bubbleTop+" L "+(x+6)+","+bubbleTop+" z"} className="motifBubble" />
+									<text className="motifBubbleText" x={x+70} y={bubbleTop+18}>{(motif[0].substring(0,1)=='F' ? 'Frageverbot ' : motif[0].substring(0, 1))+motif[0].substring(1)}</text>
+								</g>);
+							;
+							console.log(passedCurrent)
+							current2Box = (
+								<rect className="compareMiddle progressBox" key={"cbx-"+i+"-"+m}
+											x={Math.max(actxx[actxx.length-1][0], passedCurrent)}
+											y={progressTimelineTop} rx="2" ry="2"
+											width={x-(Math.max(actxx[actxx.length-1][0], passedCurrent))} height={progressTimelineHeight}></rect>);
+						}
 						prevx = extrasx;
 //						this.state.motifxx[motif[0]] = curx+(motif[1]*scale);
-            motifLines.push(<line key={"ml-"+i+"-"+m} className={"annotation annotation__AskingForbidden_"+motif[0]+"_1"+currentClass+" "+key}
-                            onClick={ fun } onMouseEnter={ funh } onTouchStart={ funh } onMouseLeave={ funend }
-                            x1={curx+(motif[1]*scale)} x2={curx+(motif[1]*scale)}
-                            y1={mainTimelineTop} y2={mainTimelineTop+mainTimelineHeight} />);
+            motifLines.push(<line key={"ml-"+i+"-"+m}
+																	className={"annotation annotation__AskingForbidden_"+motif[0]+"_1"+currentClass+" "+key}
+																	onClick={ fun } onMouseEnter={ funh } onTouchStart={ funh } onMouseLeave={ funend }
+																	x1={curx+(motif[1]*scale)} x2={curx+(motif[1]*scale)}
+																	y1={mainTimelineTop} y2={mainTimelineTop+mainTimelineHeight} />);
           }
         }
 				actBoxes.push(<rect key={"abm-"+i+"-"+m} className="actBox" y={mainTimelineTop} x={curx} rx="6" ry="6"
 											width={actLength*scale-2} height={mainTimelineHeight}></rect>);
-				actBoxes.push(<rect className={passedCurrent ? 'progressBox' : 'progressToNow'} y={progressTimelineTop} x={curx}
+				actBoxes.push(<rect className={passedCurrent ? (passedCurrent2 ? 'progressBox' : 'progressBox compareMiddle') : 'progressToNow'} y={progressTimelineTop} x={curx}
 											rx="2" ry="2" key={"abp-"+i+"-"+m}
 											width={actLength*scale-2} height={progressTimelineHeight}></rect>);
 				actLabels.push(<text key={"al"+i+"-"+m} className="actName" x={curx} y={actLength < 100 ? actTextVPos-20 : actTextVPos}>{act[0]=='act' ? 'Act '+act[1] : act[1]}</text>);
@@ -228,8 +256,10 @@ class MEITimeline extends Component {
 					{actBoxes}
           {divLines}
           {motifLines}
-					{currentBox}
-					{currentBubble}
+						{currentBox}
+						{current2Box}
+						{currentBubble}
+						{currentBubble2}
 						{actLabels}
 						
         </svg>{button}</div> );

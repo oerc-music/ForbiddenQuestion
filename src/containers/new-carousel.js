@@ -18,7 +18,8 @@ const defaultVrvOptions = {
 	noHeader: 1,
 	scale: 30,
 	pageHeight: 3000,
-	pageWidth: 1400
+	//	pageWidth: 1400
+		pageWidth: 1300
 }
 class MEICarousel extends Component {
 	constructor(props) {
@@ -113,6 +114,17 @@ class MEICarousel extends Component {
 		}
 		return fs;
 	}
+	fullScoreIndexes(){
+		var ixx = [];
+		if(this.props.iterations){
+			for(var i=0; i<this.props.iterations.length; i++){
+				if(this.props.iterations[i].orchestralScore){
+					ixx.push(i);
+				}
+			}
+		}
+		return ixx;
+	}
 	indexForMotif(motif){
 		var iteration = this.props.iterations.find(x=>x['@id']==motif);
 //		console.log(motif);
@@ -195,7 +207,8 @@ class MEICarousel extends Component {
 													noFooter: 1, noHeader: 1,
 													scale: 24,
 													pageHeight: 3200,
-													pageWidth: 1500
+													//													pageWidth: 1400
+													pageWidth: 1400
 											 };
 			var vs = this.vocalScores();
 //			console.log('redrawing carousel for', this.props.motif);
@@ -227,9 +240,9 @@ class MEICarousel extends Component {
 																	 <span className="form">( {formString(it, this.props.segmentLabels)} )</span>
 																 </div> : false}
    													 <Score key={m+"-"+ix}
-																			onClick={this.pageClick.bind(this, m)}
-		  	   														options={vrvOptions}
-			   															extraClasses="carousel" uri={m}/>
+																		onClick={this.pageClick.bind(this, m)}
+		  	   													options={vrvOptions}
+			   														extraClasses="carousel" uri={m}/>
 													 </a>
 											 </div>
 									 )}
@@ -254,6 +267,7 @@ class MEICarousel extends Component {
 //			console.log('redrawing carousel for', this.props.motif, fs);
 			var slide=false;
 			if(!fs.length) return false;
+			var fsixx = this.fullScoreIndexes();
 			var params = this.state.carouselParams;
 			var mIx = this.indexForMotif(this.props.motif);
 			var it = this.props.iterations[mIx];
@@ -275,9 +289,9 @@ class MEICarousel extends Component {
 																	 <span className="form">( {formString(it, this.props.segmentLabels)} )</span>
 																 </div> : false}
    															 <OrchestralRibbon key={m+"-"+ix}
-																										 width="350" height="500"
-																										 barNo={it[prefix.meld+"barNumberInAct"] ?
-																														it[prefix.meld+"barNumberInAct"]['@value'] : false}
+																										 width="350" height="400"
+																										 barNo={this.props.iterations[fsixx[ix]][prefix.meld+"barNumberInAct"] ?
+																														this.props.iterations[fsixx[ix]][prefix.meld+"barNumberInAct"]['@value'] : false}
 			   																						 extraClasses="carousel" uri={m}/>
 											 </div>
 									 )}
@@ -285,6 +299,7 @@ class MEICarousel extends Component {
 					</div>
 			);
 		} else if(this.props.view==='orchestration' && this.fullScores().length) {
+			// Never called?
 			var toDraw = this.fullScores();
 			return (
 				<div className="carouselWrapper">
@@ -298,20 +313,28 @@ class MEICarousel extends Component {
 					</div>);
 		} else if(this.props.view==='libretto'){
 			var librettoToDraw = this.librettoElements();
+			var mIx = this.indexForMotif(this.props.motif);
+			var it = this.props.iterations[mIx];
 			return (
 				<div className="carouselWrapper">
 					<Swiper {...params} ref="swiperWrapper" shouldSwiperUpdate>
 						{librettoToDraw.map( function(v, ix)
 																 {
-//																	 console.log(v);
+																	 //																	 console.log(v);
 																	 var enTEI = v['en'] ? <TEI key={ v['en'] } uri={ v['en']}/> : false;
 																	 var deTEI = v['de'] ?<TEI key={ v['de'] } uri={ v['de'] } />: <div>No data</div>;
 																	 return (<div key={ix} className="carouselItemWrapper">
-																				 <div className="librettoContainer">
+																						 <div className="librettoContainer">
+																							 {ix===mIx ?
+																								<div className="TMHeader">
+																									<span className="TMMIName">{it[prefix.rdfs+'label']}</span>
+																									– <span className="key">{keyString(it)}</span>
+																									<span className="form">( {formString(it, this.props.segmentLabels)} )</span>
+																								</div> : false}
 																						 {deTEI}{enTEI}
 																					 </div>
 																					 </div>)
-																		 })}
+																 }.bind(this))}
 				  </Swiper>
 				</div>
 			);
