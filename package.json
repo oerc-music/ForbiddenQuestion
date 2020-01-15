@@ -25,7 +25,7 @@
       "jsonld": "^1.5.1",
       "jsum": "^0.1.4",
       "lodash": "^3.10.1",
-      "meld-clients-core": "oerc-music/meld-clients-core.git",
+      "meld-clients-core": "oerc-music/meld-clients-core.git#forbiddenQuestion",
       "n3": "^0.10.0",
       "querystring": "^0.2.0",
       "react": "^0.14.9",
