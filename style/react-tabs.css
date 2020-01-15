@@ -6,7 +6,8 @@
 	position: absolute;
 	width: 42%;
 	top:55px;
-	height: calc(100% - 55px);
+	height: calc(100% - 65px);
+	background: white;
 }
 .inspector.hasPlayer {
 	position: absolute;

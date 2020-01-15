@@ -163,6 +163,9 @@ line.annotation {
 .timeline-overview rect.progressToNow {
 		fill: #FFA500;
 }
+.timeline-overview rect.compareMiddle {
+		fill: white;
+}
 
 .timeline-overview line.annotation {
 		stroke-width: 2.5;

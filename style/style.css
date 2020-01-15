@@ -27,6 +27,7 @@
 	height: calc(100% - 84px - 197px);
 	top:84px;
 	position: relative;
+	overflow: hidden;
 }
 .inspectorwrapper .scorepane.inspect {
 	background-color: white;
@@ -338,7 +339,26 @@ tei-span.denominator {
 	font-weight: bold;
 	padding-top: 12px;
 }
-.motifListBox {
+.motifListBox, .linksTab .links {
 	height: calc(100vh - 330px);
 	overflow: auto;
+}
+.tabHeading {
+	color: black;
+	padding: 6px;
+	font-size: 120%;
+}
+.motifBlock .segment {
+	color: #444;
+}
+.motifBlock .segment:hover; {
+	color: black;
+	text-decoration: underline;
+}
+.videoEssay .media-controls input[type=range] {
+	width: 400px;
+}
+.score .system > polygon {
+	stroke: none;
+	fill: none;
 }

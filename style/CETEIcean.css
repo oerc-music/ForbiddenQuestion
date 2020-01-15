@@ -664,16 +664,27 @@ tei-height {
 tei-heraldry {
   /* Empty Rule Set */
 }
-tei-hi[rend="caps"] {
+tei-hi[rend~="caps"] {
   font-weight:bold;
 }
-tei-hi[rend="italic"] {
+tei-hi[rend~="bold"] {
+  font-weight:bold;
+}
+tei-hi[rend~="superscript"]{
+	vertical-align: super;
+	font-size: 80%;
+}
+tei-hi[rend~="subscript"]{
+	vertical-align: sub;
+	font-size: 80%;
+}
+tei-hi[rend~="italic"] {
   font-style: italic;
 }
 tei-hi {
   /* GLS: do we want to bold this or change the background color? */
 }
-tei-hi[rend="small-caps"]{
+tei-hi[rend~="small-caps"]{
   font-variant: small-caps;
 }
 tei-history {
