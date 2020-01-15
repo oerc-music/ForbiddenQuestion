@@ -39,6 +39,7 @@ function findTextInPara(node, characters){
 	var foll = '';
 	var precCut, match;
 	var context = [];
+	if(!parentPara) return;
 	var iterator = document.createNodeIterator(parentPara);
 	var currentNode;
 	while((currentNode=iterator.nextNode())){
@@ -66,6 +67,7 @@ function getContext(node){
 	var prec = "";
 	var characters=50;
 	var textBits = findTextInPara(node, characters);
+	if(!textBits) return false;
 	return (<div className="motifList" onClick={x=>node.scrollIntoView()}>...
 					<span className="preContent">{textBits[0]}</span>
 					<span className="content">{textBits[1]}</span>
@@ -144,7 +146,6 @@ export default class EssayLinks extends Component {
 				<TabList>
 					<Tab>Links</Tab>
 					<Tab>Motifs</Tab>
-					<Tab>Concepts</Tab>
 				</TabList>
 				<TabPanel>
 					<div className="links">{visibles}
@@ -152,9 +153,24 @@ export default class EssayLinks extends Component {
 				</TabPanel>
 				<TabPanel> <div className="motifListBox">{linkDivs}</div>
 				</TabPanel>
-				<TabPanel><div>Loading...</div>
-				</TabPanel>
 			</Tabs>
     );
+    // return (
+		// 	<Tabs defaultIndex={0} className="linksTab">
+		// 		<TabList>
+		// 			<Tab>Links</Tab>
+		// 			<Tab>Motifs</Tab>
+		// 			<Tab>Concepts</Tab>
+		// 		</TabList>
+		// 		<TabPanel>
+		// 			<div className="links">{visibles}
+		// 			</div>
+		// 		</TabPanel>
+		// 		<TabPanel> <div className="motifListBox">{linkDivs}</div>
+		// 		</TabPanel>
+		// 		<TabPanel><div>Loading...</div>
+		// 		</TabPanel>
+		// 	</Tabs>
+    // );
   }
 }

@@ -1,0 +1,2108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Asking a Forbidden Question: Rethinking 'Leitmotifs' in Wagner’s <hi rend="italic">Lohengrin</hi></title>
+				<author>
+					<persName>Laurence Dreyfus</persName>
+				</author>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <sourceDesc>
+        <p/>
+      </sourceDesc>
+			<profileDesc>
+				<abstract>
+				</abstract>
+			</profileDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+			<div>
+			<head>Doubts about the 'leitmotif'</head>
+			<p>It takes only a slight acquaintance with the composer Richard
+			Wagner (1813-1883) to know that his stage works positively
+			abound in repeating musical tags or ‘leitmotifs’. These
+			remarkable reiterations of short phrases seem, in fact, to
+			permeate the musical experience of an entire evening, with
+			melodies burnished pleasantly in the memory or, for some,
+			endured as annoying earworms. Or perhaps they are both. In a
+			much-publicised lecture of 1933 (that sparked his forced exile
+			from Germany), Thomas Mann echoed this paradox when he quipped
+			that Wagner ‘treats his listeners like fools and repeats a thing
+			so many times until it drives you mad – and you believe
+			it.’<note place="end"><p>Thomas Mann, <hi rend="italic">Pro and Contra Richard
+			Wagner</hi>, trans. Allan Blunden (Chicago: University of Chicago
+			Press, 1992), 94. I’ve treated aspects of Mann’s reception of
+			Wagner in ‘Music and Motive in Thomas Mann’s <hi rend="italic">Wälsungenblut’,
+			Resounding Concerns</hi>, London German Studies VIII, ed. Rüdiger
+			Görner (Munich: iudicium verlag, 2003), 86-113.</p></note>Mann’s
+			view has to be taken with a pinch of salt, since he remained
+			throughout his life a fervent acolyte as well as a critical
+			Wagnerian. So if Wagner’s condescension succeeded in crafting a
+			convincing artistic experience – one that 'you believe'
+			condescension succeeded in crafting a convincing artistic
+			experience – one that ‘you believe’ –, that is no mean
+			feat. Voiced by a literary man rather than a musician, Mann’s
+			statement has to count as high praise, but it is intriguing that
+			he links credibility to constant musical repetition, one of the
+			chief complaints of Wagner’s detractors. For if the act of
+			repeating motifs ‘drives you mad’, how do they persuade you at
+			the same time?</p>
+			<p>Since the 19<hi rend="superscript">th</hi>
+			century, writings on Wagner’s leitmotifs have perpetuated the
+			idea that Wagner repeated his musical motifs to help the
+			audience recall the drama. That is, in replaying bits of music
+			in the orchestra, the composer reminded listeners of what
+			happened earlier onstage. Even a theme of ‘presentiment’ or
+			<hi rend="italic">Ahnung</hi> – a term Wagner discusses in his treatise <hi rend="italic">Oper
+			und Drama</hi> (1851) to denote a foreshadowing of a future
+			dramatic event – implies dramatic recall, since once the
+			‘musical motif’ (also called a ‘melodic moment’) was finally
+			sounded and linked to a dramatic action, it transformed itself
+			into a reminiscence’ or <hi rend="italic">Erinnerung</hi><note
+			place="end"><p>Richard Wagner, <hi rend="italic">Oper und Drama</hi>, ed. and
+			commentary by Klaus Kropfinger (Stuttgart: Phillipp Reclam Jun.,
+			1984), 361. One can see from the title of a recent German
+			monograph on the subject that that presentiment [<hi rend="italic">Ahnung</hi>]
+			and reminiscence [<hi rend="italic">Erinnerung</hi>] remain key terms defining
+			Wagner’s leitmotifs. See Melanie Wald and Wolfgang Fuhrmann,
+			<hi rend="italic">Ahnung und Erinnerung: Die Dramaturgie der Leitmotive bei
+			Richard Wagner</hi> (Kassel: Bärenreiter, 2013).</p></note>.  A few
+			years earlier, in 1848, Wagner had suggested in conversation
+			that he had broadened the ‘meaningful participation of the
+			orchestra in the dramatic expression’, especially at the end of
+			his most recently completed opera Lohengrin, where several key
+			musical themes from earlier in the opera are heard once
+			again.<note place="end"><p>The sculptor Gustav Adolf Kietz
+			attributes this phrase to Wagner on an evening in December of
+			1848 when the composer recited his poem for <hi rend="italic">Siegfrieds
+			Tod</hi>. In the ensuing discussion, Wagner claimed that the
+			orchestra participated in the dramatic expression but also that
+			it was necessary that words sung onstage predominate more than
+			ever before. After someone noted an apparent contradiction here
+			– surely the orchestra and the sung text couldn’t both
+			predominate – Wagner pointed to the end of Lohengrin (still not
+			yet heard in performance) where ‘he had gone much further than
+			in Tannhäuser’ and where both claims were reconciled. Recounted
+			in Carl Friedrich Glasenapp, <hi rend="italic">Das Leben Richard Wagners</hi> (Leipzig,
+			1910), II:308-9 as cited in Richard Wagner, <hi rend="italic">Sämtliche Werke</hi> 26
+			[hereafter, SW], <hi rend="italic">Dokumente und Texte zu ‘Lohengrin’</hi>, eds. John
+			Deathridge and Klaus Döge (Mainz: Schott Musik International),
+			35.</p></note> Yet how does an orchestra behave dramatically? Is it
+			a character in its own right, an omniscient narrator, a Greek
+			chorus, and if so, are these assignments maintained with any
+			consistency?  Within the scholarly community, Wagner specialists
+			have been keen to embrace broader definitions of a ‘leitmotif’,
+			allowing for repetitions that are purely musical or ‘structural’
+			in nature, and therefore devoid of dramatic content. Some
+			scholars even argue that on occasion Wagner repeated themes in a
+			highhanded, arbitrary and even counter-intuitive manner.<note place="end"><p>Thomas S. Grey covers
+			a great deal of the relevant ground in ‘ . . . wie ein rother
+			Faden: On the origins of 'leitmotif' as critical construct and
+			musical practice’ in <hi rend="italic">Music Theory in the 19th Century</hi>, ed. Ian
+			Bent (Cambridge: Cambridge University Press, 1996),
+			187-210. Carolyn Abbate, on the other hand, in ‘Wagner, “On
+			Modulation”, and Tristan’, <hi rend="italic">Cambridge Opera Journal</hi> 1, (1989),
+			45, goes so far as to suggest that ‘Wagner’s motifs have no
+			referential meaning’, arguing that Wagner writes music that
+			‘projects poetry and stage action in ways far beyond motivic
+			signs’. John Deathridge occupies a more middling position with
+			regard to leitmotivic reference, asserting, for example, that
+			‘in the music of <hi rend="italic">Götterdämmerung</hi> generally, many motifs are
+			closely tied to meanings while others are relatively indifferent
+			to them – a calculated inconsistency that was one of the fruits
+			of writing <hi rend="italic">Tristan</hi> and <hi rend="italic">Die Meistersinger</hi>’. John Deathridge,
+			Wagner Beyond Good and Evil (Berkeley, CA.: University of
+			California Press, 2008), 94. Christian Thorau, another authority
+			on leitmotif, sees their objectification as a misunderstanding
+			of Wagner’s idea of ‘emotional understanding’ or
+			<hi rend="italic">Gefühlsverständnis</hi>. See his ‘Guides for Wagnerites: Leitmotifs
+			and Wagnerian Listening’ in <hi rend="italic">Richard Wagner and his World</hi>,
+			ed. Thomas S. Grey (Princeton: Princeton University Press,
+			2009), 133-50. </p></note>   All
+			the same, the Wagnerian ‘leitmotif’ has rarely been questioned
+			as a fundamental category of description.</p>
+
+			<p>On purely historical grounds, though, we should be suspicious
+			of the ‘leitmotif’ or ‘leading motif’ as applied to Wagner,
+			since the composer never made use of the term and in fact
+			rejected it out of hand. In aa often quoted passage from an
+			essay published in 1879 called ‘On the Application of Music to
+			the Drama’, the composer famously distanced himself from
+			‘leitmotifs’:</p>
+			<quote rend="block">To my knowledge this path [showing how
+			musical forms arise in my dramatic works] has not yet been
+			pursued, and I need only recall that one of my younger friends
+			[Hans von Wolzogen] has examined more explicitly the
+			characteristics of what he has called ‘leitmotifs’ according to
+			their dramatic sense and effect rather than envisaging their
+			exploitation within musical syntax (since the specificities of
+			music lay beyond that author’s competence).<note place="bottom"
+			xml:id="ftn5" n="5"><p>Richard Wagner, ‘Über die Anwendung der
+			Musik auf das Drama’ in <hi rend="italic">Dichtungen und
+			Schriften: Jubiläumsausgabe </hi>[hereafter, <hi
+			rend="italic">DS</hi>]<hi rend="italic"
+			xml:space="preserve">, </hi>ed. Dieter
+			Borchmeyer, 10 vols. (Bayreuth: Insel Verlag, 1983),
+			9:334. ‘Dieser Weg ist, meines Wissens, noch nicht beschritten
+			worden, und ich habe nur des einen meiner jüngeren Freunde zu
+			gedenken, der das Charakteristische der von ihm sogenannten
+			“Leitmotive” mehr ihrer dramatischen Bedeutsamkeit und
+			Wirksamkeit nach, als (da dem Verfasser die spezifische Musik
+			fern lag) ihre Verwertung für den musikalischen Satzbau in das
+			Auge fassend, ausführlicher in Betrachtung nahm’. In alluding to
+			how he used motifs and themes as musical building blocks, Wagner
+			departs from views he expressed in <hi rend="italic">Oper
+			und Drama</hi>, Part III (1851) where
+			he inveighs against musical autonomy and praises an orchestra
+			‘at one with the drama’. Richard Wagner, <hi rend="italic"
+			xml:space="preserve">DS, </hi>8:364.</p></note>
+			</quote>
+			<p>Without revealing what he himself called his repeating
+			musical units, in this passage Wagner gently criticises
+			Wolzogen’s restriction of ‘leitmotifs’ to ‘their dramatic sense
+			and effect’ while ignoring their form-building musical
+			properties in his dramas. (Here he was referring to Hans von
+			Wolzogen’s influential guide to the <hi rend="italic">Ring</hi> entitled a
+			<hi rend="italic">Leitfaden</hi> [leading thread] to the work.<note
+			place="bottom" xml:id="ftn6" n="6"><p><hi xml:space="preserve">
+			Hans von Wolzogen, </hi><hi rend="italic">Thematischer Leitfaden
+			durch die Musik zu Richard Wagner's Festspiel </hi><hi>Der Ring
+			des Nibelungen (Leipzig: Schloemp, 1876).</hi></p></note> Whatever
+			Wagner meant by ‘their exploitation within musical syntax’
+			[<hi rend="italic">ihre Verwertung für den musikalischen Satzbau</hi>], he
+			expresses a distaste for the term ‘leitmotif’ not only by
+			putting the word in quotes but ascribing its ‘so-called’ use
+			[<hi rend="italic">von ihm sogenannten “Leitmotive</hi>”] to Wolzogen rather
+			than himself.  Given Wagner’s authority among Wagnerians, one
+			would think the term should long ago have been rejected as the
+			privileged name for Wagner’s recognisable musical themes. But
+			no. Such was the power and success connected to identifying
+			leitmotifs in Wagner that even Wolzogen himself published a
+			further leitmotivic guide to Parsifal,<note place="bottom"
+			xml:id="ftn7" n="7"><p>Hans von Wolzogen, <hi
+			rend="italic">Thematischer Leitfaden durch die Musik des
+			Parsifal</hi> (Leipzig, 1882). </p></note> and virtually everyone
+			has considered the leitmotif both a useful and transhistorical
+			category ever since.</p>
+			<p>Why did Wagner object to the word ‘leitmotif’? It must have
+			been Wolzogen’s implication that ‘leitmotifs’ ‘led’ somewhere or
+			to something. ‘Leading’ is of course contained in the first
+			component of the composite derived from the German verb
+			<hi rend="italic">leiten</hi> meaning ‘to lead’, ‘to conduct’, ‘to direct’ or
+			‘to guide’. Since Wagner had referred to musical ‘motifs’ (as
+			well as themes) from early on in his writings, what must have
+			jarred him was the idea that his identifiable musical units were
+			intended as directional pointers or guides which an audience had
+			to follow so as to grasp the forward motion of the
+			drama. Leaders, after all, need followers! Equally, he must
+			surely have balked at the suggestion that his musical motifs
+			played a leadership role in the drama, as in the German notion
+			of <hi rend="italic">Leitbild</hi>. By rejecting the ‘leitmotif’, Wagner also
+			championed a rejection of two concepts already current in his
+			day as applied to his music: the <hi rend="italic">Leithammel</hi> or
+			bellwether, leader of the pack or the <hi rend="italic">Leitfaden</hi> or
+			‘leading thread’ which the Ariadne laid for Theseus to find his
+			way out of the maze. For Wagner, his detectable motifs and
+			themes did not try to ‘herd’ the audience into understanding any
+			more than they functioned as tools to signal the right path to
+			escape from a labyrinth.</p>
+			<p>If Wagner’s recognizable musical phrases were not meant to
+			lead, what did he intend them to do? To answer this question, we
+			have to examine how the composer referred to motifs and themes
+			over the course of his career, and – no surprise here – he
+			frequently changes his mind. That is, there is no one definition
+			that will fit works composed from the 1840s to the early
+			1880s. Indeed, why should there be? What we can, however, glean,
+			from a sample of references are ideas that compete with the
+			discredited notion of ‘leitmotifs’ and furnish some keys to
+			Wagner’s thinking about his approach to composing music for the
+			dramatic stage.  </p>
+			<p>The purported relationship between music and text here is
+			especially complex since, unlike virtually all other opera
+			composers, Wagner authored his own dramatic texts, and this
+			means that he surely pondered the role of music at a relatively
+			early stage in the conception of a stage work. In a fascinating
+			letter to the Berlin journalist Karl Gaillard (1813-1851) from
+			1844, Wagner even describes his initial dramatic inspirations as
+			directly related to the fabrication of musical motifs: </p>
+			<quote rend="block">First a subject attracts me only when it
+			displays – not merely its poetic but also <hi rend="italic">simultaneously</hi>
+			– its musical significance. Before I even begin to script a line
+			of verse, or even sketch out a scene, I am already intoxicated
+			[<hi rend="italic">berauscht</hi>] with the musical fragrance of my creation [<hi rend="italic">in dem
+			musikalischen Dufte meiner Schöpfung berauscht</hi>]: I have all
+			the notes, all the characteristic motifs [<hi rend="italic">alle
+			charakteristischen Motive</hi>] in my head….’<note
+			place="end"><p>Richard Wagner, <hi rend="italic">Sämtliche Briefe</hi>, ed.
+			Gertrud Strobel and Werner Wolf (Leipzig, 1967ff.) [hereafter,
+			<hi rend="italic">SB</hi>], <hi rend="italic">SB</hi> II:358.</p></note></quote>
+			<p>It’s possible, of course, that Wagner may well have been
+			exaggerating in declaring he had ‘all the notes … in his head’
+			before he would even ‘begin to script a line of verse’, or
+			‘sketch out a scene’. Yet as an admission of aesthetic
+			priorities, his stated attraction to a dramatic subject prompted
+			by its ‘musical significance’ poses a challenge to conventional
+			idea of how an opera is composed: first comes the text, then the
+			music that sets it. Not only that. It’s also surprising how
+			little rhetorical weight Wagner places on the words of the opera
+			libretto: the poetry of a dramatic subject <hi rend="italic">attracts</hi> him,
+			whereas music <hi rend="italic">intoxicates</hi> him with its alluring
+			fragrance. Whereas the relative importance of music over text
+			was already a subject treated in Antonio Salieri’s ‘theatrical
+			divertimento’ <hi rend="italic">Prima la music e poi le parole</hi> (1786)
+			[<hi rend="italic">First the music and then the words</hi>], here Wagner
+			asserts a starkly original point of view regarding the actual
+			ordering of composition when the composer and librettist are the
+			same person. And what stands out is music’s absolute priority
+			over both the poetry and the details of the scenic action. Where
+			does he locate this imagined ‘musical significance’?  They are,
+			he writes, in ‘all the notes’ found in his head, which seem to
+			be identical to ‘all the characteristic motifs’ found later in
+			that opera. </p>
+			<p>Since the letter to Gailliard is dated 1844, and Wagner had
+			just completed the second of his three ‘Romantic’ operas, <hi
+			rend="italic">Tannhäuser</hi>,his mention of characteristic
+			motifs [<hi rend="italic">charakteristische Motive</hi>] encourages us to
+			consider how ‘character’, rather than, say, a ‘leading thread’
+			might help detect what Wagner was up to in the early
+			operas. Motifs – at least at the time of <hi rend="italic">Tannhäuser</hi>
+			–seem to be ‘characteristic’ in that they define attributes and
+			create recognisable identities. Powerful enough to have
+			‘intoxicated’ the composer with their ‘fragrance’, they occupy a
+			significant place in the finished work and their relative
+			significance over other musical material allows them to bear
+			re-hearings beyond one musical scene. Taken together as a class
+			– based on Wagner’s claim that they were imagined before the
+			words or scenic action – they can be said to configure the
+			dramatic subject rather than merely reflect it.</p>
+			<p>But what exactly is ‘characteristic’ about these motifs’? At
+			the time, the word ‘character’ in German was still unusual
+			enough for the Grimm brothers to note – in their <hi rend="italic">Deutsches
+			Wörterbuch</hi> (1854) – that it was ‘an odd-sounding word to
+			common folk [<hi rend="italic">ein dem ohr des volks seltsam lautendes
+			wort</hi>] and hence required several definitions and
+			examples. One of their quotations from Goethe is telling: ‘In
+			the novel one should present mostly attitudes and incidents
+			[<hi rend="italic">gesinnungen und begebenheiten</hi>], in drama, characters and
+			actions [<hi rend="italic">character und thaten</hi>]. The distinction between a
+			book and a theatre piece harmonises well with another of the
+			Grimms’s definitions: ‘a disposition that manifests itself in
+			people’ [<hi rend="italic">gemütsart, wie sie sich in den menschen ausgeprägt
+			hat</hi>].<note place="bottom" xml:id="ftn9" n="9"><p><hi
+			rend="italic">Deutsches Wörterbuch von Jacob Grimm und Wilhelm
+			Grimm</hi>, (Leipzig, 1854), II:611-12, <ref
+			target="http://dwb.bbaw.de">http://dwb.bbaw.de</ref> accessed 4
+			November 2016.</p></note> One can also impute ‘character’ to
+			objects, according to the Grimms by endowing them with ‘a
+			distinguishing feature, sign or main trait’, as when ‘an
+			indelible character is stamped on the matter’ [<hi rend="italic">der sache ist
+			ein unvertilgbarer character aufgedrückt</hi>]. Considering
+			these definitions and examples, one has a fair idea of the
+			semantic frame encompassing Wagner’s ‘characteristic motifs’:
+			marked with distinctive features, the patches of music in
+			Wagner’s head were imprinted with the traits and feelings evoked
+			by personages and deeds in staged drama.
+			</p>
+			<p>Missing from Wagner’s letter to Gaillard of 1844 is any hint
+			of his later desire for a new kind of theatre – elucidated
+			throughout <hi rend="italic">Oper und Drama</hi> (1851) – in which the poetic
+			seed fertilises a musical womb to produce the ideal progeny,
+			‘drama’. Note that in this conventionally gendered allegory,
+			feminised musical inspirations can’t be prior to or more
+			entrancing than the verbal masculine impulse. It is in this
+			later dense text – written before a note of music to the <hi rend="italic">Ring
+			des Nibelungen</hi> was composed – that Wagner rehearsed his
+			newest theories in a subsequent point of view. Instead of
+			‘characteristic motifs’ he speaks of ‘melodic moments’ of
+			presentiment [<hi rend="italic">Ahnung</hi>] and reminiscence
+			[<hi rend="italic">Erinnerung</hi>], music that both foreshadows and
+			recalls. Yet even when Wagner speculates on the musical links
+			with dramatic recall, his motifs never ‘lead’. Neither are they
+			a ‘thread’ that directs us via music to the drama, Wolzogen’s
+			influential guides. Indeed, the very idea of a Wagner score as a
+			labyrinth which requires a guide chafes against the composer’s
+			enduring assertions in <hi rend="italic">Oper und Drama</hi> that music embodies
+			‘unspeakable’ emotions and gestures attached to the drama.<note
+			place="bottom" xml:id="ftn10" n="10"><p>Some of Wagner’s
+			contemporaries invoke the metaphor of a red thread not so much
+			to escape from a labyrinth, but rather – as Thomas Grey puts it
+			– as ‘an orientational device applied in the process of weaving
+			textiles or braiding fibers in the manufacture of rope and
+			cord’, in the way a red thread stands out against a more neutral
+			background. See Grey, ‘Ein rother Faden’, 197-205, where he
+			cites Wagner’s friend Uhlig, who saw <hi
+			rend="italic">Lohengrin</hi><hi>’s most ‘significant musical
+			thoughts [</hi><hi rend="italic">die bezeichnendsten
+			musikalischen Gedanken</hi><hi xml:space="preserve">]’ running
+			‘through the whole opera like a red thread, thus establishing a
+			far higher level of musical unity than can be achieved by the
+			mere juxtaposition of a variety of individual closed musical
+			numbers’. Theodor Uhlig, ‘Drei Tage in Weimar’ (1850), in
+			</hi><hi rend="italic">Musikalische Schriften</hi><hi
+			xml:space="preserve">, ed. Ludwig Frankenstein (Regensburg:
+			Bosse, 1913), 333. Wagner himself appeals to the idea of his
+			composition as fabric, as we shall see, when he names the
+			</hi><hi rend="italic">Formgewebe</hi><hi xml:space="preserve">
+			[formal weave or texture] in </hi><hi
+			rend="italic">Lohengrin</hi><hi xml:space="preserve">, but seems
+			to have rejected the notion of his themes as ‘threads’, perhaps
+			because he was made uneasy by the thought of his works as
+			complex and confusing labyrinths. Franz Liszt, in writing about
+			</hi><hi rend="italic">Lohengrin</hi> just after the premiere in
+			1850, evokes yet another suggestive metaphor when he speaks of
+			‘one of these arterial phrases’ [<hi rend="italic">une de ces
+			phrases artères</hi>]. Franz Liszt, <hi rend="italic">Lohengrin
+			et Tannhäuser de Richard Wagner</hi> in<hi rend="italic">
+			Sämtliche Schriften</hi>, 4:47, cited in Grey, ‘Ein rother
+			Faden’, 205.  Interestingly, Liszt speaks of Wagner’s [unnamed]
+			themes in his 1851 text, whereas in version published in 1881 he
+			is naming ‘motifs’, clearly in tow to the later leitmotif
+			tradition, as pointed out in 2003 by Christian Thorau in <hi
+			rend="italic">Semantisierte Sinnlichkeit, </hi>45, as cited in
+			David Trippett, ‘<hi rend="italic">Lohengrin </hi>at the Weimar
+			Hoftheater: the Politics of a Premiere, <hi rend="italic"
+			xml:space="preserve">Journal of the American Liszt Society
+			</hi>(2011), 144.</p></note> Motifs and themes
+			elaborated in ‘the richest orchestral language’ [<hi rend="italic">die
+			allerreichste Orchestersprache</hi>] can’t <hi rend="italic">lead</hi> to those
+			emotions or objects because, according to Wagner, ‘they are not
+			to be heard at all [<hi rend="italic">gar nicht gehört zu werden</hi>], to wit,
+			not in their mechanical presence but only in their organic
+			operative effect [<hi rend="italic">Wirksamkeit</hi>] at one with the
+			drama’.<note place="bottom" xml:id="ftn11" n="11"><p>Richard Wagner, <hi
+			rend="italic">DS</hi>, 8:364.</p></note>
+			</p>
+			<p>If we take a sober look at just this sample of authorial
+			statements – avoiding the lens of the subsequent ‘leitmotif’
+			tradition –, it is plain to see that Wagner is (at least) of two
+			minds about his musical tags and their relation to the drama. In
+			the first, characteristic motifs are an intoxicant that precedes
+			the scripting of verse and beguile him via their significance to
+			a dramatic subject. In the second, presentiment and reminiscence
+			motifs played by in the orchestra participate in the dramatic
+			expression but originate in the verse melody and are seemingly
+			subordinate to it. Even here we can see that it will be
+			fruitless to harmonise Wagner’s own ideas into one all-embracing
+			definition. Some scholars have tried to solve this problem by
+			restricting the term ‘leitmotif’ only from the initial
+			composition of the <hi rend="italic">Ring des Nibelungen</hi> in 1853 through to
+			<hi rend="italic">Parsifal</hi> in 1882, but as Wagner’s views continue to
+			evolve, it becomes clear that a focus on ‘leitmotifs’ not only
+			misrepresents the composer’s thoughts and actions but is also
+			hopelessly crude in trying to understand music composed over
+			more than 40 years.<note place="bottom" xml:id="ftn12" n="12"><p>
+			One reads in Frank E. Kirby, <hi rend="italic">Wagner’s Themes:
+			A study in musical expression</hi> (Warren, Michigan: Harmonie
+			Park Press, 2004), 16, that ‘Wagner has provided us with an
+			adequate account of his themes – his Leitmotivs, their nature,
+			and how they function in his dramatic works’ so one can
+			therefore undertake a structural and taxonomic reading of all of
+			them, <hi rend="italic">not an historical account</hi> [emphasis
+			added]. But as John Deathridge notes, ‘posterity has continued
+			to understand Wagner’s famous system of leitmotifs’ in terms of
+			[the] method [formulated for the <hi rend="italic">Ring</hi>]
+			alone, without realizing … that it was invented specifically for
+			the <hi rend="italic">Ring</hi>. The truth is that the method is
+			qualitatively very different from the motifs used in <hi
+			rend="italic">Lohengrin</hi>, and different, too, from the
+			methods he was to develop later in <hi
+			rend="italic">Tristan</hi>, <hi rend="italic">Die
+			Meistersinger</hi>, and <hi rend="italic">Parsifal</hi>, not to
+			mention the later parts of the ><hi rend="italic">Ring</hi>
+			itself’. Deathridge, <hi rend="italic">Wagner Beyond Good
+			and Evil</hi>, 39.</p></note></p>
+			<p>Given, then, the <hi rend="italic">misleading</hi> implications of the
+			‘leading motif’, it’s tempting to ask the forbidden question:
+			why not abandon the word<hi rend="italic"> leitmotif</hi> in
+			discussing Wagner? Would it not be preferable to view Wagner’s
+			musical recurrences without the burdensome baggage of a flawed
+			concept? The advantages seem clear. We could study the ways that
+			Wagner deployed his repeating motifs and themes over the course
+			of his career by taking one stage work at a time instead of
+			viewing them all through one unfocussed lens. Without the
+			spectre of the ‘leitmotif’, we might also better understand
+			Wagner’s obsession with forms of recurrence heard first in his
+			early stage works (such as <hi rend="italic">Das Liebesverbot</hi> of 1834)
+			which still make an appearance in his final
+			‘stage-consecration-festival-play’ <hi rend="italic">Parsifal</hi> of 1882. By
+			stopping the clock at each artistic juncture and assessing its
+			synchronic state of play, one can ultimately construct a more
+			compelling narrative of how, over the course of his life, Wagner
+			sought varied ways to bind music to language, image, gesture and
+			feeling.</p>
+		</div>
+		<div>
+			<head>Lohengrin’s forbidden question</head>
+			<p>The current essay makes a modest start by focussing on the
+			recurring thematic strands in Wagner’s last ‘Romantic’ opera
+			<hi rend="italic">Lohengrin</hi> (1846-49) and begins with the so-called
+			<hi rend="small-caps">Frageverbot</hi>. (References to musical themes and motifs
+			in this essay are set in reduced-sized capitals.)
+			<hi rend="italic">Lohengrin</hi> is invaluable as an initial case study, since
+			it precedes by just a few years the composer’s theoretical
+			struggles in <hi rend="italic">Oper und Drama</hi> (1851) that launched
+			his monumental <hi rend="italic">Ring</hi> composition. Though the density of
+			thematic reiterations in <hi rend="italic">Lohengrin</hi> is less striking than
+			in the later works, musical recurrences are still fundamental to
+			the overall dramaturgy from the very first bars of the Prelude
+			till the final moments of Act III. The opera, moreover, displays
+			examples of thematic processes – by my count there are 14
+			structural motifs and themes that recur beyond an appearance in
+			just one scene –that Wagner borrowed for the <hi rend="italic">Ring</hi> through
+			to <hi rend="italic">Parsifal</hi>. </p>
+			<p>In a letter from 1850, moreover, Wagner even makes a concrete
+			reference to the centrality of his motifs to the composition of
+			Lohengrin. Complaining about potential cuts in the score to the
+			producer Eduard Genast, the composer writes:</p>
+			<quote rend="block">I wish I hadn't known the cuts you were planning to make. For
+			every one of them I would know and probably convincingly explain
+			to you how painfully you injure my artistic sense of honour. I
+			ask you, with what feelings, with what prematurely sapped
+			enthusiasm should I next start creating a musical drama again
+			<hi rend="bold">when working out the most deeply felt and most
+			necessarily essential motifs </hi>[emphasis added] when I have
+			to recall the passages from <hi rend="italic">Lohengrin</hi> which my best
+			friends thought could be omitted?<note place="bottom"
+			xml:id="ftn13" n="13"><p>‘Ich hätte gewünscht, die von Ihnen
+			beabsichtigten Kürzungen nicht kennen zu lernen. An jeder von
+			ihnen wüßte ich Ihnen und wahrscheinlich überzeugend darzulegen,
+			wie schmerzlich Sie mein künstlerisches Ehrgefühl
+			verletzt. [sic] Ich frage Sie, mit welchem Gefühle, mit welcher
+			im voraus geknickten Begeisterung soll ich mich nächstens wieder
+			an die Composition eines musikalischen Dramas machen, wenn ich
+			bei Ausführung der wohlempfundensten und als notwendigst
+			erachteten Motive mich der Stellen aus Lohengrin entsinnen muß,
+			die meine besten Freunde für auslassungsmöglich gehalten haben?‘
+			Eduard Genast, <hi rend="italic">Aus dem Tagebuch eines alten
+			Schauspielers</hi>, Part 4 (Leipzig: Voigt &amp; Günther, 1866),
+			141-42. <ref
+			target="https://reader.digitale-sammlungen.de/de/fs3/object/display/bsb10573906_00154.html?contextType=scan&amp;contextSort=score%2Cdescending&amp;contextRows=10&amp;zoom=0.55&amp;context=Lohengrin">https://reader.digitale-sammlungen.de/de/fs3/object/display/bsb10573906_00154.html?contextType=scan&amp;contextSort=score%2Cdescending&amp;contextRows=10&amp;zoom=0.55&amp;context=Lohengrin</ref></p></note></quote>
+			<p>So a focus on these ‘deeply felt and most necessarily motifs’
+			in <hi rend="italic">Lohengrin</hi> helps us confront not only a crucial element
+			in this one opera, but the composer himself at a crucial stage
+			in his artistic development. </p>
+			<p>The entire plot of the opera <hi rend="italic">Lohengrin</hi> famously turns
+			on a forbidden question that the protagonist Elsa must not
+			ask. The striking music for the <hi
+			rend="small-caps">Frageverbot</hi> is unmistakeable and stands
+			out from its first occurrence. How, though, does the music of
+			the passage relate to its text? A closer look is in
+			order. First, to the text since we can’t know whether Wagner
+			conceived of the music or the text first. Soon after his
+			appearance in Act I, Lohengrin tells Elsa: ‘Never shall you ask
+			me, nor trouble yourself to know where I came from, my name, or
+			my ancestry!’ In English one refers to a ‘forbidden question’
+			because it is awkward to translate the German
+			<hi rend="italic">Frageverbot</hi>: literally, ‘a question-prohibition’. In
+			German, however, the semantic emphasis lies on the ‘prohibition’
+			or ‘ban’, not the question. The distinction is germane since
+			Lohengrin has banned the question in the form of a command
+			issued in the imperative. Yet in Wagner’s original prose draft,
+			Elsa never comes to ask a question. Instead, she issues
+			statements in the imperative – <hi rend="italic">Ich muss es wissen, Dein Name
+			– Deine Heimath … – Nenne</hi> [‘I must know it, your name, your
+			homeland, name (it)’]. Even in the final version of the poem,
+			she <hi rend="italic">demands</hi> – and never queries – knowledge she
+			desires. Wagner was surely troubled by the inconsistency, for in
+			the end he added question marks to her last two commands: <hi rend="italic">Den
+			Namen sag’ mir an!</hi> [Tell me your name!], <hi rend="italic">Woher die
+			Fahrt?’</hi> [‘Where did the journey come from?’], <hi rend="italic">Wie deine
+			Art?</hi> [And your ancestry?],<note place="bottom"
+			xml:id="ftn14" n="14"><p>Even in the first version of the poem,
+			there were two exclamation points and only one question
+			mark. Compare Wagner, <hi rend="italic">SW</hi> 26:276 and <hi
+			rend="italic">SW</hi> 26:329.</p></note> and actually ‘composed out’
+			the final question mark in the music: on the word <hi rend="italic">Art</hi>
+			[ancestry] Elsa jumps to a high B natural to evoke the upwards
+			intonation of her spoken interrogative<hi rend="italic">.</hi><note
+			place="bottom" xml:id="ftn15" n="15"><p>Wagner’s prose draft hadn’t
+			yet worked out the rhymes between <hi
+			rend="italic">befragen</hi>/<hi rend="italic">tragen</hi> and
+			<hi rend="italic">Fahrt</hi>/<hi rend="italic">Art</hi>, and is
+			far clearer in its meaning: ‘Never shall you ask me nor ever
+			seek to know who I am and where I come from’. See Wagner, <hi
+			rend="italic">SW</hi> 26:213.</p></note> </p>
+			<p><hi rend="italic">What</hi> Elsa was barred from asking was clear from the
+			prohibition: name, place and ancestry (or origin or tribe). Yet
+			the absence of a clear formulation is all the more curious when
+			one confronts the text to <hi rend="italic">Lohengrin</hi>, which is littered
+			with references to the ‘forbidden question’: Elsa promises never
+			to ask it, Ortrud and Friedrich mention it repeatedly, and in
+			his Grail narration, Lohengrin ‘rewards the forbidden question’
+			with an answer [<hi rend="italic">wie ich verbotener Frage lohne</hi>]. But as
+			we can see from all of Wagner’s textual revisions marking the
+			moment when Elsa finally ‘asks’ it, a direct question was never
+			posed. The key dramatic motive was instead the proclamation of
+			the question’s prohibition.</p>
+			<p> This distinction may seem academic until we inspect the
+			pregnant musical phrases of the <hi
+			rend="small-caps">Frageverbot</hi> (or Question-Ban) itself. For
+			if we listen to the music that Lohengrin sings, it is clear that
+			Wagner composed it as a command, not a question. Let’s take a
+			closer look at the first time Wagner sounds the passage, <link
+			target="https://meld.linkedmusic.org/companion/F1"><hi
+			rend="small-caps">Frageverbot</hi> 1</link>, whose music covers the
+			four lines of verse. (See the <hi rend="italic">Lohengrin</hi> TimeMachine.)
+			Lohengrin has arrived to aid a damsel in distress – wrongly
+			accused of murdering her brother – and offers his protection to
+			defend her on one condition, namely that she never ask about his
+			true identity:</p>
+			<foreign>
+				<lg>
+					<l class="x-segment">Nie sollst du mich befragen,</l>
+					<l class="-x-segment">noch Wissens Sorge tragen,</l>
+					<l class="y-segment" label="y">woher ich kam der Fahrt,</l>
+					<l>noch wie mein Nam’ und Art!</l>
+				</lg>
+			</foreign>
+			<lg>
+				<l class="x-segment">Never shall you ask me,</l>
+				<l class="-x-segment">Nor desire to know,</l>
+				<l class="y-segment" label="y"><hi rend="italic">Where I came from</hi></l>
+				<l>Nor my name and kind!</l>
+			</lg>
+			<p>At the same time that Wagner the composer ‘declaims’ his text
+			with one note per syllable, he also encodes the musical setting
+			with signs of a divinely authoritative utterance, as if
+			engraving it in stone. The theme lasts for 8 bars and consists
+			of a repeated two-bar antecedent phrase (segment x) and a
+			consequent phrase of four bars (segment y).  (The textual
+			example above shows how the musical segments set the four lines
+			of the text, with the y-segment covering two lines.) Wagner
+			conjures his command in the negative not only by lengthening the
+			monosyllabic words for ‘never’ [<hi rend="italic">Nie</hi>] and ‘nor’
+			[<hi rend="italic">noch</hi>] in the x-segments but by repeating the identical
+			pitches, rhythms and dynamics in the first two lines of text all
+			over an unchanging harmony or chord of A flat minor. (This kind
+			of exact musical repetition is so artificial and, as it were,
+			musically primitive, that it is experienced as something
+			motionless, stationary, petrified, and therefore stone-like.)
+			The notated accents in the vocal line likewise seem chiseled
+			into the text. The harmony of the x-segment, so riveted by an
+			unchanging chord, that it grips the words in a tight vise, and
+			in the repetition of the x-segment, the woodwinds shine a
+			glaring light on the pronouncement, which only highlights its
+			immobility.  This music forms the underpinning for Lohengrin’s
+			heavily accented voice enunciating the verbal command which seem
+			therefore to issue from a statuesque figure evoking an oracular
+			authority.</p>
+			<p>Every sign of softness is ruthlessly suppressed from the
+			x-segment. For example, Lohengrin avoids the appoggiaturas (or
+			leaning notes) that so often grace Wagner’s vocal
+			lines. Instead, the apodictic tone of the x-segment melody
+			relentlessly hammers out the three elemental pitches of the
+			minor triad A flat, C flat and E flat (with only two passing
+			tones between them). Compared to lyrical themes connected to
+			Elsa later in the opera – such as <hi
+			rend="small-caps">Feierliches Geleit</hi> [Solemn Procession] or
+			<hi rend="small-caps">Elsas gesegneter Schritt</hi> [Elsa’s
+			Blessed Gait] <hi>–</hi> the melodic style of the x-segment of
+			the <hi rend="small-caps">Frageverbot </hi>with its striking
+			absence of appoggiaturas appears especially bald and
+			unadorned. Its harshness depends on ciphers that signal a
+			command to be obeyed. The harmonic stasis in the orchestra which
+			refuses to move insists – cleverly – on <hi rend="italic">inaction</hi>, crying
+			out: ‘Don’t do it!’<note place="bottom" xml:id="ftn16"
+			n="16"><p>Wagner seems to be appealing to and updating the
+			appearance of similar operatic oracles such as the Commendatore
+			in the penultimate scene of Mozart’s Don Giovanni, when the
+			ghostly apparition sings <hi rend="italic">Dammi la mano in
+			pegno!</hi> [Give me your hand in pledge!] in a near monotone
+			over an unchanging ostinato in the
+			orchestra.</p></note></p>
+			<p>In the y-segment, however – where the text spells out what
+			Elsa mustn’t ask – the musical register suddenly veers from the
+			imperative to the homiletic, from shouting an order to preaching
+			a moral lesson. Lohengrin’s vocal accents vanish and the harmony
+			in the orchestra wanders through a shifting tonal course (VI<hi
+			rend="superscript">6</hi> – VI – III – IV – V<hi
+			rend="figures"><hi rend="num">6</hi><hi rend="den">4</hi> <hi
+			rend="num">5</hi><hi rend="den">3</hi></hi> – I<hi
+			rend="superscript">#</hi>) as if singing a chorale. These
+			harmonies underlie the details of the ‘ban’ and traverse six
+			diatonic scale-degrees (<hi rend="italic">Stufen</hi>) of A flat
+			minor. But unlike the daunting oracular voice of the x-segment,
+			the y-segment softens the message with the addition of two new
+			‘speakers’ – the first flute and first oboe – who shadow
+			Lohengrin’s melody.<note place="bottom" xml:id="ftn17"
+			n="17"><p>That is, the solo winds double the voice apart from
+			two demisemiquavers (32<hi rend="superscript">nd</hi> notes)
+			that repeat pitches so as to approximate the German prosody (<hi
+			rend="italic">wohér ich kám</hi>). They also omit the repeated
+			note that Lohengrin sings on his final conjunction ‘and’ [<hi
+			rend="italic">und</hi>]. </p></note> Written imperatives require
+			an exclamation point at the end, and Wagner even ‘composes’ the
+			punctuation with a so-called <hi rend="italic">tierce de
+			Picardie</hi> or raised major third. While the progression of
+			the y-segment is conventional with all pitches native to A flat
+			minor, it also embeds (between the second and third sonorities)
+			a subtle plagal cadence (IV – I in C flat major) thereby hinting
+			at a comforting ‘Amen’. The aura of the plagal figure recalls
+			the ‘holy’ Grail kingdom from which Lohengrin has hailed in the
+			same way that one finds a classical ‘Amen’ appended to the end
+			of the <hi rend="small-caps">Gral</hi> [Grail] theme in the
+			final bars of the first-Act Prelude.</p>
+			<p>With its undulating melodic contours, the y-segment
+			highlights the gentle side of Lohengrin’s character first
+			exhibited after his striking arrival onstage, where, instead of
+			striking a heroic pose, the Grail knight bids farewell to his
+			‘dear swan’. (The <hi rend="italic">piano </hi>dynamic, the
+			<hi rend="italic">legato</hi> articulation, and the keys of A/A flat are common
+			to both <hi rend="small-caps">Schwan </hi>[Swan] and the
+			y-segment of the <hi rend="small-caps">Frageverbot</hi>.) So
+			while the text of the prohibition sticks to one literary
+			register, the musical setting changes style between segments x
+			and y. The upshot is that the music does far more than reflect
+			the ‘ban’: rather, it heightens the textual rhetoric and
+			impregnates it with associations <hi rend="italic">extraneous</hi> to the text,
+			thereby expanding its semantic content. Even with its
+			rudimentary musical materials, the <hi
+			rend="small-caps">Frageverbot</hi> is rich in semantic signals
+			already at its first appearance. It seems designed as one of
+			those fragrant ‘characteristic motifs’ which has the intoxicated
+			the composer as he crafts a web of interrelated and contrasting
+			musical images.</p>
+		</div>
+		<div>
+			<p>But was the <hi rend="small-caps">Frageverbot</hi> a motif?
+			Surely the music is far too long to for that. Extended over an
+			8-bar melodic period, it is surely a fully-fledged theme. Or
+			perhaps a theme comprised of two motifs, the reiterated
+			x-segment and the longer y-segment. Though Wagner never approved
+			of the word ‘leitmotif’, we find him referring to both ‘motifs’
+			[<hi rend="italic">Motive</hi>] and ‘themes’ [<hi rend="italic">Themen</hi>] in his writings
+			at the time of <hi rend="italic">Lohengrin</hi>. And if he distinguished in his
+			own mind between types of recurrent passages, this typology
+			hammers yet another nail in the coffin for the ‘leitmotif’. To
+			put it another way, the term ‘leitmotif’ fails miserably on two
+			accounts. It doesn’t lead, and it isn’t always a motif.</p>
+			<p>It’s worth dwelling on how the word ‘motif’ and ‘theme’ were
+			used in the 19<hi rend="superscript">th</hi> century so as to
+			work out what Wagner meant by them. In an important book on
+			Wagner and Beethoven, for example, Klaus Kropfinger claims that
+			Wagner used motifs and themes as interchangeable synonyms,<note
+			place="bottom" xml:id="ftn18" n="18"><p> Klaus Kropfinger, <hi
+			rendition="simple:italic">Wagner and Beethoven: Richard Wagner’s
+			reception of Beethoven</hi>, trans. Peter Palmer (Cambridge,
+			CUP, 1991), 91.</p></note> but this judgment seems too
+			hasty. As it happens, the word ‘motif’ was just undergoing a
+			shift in meaning in the 1840s as a result of the influential
+			theories of Adolf Bernhard Marx, who in his <hi rend="italic">Theory of Musical
+			Composition</hi> (1837) had famously focused attention on
+			Beethoven’s melodic cells – such as the one opening his Fifth
+			Symphony – to which he assigned the specific word ‘motif’
+			[<hi rend="italic">Motiv</hi>]. As Marx put it:</p>
+			<quote rend="block">Those short expressions, which contain the
+			seed and <hi rend="italic">thrust</hi> of a composition that grows out of them,
+			we call ‘motifs’. Any union of two or more notes can count as a
+			motif; the content of every musical formation, we could say,
+			consists of such motifs, and we must observe how these cells are
+			maintained, used and <hi rend="italic">duplicated</hi> so as to offer us ever
+			new phrases, progressions and periods.<note place="bottom"
+			xml:id="ftn19" n="19"><p>
+			<hi rend="italic">Solche Formeln, welche den Keim
+			und Trieb eines aus ihnen hervorwachsenden Satzes enthalten,
+			wollen wir Motive nennen. Jede Vereinigung von zwei oder mehr
+			Tönen kann als Motiv gelten; in solchen Motiven, können wir
+			sagen, besteht der Inhalt aller Tongebilde, und wir müssen
+			betrachten, wie diese Keime zu hegen, zu benutzen, zu
+			vervielfältigen sind, um uns stets neue Sätze, Gänge und
+			Perioden zu gewähren.</hi> Adolf
+			Bernhard Marx, <hi rendition="simple:italic">Lehre von der
+			musikalischen Komposition</hi>
+			(Leipzig, 1837), I:2</p></note></quote>
+			<p>Yet not every musician and theorist followed Marx in his
+			definition of ‘motif’ as a short musical unit. For example,
+			Johann Christian Lobe notes several years later in his own
+			<hi rend="italic">Compositions-Lehre</hi> (1844):</p>
+			<quote rend="block">The word ‘motif’ in the language of
+			art-music is so used by many people in a broader sense in that
+			they designate by it an entire melody, namely, a theme. As far
+			as I know, it was the estimable B.A. Marx [sic] who repeatedly
+			proposed the limitation of [a motif’s] meaning to the small and
+			smallest components in which a melody can be dismantled, or out
+			of which it can be assembled.<note place="bottom" xml:id="ftn20"
+			n="20"><p>‘<hi rend="italic">Das Wort Motiv wird in der
+			musikalischen Kunstsprache von Vielen in einem weiteren Sinne so
+			gebraucht, dass sie darunter eine ganze Melodie, namentlich ein
+			Thema verstehen. Die Beschränkung seiner Bedeutung auf die
+			kleinen und kleinsten Theile, in welche eine Melodie zerlegt,
+			oder aus welchen sie zusammengesetzt werden kann, hat, meines
+			Wissens, der um die Compositionslehre in vielfachen Beziehungen
+			hochverdiente B. A. Marx </hi>[sic]<hi rend="italic">
+			aufgestellt.</hi>’ Johann Christian Lobe, <hi
+			rend="italic">Compositions-Lehre oder umfassende Theorie
+			von der thematischen Arbeit und den modernen Instrumentalformer,
+			aus den Werken der besten Meister entwickelt und durch die
+			mannichfaltigsten </hi>[sic] <hi
+			rend="italic">Beispiele erklärt</hi> (Weimar, 1844), 15.</p></note></quote>
+			<p>So from Lobe it follows that, while motif and theme had been
+			hitherto synonymous in general usage, those influenced by the
+			‘estimable’ Marx now had access to a more restricted meaning for
+			motif. And it must surely have been the authority of Beethoven’s
+			practice – especially from his middle period – of composing
+			music based on the ‘duplication’ of short melodic cells rather
+			than full-blown melodies that made Marx’s definition valuable,
+			if not indispensable. Indeed, what Marx did was no more than
+			assign the name ‘motif’ to a clear but hitherto undefined
+			musical micro-object that had a long history but lacked a clear
+			term. That such a thing existed can never have been in doubt,
+			whether it was observed in the ‘development’ section of the
+			Mozart’s 40<hi rend="superscript">th</hi> Symphony
+			(first movement) or at the opening of Beethoven’s Fifth: no one
+			could have called just three or four notes a ‘theme’. To
+			recapitulate: by the mid-1840s, motifs could be a theme or a
+			building block of a few pitches, but themes could never be short
+			‘motifs’.</p>
+			<p>Wagner’s friend Theodor Uhlig, with whom the composer was in
+			close touch during the composition of <hi rend="italic">Lohengrin</hi>, seems
+			also to have echoed this same distinction in a now-lost treatise
+			called ‘The choice of motifs and the way to use them in larger
+			instrumental compositions: a practical essay’ which Wagner
+			esteemed and from which he also borrowed. Portions of the
+			treatise found their way into an essay Uhlig later published in
+			1852 in the <hi rend="italic">Neue Zeitschrift für Musik</hi>, where he also
+			discusses the opening of the Beethoven 5<hi
+			rend="superscript">th</hi>.<note place="bottom" xml:id="ftn21"
+			n="21"><p>See Theodor Uhlig, ‚Die Wahl der Motive und die Art ihrer
+			Ausführung in grösseren Instrumentalkomopositionen: eine
+			praktische Abhandlung‘ <hi rend="italic">, Neue Zeitschrift für
+			Musik</hi> 36 (1852), 28 as cited in Klaus Kropfinger’s
+			commentary on Wagner’s <hi rend="italic">Oper und Drama</hi>
+			(Stuttgart: Philipp Reclam Jun., 1984), 414-15 [hereafter <hi
+			rend="italic">O&amp;D</hi> (Kropf)].</p></note> Unlike Marx who
+			restricted ‘motif’ to designate the first four notes, Uhlig
+			proposed that Beethoven’s opening consists of ‘a short motif of
+			four bars’ [sic], with the opening four notes being merely ‘one
+			of the single pieces of the motif’ [<hi rend="italic">die einzelnen Stücke des
+			Motivs</hi>]. Uhlig’s smallest melodic unit is there the ‘piece’
+			or <hi rend="italic">Stück</hi> which, when cobbled together out of several
+			<hi rend="italic">Stücke</hi>, forms a larger motif. </p>
+			<p>Wagner, on the other hand, doesn’t copy Uhlig, but rather
+			prefers a distinction between ‘theme’ and ‘motif’ all his own,
+			at least at the time of <hi rend="italic">Lohengrin</hi>. Closer to Marx in
+			some ways, Wagner uses ‘motif’ as a musical item shorter than a
+			theme, even if it signals a unit longer than just a few
+			notes. We glimpse this usage in a letter he wrote to Uhlig about
+			<hi rend="italic">Lohengrin</hi> from 1851. Here the composer reflects on
+			analyzing his own music, and suggests that Uhlig publish an
+			analysis of <hi rend="italic">Lohengrin</hi>:</p>
+			<quote rend="block">The business of the
+			vocal score prompted me to take a quick look through the music
+			of <hi rend="italic">Lohengrin</hi> again. Since you sometimes write about
+			these things, wouldn’t you be interested in saying something
+			about the thematic fabric of form [<hi rend="italic">das thematische
+			Formgewebe</hi>] and how, in the direction I’ve chosen to go, it
+			must constantly create new forms? Among other things, this
+			occurred to me when I looked at the first scene of the second
+			act. At the start of the second scene – the prelude with the
+			wind instruments accompanying Elsa’s entrance onto the balcony –
+			I noticed how in the seventh, eighth and ninth bars accompanying
+			Elsa’s nocturnal appearance <hi rend="italic">a motif</hi> [emphasis added] is
+			heard for the first time, which, fully formed [<hi rend="italic">ganz
+			ausgebildet</hi>], later comes to a spacious and broad fruition
+			[<hi rend="italic">breit und hell zur Ausführung kommt</hi>] when Elsa moves in
+			broad daylight and full brilliance toward the church. I clearly
+			saw from this how <hi rend="italic">my themes</hi> [emphasis added] always come
+			into being in context, and in keeping with the character of a
+			vivid image [<hi rend="italic">nach dem Character einer plastischen
+			Erscheinung</hi>].<note place="bottom" xml:id="ftn22" n="22"><p>
+			<hi rend="italic">SB</hi>, IV:241. Translation adapted from
+			Deathridge, <hi rend="italic">Beyond Good and
+			Evil</hi>, 38-39. It is Deathridge who
+			drew attention to Wagner’s interest in the publication of
+			analytical texts treating his music in the letter to Uhlig,
+			which flies in the face of Wagner’s later emphasis in <hi
+			rend="italic">Oper und Drama</hi> on a more intuitive grasp of his
+			musico-dramatic processes that Wagner called <hi
+			rend="italic">Gefühlsverständnis</hi> or emotional understanding. In his
+			doctoral thesis, ‘Wagner’s ‘Emotional Understanding’: a Critical
+			Appraisal of the Concept of Leitmotiv’ (University of Oxford,
+			2017), Christian von Goldbeck treats this latter concept in the
+			context of Wagner’s writings.</p></note></quote>
+			<p>Here one finds references to a ‘motif’ and to ‘themes’, and
+			Kropfinger could be forgiven for concluding that the terms are
+			synonyms. However, a closer inspection of the relevant music
+			suggests that Wagner could not have used the word ‘theme’ for
+			the first appearance of the motif he is describing. The passage
+			he cites from <hi rend="italic">Lohengrin</hi>, Act II/ii accompanies Elsa’s
+			entrance onto the balcony. The music, for Wagner a ‘motif, is
+			only three bars long, and he doesn’t give it a name. After the
+			‘motif’ is ‘fully formed’ and ‘undergoes spacious and broad
+			development’ in Act II/iv, it becomes a ‘theme’. Surely this is
+			due to the new lyrical upbeat of three quavers and to the
+			expansion of the motif into a classical ‘quadratic’ structure of
+			4 + 4 bars: each phrase begins with its own antecedent before
+			resolving on a full cadence on the downbeat b.9. So whereas
+			Wagner’s definition of a musical motif indicated a concise
+			musical statement longer than just a few notes – here three bars
+			long – , motif was also the <hi rend="italic">wrong</hi> word for a fully
+			fleshed-out melody at least the ‘size’ of a complete periodic
+			phrase.<note place="bottom" xml:id="ftn23" n="23"><p>Perhaps this
+			is one reason why Wagner started calling motifs and themes
+			‘melodic moments’ as well as ‘musical motifs’ in <hi
+			rend="italic">Opera and Drama</hi> (1851), though it’s
+			interesting that in his private correspondence at the just the
+			same time he’s still only referring to motifs and themes.  One
+			sees this distinction much later as well. In one of Cosima
+			Wagner’s diary entries from much later (5 December 1877)
+			regarding the composition of <hi rend="italic">Parsifal</hi>,
+			Wagner still distinguishes between motif and theme on the basis
+			of size: ‘Richard says he has concocted a fine mélange for the
+			esquires as they remove the dead swan: Amfortas’s theme,
+			Herzeleide’s theme and the swan motif from <hi
+			rend="italic">Lohengrin</hi>.’ Here it is still clear that the
+			two chords (vi – I) that comprise in both <hi
+			rend="italic">Lohengrin</hi> and <hi rend="italic">Parsifal</hi>
+			are too short to be called a theme. Both <hi
+			rend="small-caps">Amfortas</hi> and <hi
+			rend="small-caps">Herzeleide</hi> in <hi
+			rend="italic">Parsifal</hi> are both full-sized phrases. A few
+			months later (4 June 1878) Wagner describes the ‘shattering
+			effect’ of the music that accompanies Kundry’s kiss as ‘the
+			fatal motif of love’s longing creeps like poison through the
+			blood [<hi rend="italic">das tödliche wie Gift schlängelnde
+			Motiv der Liebessehnsucht</hi>]’. Again, the musical content of
+			<hi rend="small-caps">Liebessehnsucht</hi>[Love’s Yearning]
+			comprises a repeatable figure laid over just two
+			chords. Perhaps, then, Wagner maintained this subtle distinction
+			between motif and theme throughout his life, yet another reason
+			why he was hostile to the word <hi rend="italic">Leitmotiv
+			</hi>as an overriding concept. <hi rend="italic">Cosima Wagner’s
+			Diaries</hi>, eds. Martin Gregor-Dellin and Dietrich Mack,
+			trans. Geoffrey Skelton (New York: Harcourt Brace Jovanovich,
+			1980), I:1002 and II:85.</p></note> One possibility is that Wagner,
+			under the influence of Marx, had parted with the term
+			‘characteristic motif’ cited in the letter to Gaillard (1844),
+			since he could now make use of a semantic distinction to signal
+			a compositional process, as found in the Uhlig letter, in which
+			he transformed a motif into a theme.<note place="bottom"
+			xml:id="ftn24" n="24"><p>By the time of ><hi rend="italic">Oper und
+			Drama</hi>, Wagner used the term <hi
+			rend="italic">musikalisch-dramatische Charakteristik</hi> mostly
+			as a term of abuse for music – such as Giacomo Meyerbeer’s –
+			that was ‘frivolous and without content’. <hi
+			rend="italic">O&amp;D</hi> (Kropf) (Part I, chapter 5),
+			84. According to Kropfinger (409), Wagner was reacting
+			negatively to the article ‘Opera’ in the encyclopaedia <hi
+			rend="italic">Die Gegenwart</hi> (1850) that speaks of the
+			‘advantageously dramatic characteristic’ found in opera. Wagner
+			surely stopped using the word in its previously positive sense
+			once he came to voice his criticism of contemporary
+			opera.</p></note> In this sense, the <hi
+			rend="small-caps">Frageverbot</hi> was – for Wagner – a theme
+			and not a motif. (And though it remains to be confirmed, it
+			seems that Wagner maintained the motif-theme distinction for the
+			rest of his life.)</p>
+			<p>What Wagner calls his ‘thematic fabric of form’ or ‘thematic
+			web’ [<hi rend="italic">das thematische Formgewebe</hi>] must surely comprise
+			all the significant motifs and themes in the opera. Identified
+			as a hallmark of his personal approach – ‘in the direction I’ve
+			chosen to go’ – this ‘web’ or ‘fabric’ was construed as a
+			metaphorical weave comprising all those passages of music which
+			are varied – ‘create new forms’ – at some temporal distance from
+			their original statement. At least this description of the web
+			follows from the example Wagner cites and would exclude thematic
+			materials found only in one scene, since he is taking pains to
+			distinguish what is novel in his approach as opposed to
+			conventional thematic repetition and coherence in a traditional
+			opera aria. The formal fabric is thematic since some of its
+			musical threads or components are too long to be called
+			motivic. At the same time, the word ‘theme’ seems to embrace
+			smaller musical items called motifs, as when Wagner muses on
+			‘how his themes come into being’, having begun as
+			‘motifs’. Finally, it’s important to note that Wagner never
+			speaks about the repetition of themes, but rather how they are
+			subjected to ‘new’ and developing ‘forms’.</p>
+			<p>The ‘new forms’ of themes and motifs also include – and are
+			not distinct from – their harmonic underpinnings, since Wagner
+			notes a musical passage in the Uhlig letter in which ‘the wind
+			instruments accompany Elsa’s entrance onto the balcony’. Marx
+			had explicitly excluded harmony from his view of ‘motif’, as
+			does the tradition of motivic analysis that arose from it. This
+			means that for Wagner the chordal progressions that ground the
+			<hi rend="small-caps">Frageverbot</hi> as well as the passage
+			referred to in the Uhlig letter are fundamental to their
+			sense. Near the very end of <hi rend="italic">Oper und Drama</hi> (1851), when
+			emphasizing how the poetic seed is indispensable to the
+			poetically-inclined musician (that is, himself!), Wagner
+			contrives a new extended metaphor: ‘the poet sees his verse
+			mirrored as a musical melody upon the harmonic sea’.<note
+			place="bottom" xml:id="ftn25" n="25"><p><hi
+			rend="italic">O&amp;D</hi> (Kropf), 391.</p></note> Harmony – a
+			large ocean [<hi rend="italic">Meer</hi>] – buoys melody as a reflected vessel
+			on its surface and it would be foolish not to realise that the
+			ship sails in water. The fact that the ocean’s waters are always
+			in flux seems, moreover, an apt way to capture the perpetual
+			harmonic transformations of Wagner’s themes and motifs. And when
+			later (1879)) criticising Wolzogen’s ‘leitmotifs’ for their
+			neglect of ‘musical syntax’ [<hi rend="italic">den musikalischen
+			Satzbau</hi>],Wagner was surely also complaining that their
+			identifications neglected both harmony and its transformations.
+			</p>
+		</div>
+		<div>
+			<head>Elsa’s Blessed Gait</head>
+			<p>The tradition of Wolzogen’s leitmotifs falls into yet another
+			unfortunate snare when it traps us into accepting one or another
+			assigned and fixed verbal designation, often ignoring the
+			motif’s musical content as well as its expansion at a later
+			occurrence. Returning to his motif from Act II/ii that later
+			becomes ‘fully formed’ as a theme in Act II/iv, Wagner describes
+			its sense linked to ‘the nature of a vivid image’. Early
+			Wagnerian commentators – anxious to assign names to ‘motifs’
+			that aped Wolzogen’s practice for the <hi rend="italic">Ring</hi> and
+			<hi rend="italic">Parsifal</hi> – have called this one ‘the bliss of love motif’
+			[<hi rend="italic">Liebesglück-Motiv</hi>]<note place="bottom" xml:id="ftn26"
+			n="26"><p> See the motif list and table by Carl Waack (1861-1922)
+			in Richard Wagner, <hi rend="italic">Lohengrin</hi>, <hi
+			rend="italic">Klavierauszug</hi>, ed. Otto Singer (Leipzig:
+			Breitkopf und Härtel, 1914).</p></note> or ‘the consecration of love
+			theme’ [<hi rend="italic">Liebesweihthema</hi>].<note place="bottom"
+			xml:id="ftn27" n="27"><p><hi rend="italic">Das Buch der Motive aus
+			Opern und Musikdramen Richard Wagner’s</hi>, ed. Lothar
+			Windsperger (Mainz: Schott: 1920). Windsperger puts the expanded
+			version from Act II/iv into the list of motifs rather than the
+			first version in Act II/ii, as if Wagner intentionally
+			foreshortened his idea as a premonition or <hi
+			rend="italic">Ahnung</hi> rather than as endowing a short
+			‘motif’ with a new and extended form.</p></note> Both names,
+			invented out of whole cloth, portray the music’s affect by a
+			characterization of a specific moment in the drama. Accordingly
+			the leitmotif is always made beholden to an initial dramatic
+			action that will be recalled when it is heard later: since Elsa
+			is happy in her love for Lohengrin whom she will marry, the
+			solemn but optimistic music depicts the joy that accompanies her
+			entrance in Act II/ii, which will then be referenced in Act
+			II/iv.<note place="bottom" xml:id="ftn28" n="28"><p> The best
+			treatment of this tradition of naming leitmotifs is found in
+			Christian Thorau, <hi rend="italic">Semantisierte Sinnlichkeit:
+			Studien zu Rezeption und Zeichenstruktur der Leitmotivtechnik
+			Richard Wagners</hi>, Beihefte zum Archiv für Musikwissenschaft,
+			50 (Stuttgart: Fritz Steiner Verlag, 2003). Ignoring evidence
+			that Wagner not only named some motifs but also both
+			characterised their sense (as in the cited letter to Uhlig and
+			in the essay, <hi rend="italic">On the Application of Music to
+			the Drama</hi> from 1879), Thorau’s meticulous study – rightly –
+			relies on Wagner’s notion of ‘emotional understanding’ from <hi
+			rend="italic">Opera and Drama</hi> to suggest that aesthetic
+			immediacy in the encounter with Wagner is compromised by the
+			leitmotif tradition of Wagnerism, even if he is indifferent to
+			any documentary or philological method which might divine the
+			intended the sense of Wagner’s themes.</p></note> </p>
+			<p>Wagner had a rather different sense of these two passages of
+			music. For if his letter to Uhlig is compared to the libretto
+			and stage directions, one sees that his ideas are linked to
+			specific gestures, which the music – not fixed in designation
+			but subject to a variation principle – captures in the form of a
+			sounding ‘image’ or ‘appearance’ [Erscheinung]. In the first
+			iteration, the music ‘accompanies’ Elsa’s entrance. According to
+			the stage direction, she has appeared ‘in a white robe’ and
+			‘steps up to the balustrade’ [<hi rend="italic">sie tritt an die Brüstung</hi>]
+			and leans her head on her hand.’ In Act II/iv after a long
+			procession of women has emerged slowly onto another balcony,
+			‘Elsa steps out in the procession; the nobles bare their heads
+			respectfully’. And when the nobles and men begin to sing a
+			choral accompaniment to this procession, they likewise speak of
+			Elsa’s ‘blessed step’: </p>
+			<foreign>
+				<lg>
+					<l>Gesegnet soll sie schreiten,</l>
+					<l>die lang in Demut litt!</l>
+					<l>Gott möge sie geleiten,</l>
+					<l>Gott hüte ihren Schritt!</l>
+				</lg>
+			</foreign>
+			<lg>
+				<l>Blessed should she proceed,</l>
+				<l>she who suffered long in humility!</l>
+				<l>May God guide her,</l>
+				<l>may God mind her step!</l>
+			</lg>
+			<p>Wagner has therefore characterised the motif in Act II/ii as
+			an initial ‘stepping out’ of a guileless woman (as in the ‘white
+			robe’) freed from her lamentations and grateful for love. She
+			responds to the motif in precisely these terms. The motif has
+			been orchestrated with a delicate group of solo woodwinds headed
+			by the first clarinet whose pliant appoggiaturas contrast so
+			starkly with the unadorned melodic style of the <hi
+			rend="small-caps">Frageverbot</hi>. This ‘vivid image’ of a
+			noblewoman’s gait opens with an harmonic progression of <hi
+			rend="bold">I – V</hi><hi rend="bold superscript">7</hi><hi
+			rend="bold">– IV</hi><hi rend="bold superscript">6</hi> <hi
+			rend="bold">– ii – V</hi><hi rend="bold figures"><hi
+			rend="num">6</hi><hi rend="den">4</hi> <hi rend="
+			num">5</hi><hi rend="den">3</hi></hi>. Leading to the
+			dominant, the phrase is incomplete in harmonic terms, and Elsa
+			offers an explanatory gloss to a non-thematic accompaniment just
+			thereafter:</p>
+			<foreign>
+				<lg>
+					<l>Euch Lüften, die mein Klagen</l>
+					<l>so traurig oft erfüllt,</l>
+					<l>Euch muß ich dankend sagen,</l>
+					<l>wie sich mein Glück enthüllt.</l>
+				</lg>
+			</foreign>
+			<lg>
+				<l>You breezes, who so often</l>
+				<l>swelled my sad lament,</l>
+				<l>I must say thank you</l>
+				<l>As my happiness unfolds.</l>
+			</lg>
+			<p>Only in in Act II/iv is the same music transformed into a
+			more solemn procession of the female protagonist illuminated by
+			an aura of bassoons and a bass clarinet supporting on the heavy
+			accents, and with four horns gently pulsating off the beat. The
+			harmony of the entire phrase is now complete in that it now
+			closes in the tonic. The theme sounded by the violins – more
+			magnificent in their warmth and plenitude than the solo winds –
+			embodies ‘awe’, as in the ‘reverential’ [<hi
+			rend="italic">ehrfurchtsvoll</hi>] baring of the nobles’ heads
+			in the stage direction, while flutes and a bassoon further
+			divide the beat by more opulent syncopes. The sense of the two
+			bits of music are of course related, but the meaning has been
+			transformed.</p>
+			<p>No wonder, then, that Wagner failed to label the motif turned
+			theme in his letter to Uhlig: on the one hand, both forms embody
+			a crystallized depiction of a character’s mentality as well as
+			the reaction of the chorus to a particular state of
+			awe-inspiring grace. Even more importantly, since the music
+			accumulates further associations (as in the procession) that
+			deepens its experiential grasp, a single label misdirects
+			attention toward a repetition designed for dramatic recall,
+			which in this case is irrelevant. A label, moreover, would have
+			betrayed what Wagner achieved by his expansion and variation of
+			the musical material, what he referred to as his ‘constantly new
+			forms’. Only for the sake of heuristic convenience, therefore,
+			is it useful as a mnemonic to dub both the constellation of
+			motif and theme <hi rend="small-caps">Elsas gesegneter
+			Schritt</hi> [Elsa’s blessed gait].)</p>
+		</div>
+		<div>
+			<head>Lohengrin’s forbidden question (continued)</head>
+			<p> What Wagner termed these “constantly new forms” are also
+			what categorise the recurrences of the <hi
+			rend="small-caps">Frageverbot</hi>. Originally in A flat and A
+			minor in Act I – the realm associated with the Grail from the
+			opening Prelude, the hoary downward transposition into F# minor
+			associated with Ortrud’s music of disaster and sorcery
+			immediately imprints her evil associations on the
+			reminiscence. The question-ban of course remains an unfathomable
+			mystery until the Grail narration, and only there, as we shall
+			see (though in a section excised by the composer) does the
+			explanation of the ban encourage Wagner to put a positive twist
+			on the y-segment, as in <link
+			target="https://meld.linkedmusic.org/companion/F18"><hi
+			rend="small-caps">Frageverbot</hi> 18</link>.</p>
+<!-- Weird para
+			<p>Just before <link
+			target="https://meld.linkedmusic.org/companion/F5"><hi
+			rend="small-caps">FRAGEVERBOT </hi>5</link>, Ortrud has taunted
+			her husband Friedrich: ‘What would you give to know if I told
+			you that if [Lohengrin were forced to name himself and his
+			origin, all his power bestowed on him by magic is at an
+			end. Although Ortrud’s supposition is in fact false – and the
+			question-ban really regards Lohengrin’s ability to stay with
+			Elsa and Gottfried’s service to the Grail – the orchestra in
+			this case shudders to the A-minor statement of the x-fragment
+			with tremolos in the strings, as Friedrich, desirous of revenge
+			and shivering with the recognition, albeit false, that Lohengrin
+			has used evil magic to defeat him, asserts that the question-ban
+			was a necessary part of that magic.</p>Althogh
+/ Weird para -->
+			<p>Reminiscence, even when intended, differs from repetition,
+			for recall can be construed in a variety of ways, and its
+			context is crucial. Returning to the <hi
+			rend="small-caps">Frageverbot</hi>, Wagner broaches this
+			question in a letter to Franz Liszt at the time of the <hi
+			rend="italic">Lohengrin</hi> premiere conducted by Liszt in
+			Weimar in 1850. Wagner assures Liszt that ‘the significance of
+			the <hi rend="italic">fortissimo</hi> F-minor reminiscence of
+			Lohengrin’s prohibition … has hitherto been clearly imprinted
+			upon us’ [<hi rend="italic">im ff F-moll die reminiscenz von
+			Lohengrin's Verbot … deren bedeutung bis hierher sich uns
+			deutlich eingeprägt</hi> hat].<note place="bottom"
+			xml:id="ftn29" n="29"><p> <hi rend="italic">SB</hi> III:392</p></note>
+			The passage in question refers to the statement of the theme in
+			Act II/iv, signaled by <link
+			target="https://meld.linkedmusic.org/companion/F9"><hi
+			rend="small-caps">Frageverbot</hi> 9</link> on the
+			TimeMachine. Wagner seems to have heard that the curtain at a
+			Weimar performance fell too soon at the end of Act II, and in
+			his letter, insists that <link
+			target="https://meld.linkedmusic.org/companion/F9"><hi
+			rend="small-caps">Frageverbot</hi> 9</link> must coincide with
+			the moment (according to the stage direction) when Elsa sees
+			that Ortrud ‘has raised her arm as if she were sure of
+			victory’. Wagner’s letter even spells out the unspoken verbal
+			content of Ortrud’s gesture. It means: ‘Just go in, you <hi
+			rend="italic">shall</hi> flout the prohibition.’</p>
+			<p>Yet this iteration of <link
+			target="https://meld.linkedmusic.org/companion/F9"><hi
+			rend="small-caps">Frageverbot</hi> 9</link> doesn’t repeat
+			Lohengrin’s prohibition so much as <hi rend="italic">issue a
+			threat</hi> about the ban. To notice this shift is to pay
+			attention to a subtle change in the x-segment. Instead of the
+			<hi rend="small-caps">Frageverbot</hi> leading off with a heavy
+			downbeat, Wagner has added a little anticipatory upbeat before
+			the first note, which immediately evokes the opening signal of a
+			brass fanfare (da-dá). This additional upbeat even prevents the
+			<hi rend="italic">recall</hi> of Lohengrin’s opening words – <hi
+			rend="italic">Nie sollst du mich befragen –</hi>, which began
+			with a strong accent on the word <hi rend="italic">Nie
+			</hi>[Never]. The text of the <hi
+			rend="small-caps">Frageverbot</hi> therefore recede into the
+			background, and the theme transforms itself instead as an
+			orchestral fanfare of doom. It is as if a mighty instrumental
+			choir taunts Elsa with a spiteful recollection of the promise
+			she made. Note also the <hi rend="small-caps">Frageverbot</hi>
+			is no longer heard in Lohengrin’s region of A flat and A minor,
+			summoning forth the holy Grail, but is transposed downwards into
+			Ortrud’s realm located a third lower of F (and F sharp) minor.
+			As one can see from the TimeMachine, Wagner maintains this
+			threatening upbeat into the next two iterations found in
+			Act III/ii – <link
+			target="https://meld.linkedmusic.org/companion/F10"><hi
+			rend="small-caps">Frageverbot</hi> 10</link> and <link
+			target="https://meld.linkedmusic.org/companion/F11">11</link> –
+			even when the tonal realm shifts back to A minor for the duet
+			between Lohengrin and Elsa leading to her fateful breach of the
+			ban.</p>
+			<p>In <link
+			target="https://meld.linkedmusic.org/companion/F10"><hi
+			rend="small-caps">Frageverbot</hi> 10</link> Wagner signals this
+			move from ban to threat when Elsa utters the very word <hi
+			rend="italic">droht</hi> [threatens] on the downbeat of the
+			motif: <hi rend="italic">kennt’ ich ein Sorgen, das dir
+			droht!</hi> [‘would that I knew of a trouble that threatens
+			you!’]. She has by now accepted Ortrud’s malicious insinuation
+			that the prohibition is a secret [<hi rend="italic">ein
+			Geheimnis</hi>] that endangers her lover, and by extension, her
+			marriage. And in <hi>Frageverbot 11 </hi>Lohengrin reminds Elsa
+			‘always to steer clear of doubt’ [<hi rend="italic">stets den
+			Zweifel meiden</hi>] while an oboe, the <hi rend="italic">cor
+			anglais</hi> and two clarinets hark back to that threatening
+			doubt. Thereafter Wagner maintains his distinction between the
+			two forms of the <hi rend="small-caps">Frageverbot</hi> with and
+			without a threatening upbeat: when the orchestra or Lohengrin
+			recalls the original ban, the semiquaver is absent, as in <link
+			target="https://meld.linkedmusic.org/companion/F12"><hi
+			rend="small-caps">Frageverbot</hi> 12</link>, <link
+			target="https://meld.linkedmusic.org/companion/F13">13</link>
+			and <link
+			target="https://meld.linkedmusic.org/companion/F17">17,</link>
+			but when the orchestra recalls the effect of Ortrud’s evil on
+			the prohibition (as in <link
+			target="https://meld.linkedmusic.org/companion/F15"><hi
+			rend="small-caps">Frageverbot</hi> 15</link> and <link
+			target="https://meld.linkedmusic.org/companion/F16"><hi
+			rend="small-caps">Frageverbot</hi> 16</link>) after Friedrich’s
+			death, Wagner sounds the fanfare-like signal with the
+			semiquaver. The distinction is remarkably subtle, and one
+			wonders how many ardent Wagnerians have ever noticed
+			it. Certainly this kind of variation plays no role in any guides
+			to the leitmotifs. Even the composer shortchanges the effect of
+			his threatening version of the <hi
+			rend="small-caps">Frageverbot</hi> when he names it as a
+			‘reminiscence’ in his letter to Liszt!<note place="bottom"
+			xml:id="ftn30" n="30"><p>In <hi rend="italic">Oper und Drama</hi>,
+			Wagner alludes obliquely to the end of <hi
+			rend="italic">Lohengrin</hi>, Act II, explaining that Ortrud’s
+			threatening gesture ‘is meant to fill us with foreboding [<hi
+			rend="italic">Ahnung</hi>] and the character of the orchestra is
+			to clarify the character of that foreboding – and it can only do
+			so completely when it is attached to a reminiscence [<hi
+			rend="italic">Erinnerung</hi>]; whereupon he prescribes for this
+			weighty moment the emphatic repetition of a melodic phrase which
+			we have already heard as the musical expression of words
+			referring to the threat, and which has the characteristic
+			property of recalling to us the image of an earlier situation,
+			and which now in connection with the threatening gesture becomes
+			for us a gripping and determining premonition [<hi
+			rend="italic">Ahnung</hi>], that determines our feeling’. See
+			<hi rend="italic">O&amp;D</hi> (Kropf), 384. Is Wagner boxing
+			himself into a theoretical corner in this passage?  In part it
+			would seem so. Nearing the very end of his long treatise, Wagner
+			insists a few pages earlier ‘that the first thing that the
+			orchestra has to express according to its special abilities is
+			the dramatic gesture of the plot’. In this section, Wagner rants
+			against extraneous orchestral interludes during which one might
+			as well have a chat with one’s neighbour and wait for the
+			‘music’ to be over. He goes on to make the extreme suggestion
+			that ‘when [Ortrud’s] threatening gesture is omitted … the
+			appearance of a musical phrase might even seem like a fantastic
+			caprice on the part of the composer’. This is an odd and
+			unnecessary position for him to hold, since the letter of 8
+			September 1850 to Liszt makes clear that by the end of Act II,
+			the music of the <hi rend="small-caps">Frageverbot</hi> ‘by now
+			has clearly imprinted itself in our minds’. Surely he must still
+			have been smarting in 1851 about the curtain having come down
+			too soon during the first performances of <hi
+			rend="italic">Lohengrin</hi> at Weimar a year earlier. Equally
+			baffling that his insistence on hearing <link
+			target="https://meld.linkedmusic.org/companion/F9"><hi
+			rend="small-caps">Frageverbot</hi> 9</link> as ‘the emphatic
+			repetition of a melodic phrase which we have already heard as
+			the musical expression of words referring to the threat’ after
+			he took such care to introduce a fanfare-like version of the
+			theme which destroys the prosody of those original words. Only
+			with his conversion to aspects of Schopenhauer’s musical
+			aesthetics three years later, in 1854, will he escape the
+			theoretical straitjacket into which he places his critique of
+			opera and his elevation of a verbal poetic intent emphasised in
+			the 1851 treatise.</p></note> Or is it rather that such
+			musical details should prompt an emotive response of which a
+			listener should only be partly conscious?</p>
+			<p>Equally subliminal is the effect of Wagner’s fastidious
+			attention to the orchestration of his themes. We’ve already seen
+			the differentiation between the x- and y-segments encoded into
+			the orchestration, dynamics, and accents. A further look at the
+			TimeMachine shows in addition how – <foreign>pace</foreign>
+			Thomas Mann – Wagner <hi rend="italic">never</hi> actually
+			repeats himself. (See the TimeMachine orchestration view.) Even
+			when there is a predominant set of instruments highlighted for
+			statements of the <hi rend="small-caps">Frageverbot</hi> – as in the <hi
+			rend="italic">cor anglais</hi> and the clarinet – not one of the
+			<hi rend="small-caps">Frageverbot</hi> iterations is an exact copy, but rather a
+			nuanced retouching of the musical material, each shaping the new
+			dramatic moment. The passages in <hi rend="italic">Oper und
+			Drama </hi>(1851) treating instrumentation [<hi
+			rend="italic">Instrumentation</hi>] can easily be read as an
+			advertisement for the variegated orchestration Wagner had
+			already pioneered in <hi rend="italic">Lohengrin</hi>: rather
+			than seeking ‘enjoyment in the playing of the orchestra’ as in
+			dramatically indifferent operas, ‘the musician engaged with the
+			poetic intent … doesn’t have to restrain himself, but can rather
+			completely sharpen his powers of invention to the point of
+			discovering the orchestra’s most varied linguistic capabilities,
+			so as to accommodate … the most pertinent and precise
+			expression’.<note place="bottom" xml:id="ftn31" n="31"><p><hi
+			rend="italic">O&amp;D</hi> (Kropf), 386.</p></note>
+			Only people, not musical instruments, have linguistic
+			capabilities, so we can see how Wagner crafted his orchestration
+			to aspire to the constant shift of nuance that made it feel as
+			if the orchestra were speaking.</p>
+			<p>Another nuance found in the <hi
+			rend="small-caps">Frageverbot</hi> concerns the positional
+			‘height’ from which the prohibition is enunciated: that is,
+			whether the x-segment hovers <hi rend="italic"
+			xml:space="preserve">above </hi>with foreboding or is grounded
+			as an established fact. Here Wagner toys with the harmonic
+			distinction between a minor chord in second inversion and one in
+			root position. When beginning with a <hi rend="sub">6/4</hi>
+			chord, the <hi rend="small-caps">Frageverbot</hi> projects a
+			sense of menace, since its pronouncement lacks an underlying
+			tonic pitch in the bass, and the fifth scale degree in the bass
+			hoists the utterance above ground, as it were. When beginning
+			with a root-position chord, the ban conveys a sense of
+			inevitability and conviction, a subtle but important
+			distinction. (See the TimeMachine for a display of all
+			recurrences with respect to this feature.) The first two
+			iterations of the theme were undecided in their harmony since
+			they rock back and forth ambiguously between root position and
+			second inversion chords. The distinction is ‘marked’ with
+			respect to the relative ‘firmness’ or ‘solidity’ of an
+			occurrence, since a prolonged <hi rend="figures"><hi
+			rend="num">6</hi><hi rend="den">4</hi></hi> chord on its own
+			evokes anxiety and unease.<note place="bottom" xml:id="ftn32"
+			n="32"><p>A good example from the <hi rend="italic">Ring</hi> is
+			<hi rend="small-caps">Hunding</hi> first heard in <hi
+			rend="italic">Die Walküre</hi>, Act I/2. If we replace the
+			opening 6<hi rend="superscript">th</hi> chord with a root
+			position chord, Hunding’s persona threats to dissolves into
+			banal caricature.</p></note> Whereas some later statements of
+			the <hi rend="small-caps">Frageverbot</hi> underscore the
+			ominous quality of the prohibition, others elevate it to a
+			matter of certainty, which only a tonic note in the bass of the
+			chord can ensure . So after Elsa has breached the ban in Act
+			III, the reminiscences in <link
+			target="https://meld.linkedmusic.org/companion/F15"><hi
+			rend="small-caps">Frageverbot</hi> 15</link>, <link
+			target="https://meld.linkedmusic.org/companion/F16">16</link>
+			and <link
+			target="https://meld.linkedmusic.org/companion/F17">17</link>
+			are all weighted in the solidity of the root-position chord. No
+			doubt or menace remains.</p>
+			<p>A similar harmonic feature is marked with respect to the
+			closure of the y-segment: whether its cadential goal is a major
+			or minor chord, or whether the cadence is interrupted. I noted
+			earlier how the initial major resolution signaled a musical
+			exclamation point, using the <hi rend="italic">tierce de
+			Picardie</hi> as a striking departure from the minor realm. The
+			original verse of the prohibition also ended with a rhyme: <hi
+			rend="italic">Fahrt</hi> [journey] is neatly rounded off by <hi
+			rend="italic">Art</hi> [kind]. The cadential resolutions on the
+			major tonic of <link
+			target="https://meld.linkedmusic.org/companion/F1"><hi
+			rend="small-caps">Frageverbot</hi> 1</link> and <link
+			target="https://meld.linkedmusic.org/companion/F1"><hi
+			rend="small-caps">Frageverbot</hi> 2</link> therefore don’t
+			express the text as much rather its punctuation, since apart
+			from the end-rhyme, there is no special dynamic or accent on the
+			word <hi rend="italic">Art</hi>. When later reminiscences
+			reiterate the y-segment, Wagner fashion three other sorts of
+			exclamation, more than can be achieved by punctuation
+			alone. First there are two frightening versions of a diminished
+			7<hi rend="superscript">th</hi> chord (in <link
+			target="https://meld.linkedmusic.org/companion/F4"><hi
+			rend="small-caps">Frageverbot</hi> 4</link> and <link
+			target="https://meld.linkedmusic.org/companion/F6"><hi
+			rend="small-caps">Frageverbot</hi> 6</link>) and then a resigned
+			iteration in in the tonic minor (in <link
+			target="https://meld.linkedmusic.org/companion/F13"><hi
+			rend="small-caps">Frageverbot</hi> 13</link>) once the questions
+			have been asked and Telramund has been killed. In two other
+			instances (in <link
+			target="https://meld.linkedmusic.org/companion/F16"><hi
+			rend="small-caps">Frageverbot</hi> 16</link> and <link
+			target="https://meld.linkedmusic.org/companion/F17"><hi
+			rend="small-caps">Frageverbot</hi> 17</link>), Wagner diverts
+			attention from the apodictic register of the theme and refers
+			instead to the wistful and lyrical side of Lohengrin’s character
+			already imprinted with the ‘soft’ and ‘holy’ qualities of the
+			y-segment.</p>
+			<p>As for Lohengrin’s compassion, the final iteration of the
+			y-segment on its own – in <link
+			target="https://meld.linkedmusic.org/companion/F18"><hi
+			rend="small-caps">Frageverbot</hi> 18</link> – poses an
+			intriguing hermeneutic problem, since it includes, to be sure, a
+			reminiscence, but not one that recalls the question-ban. The
+			passage occurs in the second part of the Act III Grail narrative
+			and is little known because Wagner cut it before the first
+			performance and excluded it from later editions.<note
+			place="bottom" xml:id="ftn33" n="33"><p>The restored passage is found in Richard
+			Wagner, <hi rend="italic">Lohengrin WWV 75 (Anhang 7,III:
+			Gestrichene Strophe der Gralserzählung, Lyrische
+			Stücke)</hi>, eds. John Deathridge and Klaus Döge (Mainz
+			2000), III:202-12.</p></note> Lohengrin has already
+			revealed his name and patrimony and then says:</p>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Nun höret noch, wie ich zu euch gekommen! –</foreign></l>
+							<l><foreign>Ein klagend Tönen trug die Luft daher,</foreign></l>
+							<l><hi rend="bold"><foreign>daraus im Tempel wir sogleich vernommen,</foreign></hi></l>
+							<l><hi rend="bold"><foreign>dass fern wo eine Magd in Drangsal wär’;</foreign></hi></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l> </l>
+							<l><hi rend="small-caps">Schwan</hi> 7</l>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F17"><hi
+							rend="small-caps">Frageverbot</hi> 17</link></l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l>Now hear further how I came to you! –</l>
+							<l>From afar the air bore a wailing sound,</l>
+							<l>From which we in the temple at once heard<hi rend="bold"></hi></l>
+							<l><hi rend="bold">That a distant maiden was in distress;</hi></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l> </l>
+							<l><hi rend="small-caps">Schwan</hi> 7</l>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F17"><hi
+							rend="small-caps">Frageverbot</hi> 17</link></l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<p>As the TimeMachine shows, Lohengrin sings the words in bold
+			to the y-segment (aborted on the dominant 7<hi
+			rend="superscript">th</hi> just before the cadence) heard in
+			<link target="https://meld.linkedmusic.org/companion/F17"><hi
+			rend="small-caps">Frageverbot</hi> 17</link>. But how can the
+			Grail knight’s perception of a ‘damsel in distress’ have a
+			bearing on why he is unable to reveal his identity? At first
+			glance, if one had to choose another bit of text from the
+			narration which better fits the <hi rend="small-caps">Frageverbot</hi>, it would
+			be the lines that appeared earlier in the first (published) part
+			of the Grail narrative which either names the ‘forbidden
+			question’ <hi rend="italic">Nun hört, wie ich verbotner Frage lohne!</hi>
+			[‘Hear how I reward the forbidden question!’] or his explanation
+			in an earlier poetic draft:</p>
+			<foreign>
+				<lg>
+					<l>Selbst wer von ihm in ferne Land entsendet,</l>
+					<l>zum Streiter für der Tugend Recht ernannt,</l>
+					<l>dem wird nicht seine heil'ge Kraft entwendet,</l>
+					<l>bleibt als sein Ritter dort er unerkannt;</l>
+					<l>so hehrer Art doch ist des Grales Segen,</l>
+					<l>enthüllt - muss er des Laien Auge fliehn;</l>
+				</lg>
+			</foreign>
+			<lg>
+				<l>Even he who is sent by it to a distant land,</l>
+				<l>appointed as a champion of virtue,</l>
+				<l>will not be robbed of its holy power,</l>
+				<l>provided that he, as its knight, remains unrecognised there.</l>
+				<l>For so holy is the Grail’s blessing </l>
+				<l>that when revealed it must shun the uninitiated’s eye;</l>
+			</lg>
+			<p>So Lohengrin can’t tell Elsa who he is because he would be
+			‘robbed of his holy power’ to help her. But neither can the
+			orchestra sound the <hi rend="small-caps">FRAGEVERBOT</hi> to
+			his mention of the ‘forbidden question’, since, as we saw, his
+			theme referred to a prohibition, not a question. The music
+			cannot accompany the rationale behind the prohibition, as when
+			Lohengrin speaks of losing the Grail’s blessing, but ostensibly
+			only about Elsa remaining in ignorance.</p>
+			<p>So why does Wagner set the y-segment in <link
+			target="https://meld.linkedmusic.org/companion/F17">17</link> to
+			a text set about the Grail knights hearing Elsa’s lament borne
+			by the winds? It can only be, I imagine, because Wagner
+			conceived the lyricism of the y-segment as embodying the
+			compassionate high-mindedness of the Grail knights almost to the
+			eclipse of the stern command of the <hi
+			rend="small-caps">Frageverbot</hi>’s x-segment. For this reason,
+			the x- and y-segments were not only detachable motifs during the
+			course of the opera, but Wagner took pains to link this music –
+			and its local orchestration with <hi rend="italic">divisi</hi>
+			violins and violas – to the spiritual ambience of the Grail
+			temple evoked both in the Grail narration in the third Act as
+			well as in the first-act Prelude. As a ‘leitmotif’ linked to
+			dramatic reminiscence, <link
+			target="https://meld.linkedmusic.org/companion/F17">17</link> is
+			useless in the (suppressed) second part of the Grail narration,
+			since the link is irrelevant. But what we can suppose Wagner
+			intended was an allusion to the Lohengrin who sings the tender
+			y-segment, the same Lohengrin who ‘at once perceived’ Elsa’s
+			distress in the Grail temple. Expressed as audible metaphor, the
+			music suggests we hear the lyrical y-phrase (heard originally in
+			<link target="https://meld.linkedmusic.org/companion/F1"><hi
+			rend="small-caps">Frageverbot</hi> 1</link> and <link
+			target="https://meld.linkedmusic.org/companion/F2"><hi
+			rend="small-caps">Frageverbot</hi> 2</link> in Act I) as
+			redolent of the Grail in its evocation of tender holiness,
+			thereby making sense of its chorale-like texture and
+			harmony. Only now in the (complete version of the) Grail
+			narrative in Act III do we hear that very same phrase sung by
+			Lohengrin that evokes the compassionate knighthood serving
+			justice and spirituality. Indeed, Wagner introduces the
+			y-segment on the very word <hi rend="italic">Tempel</hi>
+			[temple].</p>
+			<p>The <hi rend="small-caps">Frageverbot</hi>, with its two
+			contrasting motifs or segments, is thus in a state of flux
+			throughout the opera, never asserting just one fixed meaning or
+			reminiscence. And if the iterations of the x-segment approximate
+			a command recalled later as a threat, the y-segment conveys more
+			of what Wagner named as a ‘characteristic ‘ in the 1844 letter
+			to Gaillard and the 1851 letter to Uhlig, capturing a vivid
+			image of the character called Lohengrin caught in an impossible
+			dilemma. Migrating everywhere within its orchestral habitat,
+			torn apart into its constituent segments, commanded, whispered,
+			insinuated or blared depending on context, the <hi
+			rend="small-caps">Frageverbot</hi> makes a definitve <hi
+			rend="italic">Einprägung</hi> or ‘imprint’ on the audience, whom
+			Wagner names in his letter to Liszt. What’s more, the vagaries
+			of those imprints give rise to powerful techniques of expression
+			that Wagner pointed out to Uhlig, but which the composer had no
+			appetite to analyse himself.</p>
+		</div>
+		<div>
+			<head>The <hi rend="small-caps">Lohengrin</hi> theme</head>
+			<p>With the <hi rend="small-caps">Frageverbot</hi>, the composer
+			designed the first statement with words to be sung, which played
+			a role, even a subliminal one, in later reiterations of the
+			theme or its motivic components, even when those words became
+			difficult to recall, as was shown. With the motif, and theme
+			I’ve called <hi rend="small-caps">Elsas gesegneter Schritt</hi>
+			[Elsa’s blessed gait], the developing affective sense of the
+			music was tied both to the situation onstage – which Wagner
+			tried to fix by his stage directions – as well by words of the
+			chorus commenting on that stage. Then again, this last example,
+			even if identified by Wagner himself as of interest, was limited
+			in its relevance to the entire opera, since it only occurred
+			twice, albeit in two distinct scenes. With more global themes,
+			such as one entitled <hi rend="small-caps">Lohengrin</hi>, one
+			needs to be alert to the possibility – mostly ignored by the
+			leitmotif tradition – that only later instances of the theme
+			reveal the full sense of its music. Especially when a backstory
+			is withheld, as in Lohengrin’s identity as a Grail knight, then
+			it can be important not to privilege the first hearing of a
+			motif but allow the composer time to explore and reveal dramatic
+			associations inhering in the musical substance.</p>
+			<p>The long <hi rend="small-caps">Lohengrin</hi> theme, for
+			example, appears first in Elsa’s Dream in Act I, where she
+			imagines a knight with chivalrous bearing arriving to save
+			her. This knight duly appears, and after pronouncing the ban
+			querying his identity, and accepting King Henry’s invitation to
+			lead the Brabantines into battle, is referred throughout the
+			opera to as the Protector of Brabant [<hi rend="italic">Schützer
+			von Brabant</hi>]. The first bar and a half of this stirring
+			music – dubbed motif x – shows up repeatedly in all three acts
+			to emphasise this connection, as does the heroic trope of
+			another snippet from the theme – dubbed motif y, as can be seen
+			in the <hi rend="italic">Lohengrin</hi> TimeMachine. Although
+			not yet named until the Grail narration in Act III, the music
+			seems clearly devised to capture the character of the valiant
+			hero, both as successful defender of Elsa’s innocence and future
+			protagonist of the Brabantine nobles.  Indeed, at the end of
+			Lohengrin’s Grail narration (<hi rend="italic">Im fernen Land,
+			unnahbar euer Schritten</hi>) when the hero finally names
+			himself, it’s difficult to miss that the opening snippet of <hi
+			rend="small-caps">Lohengrin</hi> – motif x – famously sounds as
+			a <hi rend="italic">coup de théâtre</hi>, with its gallant music
+			amply emblazoned with heraldic fanfares mapped directly onto the
+			protagonist’s identity. So it would seem that we now
+			know for sure that the theme heard in Elsa’s dream and at the
+			hero’s arrival denoted none other than the knight Lohengrin
+			himself.</p>
+			<p>Or do we? In fact, in Wagner’s suppressed version of the
+			Grail narration in Act III, one makes a shocking
+			discovery. There we find that it isn’t <hi
+			rend="small-caps">Lohengrin</hi> but rather the <hi
+			rend="small-caps">Gral</hi> that sounds just as Lohengrin
+			reveals his identity, an incongruity that will come as a huge
+			surprise to anyone familiar with the opera. That is, Wagner’s
+			original plan for the most signal event in the opera – when
+			Lohengrin answers the prohibited question – was not for the
+			protagonist to identify himself not as a hero but as the son of
+			the leader and a knight of holy Grail linked to its mystical
+			Christian narrative and mission he has just recounted, replete
+			with the story of the holy vessel brought down to earth by a
+			host of angels and tended by a knighthood given godly powers to
+			fight evil and defend virtue: </p>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Vom Gral ward ich zu euch daher gesandt:</foreign></l>
+							<l><foreign>Mein Vater Parzifal trägt seine Krone, –</foreign></l>
+							<l><foreign>Sein Ritter ich – bin Lohengrin genannt.</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l> </l>
+							<l> </l>
+							<l><hi rend="small-caps">Gral</hi> 11</l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l>By the Grail was I sent to you from there:</l>
+							<l>My father Parzifal wears its crown, –</l>
+							<l>Its knight am I, and Lohengrin is my name.</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l> </l>
+							<l> </l>
+							<l><hi rend="small-caps">Gral</hi> 11</l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<p>The chorus of women and men react precisely to the link
+			between the hero’s identity and the holiness of the Grail, by
+			singing a counterpoint to the <hi
+			rend="small-caps">Gral</hi>theme (heard in its original key of A
+			major) and noting how in beholding him they are ‘gripped with a
+			blessed shock’ [<hi rend="italic">uns faßt vor ein selig
+			Grauen!</hi>].This plain intention – along with Wagner’s choice
+			not to sound <hi rend="small-caps">Lohengrin</hi> at just this
+			juncture – suggests that what is one of the longest ‘leitmotifs’
+			he ever composed does not, like <hi
+			rend="small-caps">Siegfried</hi>in the <hi
+			rend="italic">Ring</hi>, stand as the musical emblem for the
+			opera’s protagonist.</p>
+			<p>So just what was Wagner’s idea behind the music of the
+			<hi>LOHENGRIN</hi> theme? The answer lies in the text and music
+			for the excised strophes of the Grail narration:</p>
+			<table rows="4" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Als wir den Gral zu fragen nun beschickten,</foreign></l>
+							<l><foreign>Wohin ein Ritter zu entsenden sei,–</foreign></l>
+							<l><foreign>Da auf der Flut wir einen Schwan erblickten,</foreign></l>
+							<l><foreign>Zu uns zog einen Nachen er herbei:–</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Gral</hi> 12</l>
+							<l> </l>
+							<l><hi rend="small-caps">Schwan</hi> 3</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Mein Vater, der erkannt des Schwanes Wesen,</foreign></l>
+							<l><foreign>Nahm ihn in Dienst nach des Grales Spruch:</foreign></l>
+							<l><foreign>Denn wer ein Jahr nur seinem Dienst erlesen,</foreign></l>
+							<l><foreign>Dem weicht von dann ab jedes Zaubers Fluch.</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Schwan</hi> 4</l>
+							<l></l>
+							<l><hi rend="small-caps">Gral</hi> 12</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Zunächst nun sollt’er mich dahin geleiten,</foreign></l>
+							<l><foreign>Woher zu uns der Hilfe Rufen kam;</foreign></l>
+							<l><foreign>Denn durch den Gral war ich erwählt zu Streiten,</foreign></l>
+							<l><foreign>Darum ich mutig von ihm Abschied nahm.</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l></l>
+							<l></l>
+							<l><hi rend="small-caps">Gral</hi> 14</l>
+							<l></l>
+						</lg>						
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Durch Flüsse und durch wildes Meeres Wogen,</foreign></l>
+							<l><foreign>hat mich der treue Schwan dem Ziel genaht,</foreign></l>
+							<l><foreign>bis er zu euch daher an’s Ufer mich gezogen,</foreign></l>
+							<l><foreign>wo ihr in Gott mich alle landen saht.</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F13"><hi
+							rend="small-caps">Frageverbot</hi> 13</link></l>
+							<l></l>
+							<l></l>
+							<l>(<link
+							target="https://meld.linkedmusic.org/companion/F13"><hi
+							rend="small-caps">Frageverbot</hi> 13</link>)</l>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F14"><hi
+							rend="small-caps">Frageverbot</hi> 14</link></l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<table rows="4" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l>When we now asked of the Grail,</l>
+							<l>Where a knight was to be sent,–</l>
+							<l>On the waves we sighted a swan</l>
+							<l>nearing us in a boat:–</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Gral</hi> 12</l>
+							<l> </l>
+							<l><hi rend="small-caps">Schwan</hi> 3</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l>My father, who knew the swan’s kind,</l>
+							<l>Took him into service laid down by the Grail’s rule:</l>
+							<l>For only when the chosen one serves a year,</l>
+							<l>Is every magic curse from then revoked.</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Schwan</hi> 4</l>
+							<l></l>
+							<l><hi rend="small-caps">Gral</hi> 12</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l>It was set that I escort him back</l>
+							<l>Whence came the call for help;</l>
+							<l>For through the Grail elected was I for combat,</l>
+							<l>Summoning courage I took my leave.</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l></l>
+							<l></l>
+							<l><hi rend="small-caps">Gral</hi> 14</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+				<row>
+					<cell type="text">
+						<lg>
+							<l>Through rivers and waves of the fierce ocean</l>
+							<l>the loyal swan neared me to the goal,</l>
+							<l>till he tugged me toward you on the shore</l>
+							<l>where by God’s grace you all saw me land.</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F13"><hi
+							rend="small-caps">Frageverbot</hi> 13</link></l>
+							<l></l>
+							<l></l>
+							<l>(<link
+							target="https://meld.linkedmusic.org/companion/F13"><hi
+							rend="small-caps">Frageverbot</hi> 13</link>)</l>
+							<l><link
+							target="https://meld.linkedmusic.org/companion/F14"><hi
+							rend="small-caps">Frageverbot</hi> 14</link></l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<p>To recapitulate the narrative: having heard Elsa’s wailing
+			sound [<hi rend="italic">ein klagend Töne</hi>] and recognised a
+			‘damsel in distress’ – both as mourner of her brother Gottfried
+			and as a woman accused unjustly of his murder – the knights
+			‘sighted’ her younger brother Gottfried cast by Ortrud’s magic
+			in the form of a swan drawing a small boat. The swan approaches
+			the knights with the entreaty that one return with him to
+			Antwerp to defend his sister. Lohengrin’s father Parzifal [sic],
+			King of the Grail Knights, recognises the curse laid on the swan
+			and conveys the Grail’s ruling that after a year in its service,
+			the curse will be revoked. The music </p>
+			<p>labelled <hi rend="small-caps">Lohengrin</hi> sounds in full
+			throughout during the knight’s lengthy description of his
+			journey back to Brabant ‘via rivers and waves of the fierce
+			ocean until he pulled me toward you on the shore where by God’s
+			grace you all saw me land.’ And as Lohengrin sings the phrase
+			‘where you all saw me land’ Wagner restates the head-motif of
+			<hi rend="small-caps">Lohengrin</hi> to encapsulate the lengthy
+			journey – the end of the narrative of the entire backstory –
+			which is what prompts the assembled women and men, ‘choked with
+			the greatest emotion’ [<hi rend="italic">mit größter
+			Rührung</hi>] to sing in <hi rend="italic">pianissimo</hi>:</p>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l><foreign>Hör’ ich so seine höchste Art bewähren,</foreign></l>
+							<l><foreign>Entbrennt mein Aug’ in heil’gen Wonnezähren!</foreign></l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Heilige Wonnezähren</hi> 2</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+			
+			</table>
+			<table rows="1" column="2">
+				<row>
+					<cell type="text">
+						<lg>
+							<l>When I hear such proof of his highest ancestry,</l>
+							<l>My eyes burst in holy tears of bliss!</l>
+						</lg>
+					</cell>
+					<cell type="margin">
+						<lg>
+							<l><hi rend="small-caps">Heilige Wonnezähren</hi> 2</l>
+							<l></l>
+						</lg>
+					</cell>
+				</row>
+			</table>
+			<p>This theme, perhaps more emblematic of Wagner’s ‘endless
+			melody’ than any other, is easily heard as a representation of
+			the flowing of <hi rend="small-caps">Heilige Wonnezähren</hi>
+			([BLISSFUL TEARS]), which with their continually averted
+			cadences and a full three-octave descent in an unsingable
+			melodic treble, never wish to end. Heard for the only time since
+			sounded in the first-act Prelude, likewise as a reaction to
+			multiple statements of the <hi rend="small-caps">Gral</hi>
+			theme, <hi rend="small-caps">Heilige Wonnezähren 2</hi>is also
+			consonant with Wagner’s prose text for concert performances of
+			the first-act Prelude from 1853 which specify the programme as a
+			pre-history of the Grail’s descent to earth to a ‘single
+			solitary’ – someone who later become the protagonist’s father
+			Titurel in <hi rend="small-caps">Parsifal</hi>. Brought down to
+			earth by an angelic horde, the Grail is gradually revealed in
+			its full glory, and the observer of the scene loses
+			consciousness and sinks down in adoring abnegation. [da
+			schwinden dem Schauenden die Sinne; er sinkt nieder in
+			anbetender Vernichtung.] Yet above the one lost in love’s bliss,
+			the Grail now pours out its blessing, with which it consecrates
+			him as its knight. [Doch über den in Liebeswonne Verlorenen
+			gießt der Gral nun seinen Segen aus, mit dem er ihn zu seinem
+			Ritter weiht’. This long act of consecration, sinking and
+			pouring of the Grail’s precious liquid is expressed
+			magnificently in Wagner’s musical theme, and then reiterated
+			only once with choral commentary following the Lohengrin motivic
+			snippet to bind together past and present. But because the prose
+			programme and its textual content was never meant to be
+			distributed at opera performances, we are left with a
+			fascinating experience of a texted piece of music referring back
+			nostalgically and allegorically to a piece of pure instrumental
+			music, whose affective content supersedes the realm of the
+			verbal. (Indeed, Wagner later develops virtually the entire
+			opera of Tristan und Isolde from this procedure.)</p>
+			<p>So Wagner’s ‘vivid image’ for <hi
+			rend="small-caps">Lohengrin</hi>, given the extraordinary length
+			of the expanded 12-bar thematic period (4+4+4), was initially
+			conceived as depicting the heroic travels of Gottfried, the
+			bewitched swan, and the knight Lohengrin as they braved ‘the
+			rivers and waves of the fierce ocean’ to return to defend the
+			distressed Elsa. If the brilliantly apposite wavy arpeggios and
+			the chivalrous dotted figures in the music were not enough to
+			characterise this journey, we can also take note of a suppressed
+			phrase found in the prose draft that didn’t find its way into
+			the poetry: that the journey coursed through the waters ‘in
+			magically-powered speed’ [<hi rend="italic">in zauberischer
+			Schnelle</hi>]. (The prose draft of the forbidden question had
+			also omitted any explicit prohibition on asking about
+			Lohengrin’s name, which suggests Wagner never planned to link
+			the <hi rend="small-caps">Lohengrin</hi> theme to the moment
+			when he reveals his identity.<note place="bottom" xml:id="ftn34"
+			n="34"><p><hi rend="italic">SW</hi> 26:213</p></note>)</p>
+			<p>Had Wagner not suppressed his initial intention, the <hi
+			rend="small-caps">LOHENGRIN</hi> theme might better be dubbed
+			“Gottfried’s and Lohengrin’s magic journey”! Given this
+			authorial intention, we can now see that <hi
+			rend="small-caps">LOHENGRIN</hi> 1 first heard in Elsa’s Dream
+			in Act I implies that Elsa is recounting the end of this magic
+			journey from her imprecise and dream-like vantage point: <hi
+			rend="italic">ein Ritter nahte da</hi> [a knight drew near], she
+			sings, but she can’t know that her brother Gottfried is drawing
+			the knight’s barque. And at Lohengrin’s first appearance, Elsa
+			has just recalled her dream, singing <hi rend="italic">Laß mich
+			ihn sehn wie ich ihn sah, sei er mir nah!</hi> [Let me see him
+			as I saw him, may he approach me!], we have the incomplete
+			action without the backstory. The ‘miracle’ intoned by the
+			chorus refers therefore to their own point of view rather than
+			the end of a magic journey led by Gottfried as a swan. Only in
+			July of 1850 had Wagner ‘become convinced that this second
+			section of the [Grail] narration [was] bound to produce
+			something of an anti-climax’ and hence he ‘insisted [to Liszt]
+			that the passage … be omitted’.<note place="bottom"
+			xml:id="ftn35" n="35"><p>Letter to Franz Liszt of 2 July
+			1850. Selected Letters of Richard Wagner, eds. Stewart Spencer
+			and Barry Millington (Dent: London, 1987), 209.</p></note> But in so
+			doing he actually censored aspects of Lohengrin’s back-story and
+			compromised on a potentially powerful insight into the role
+			played by Gottfried before the opera begins. (The few recent
+			recordings restoring the cut strophe show an interest in
+			rethinking Wagner’s decision.<note place="bottom" xml:id="ftn36"
+			n="36"><p>A fine example is a <hi rend="italic">Lohengrin</hi>
+			conducted by Semyon Bychkov and sung by Johann Botha with the
+			WDR Sinfonieorchester Köln on Profil PH09004 (2009).</p></note>)
+			Still, it was certainly the case that Wagner was disinterested
+			in precise hermeneutics: it was the perfume and constant
+			transformations of his themes with their sometimes concrete and
+			sometimes amorphous associations that motivated him. It’s also
+			worth recalling the composer’s anxiety – which of course forms
+			his distaste for leitmotifs and guides to them – that they might
+			be heard as explicit mechanisms: No, ‘they are not to be heard
+			at all [<hi rend="italic">gar nicht gehört zu werden</hi>], …
+			not in their mechanical presence but only in their organic
+			efficacy [<hi rend="italic">Wirksamkeit</hi>] at one with the
+			drama’.<note place="bottom" xml:id="ftn37" n="37"><p>Richard
+			Wagner, <hi rend="italic">DS</hi>,
+			8:364.</p></note></p>
+		</div>
+		<div>
+			<head>Other motifs and themes in <hi rend="italic">Lohengrin</hi></head>
+			<p>It is no different with the other thirteen repeated motifs
+			and themes that inhabit Lohengrin, that is, those heard in more
+			than one scene. Even the harmonic chassis undergirding such
+			simple motifs such as the <hi rend="small-caps">Königsruf</hi>
+			[Royal fanfare] is altered over the course of the opera, which
+			demonstrates Wagner’s burning interest in casting familiar
+			musical utterances into unexpected new forms, in every case
+			alluding to a subtle emotive nuance. I’ve already mentioned two
+			other global themes and motifs – <hi rend="small-caps">Gral</hi>
+			[Grail] and <hi rend="small-caps">Schwan</hi> [Swan] – where
+			Wagner has cleverly embedded <hi rend="small-caps">Schwan</hi>
+			into the second bar of <hi rend="small-caps">Gral.</hi> Then
+			there was <hi rend="small-caps">Elsas gesegneter Schritt
+			</hi>[Elsa’s blessed gait], transformed from motif into theme
+			between scenes ii and iv in Act II. The other themes and motifs
+			make an equally indelible impression on the compositional
+			substance of the opera, though some are far more prominent than
+			others.<note place="bottom" xml:id="ftn38" n="38"><p>John
+			Deathridge surely counts too sparingly when he claims that
+			‘there are only six motifs that recur regularly throughout
+			Lohengrin’ and that ‘Wagner’s understandable wish to project his
+			ideas about motif backward in order to make it seem like a
+			logical precursor to the project he was currently working on
+			[was] a self-invented myth that has persuaded countless
+			commentators to privilege the issue of themes and motifs in the
+			earlier work over more interesting aspects of the
+			score’. Deathridge, ><hi rend="italic">Beyond
+			Good and Evil</hi>, 39. I’ve already
+			cited Wagner’s 1850 letter to Genast above (see footnote 13)
+			which refers to the composer’s ‘working out of the most deeply
+			felt and most necessarily essential motifs’ in Lohengrin’, in
+			which it clear that Wagner isn’t projecting ‘ideas about motif
+			backward’ onto Lohengrin. While I’m unsure which ‘more
+			interesting aspects of the score’ Deathridge is referring to, it
+			is fair to note that some major dramatic pronouncements in 
+			<hi rend="italic">Lohengrin</hi> – ‘Höchstes Vertraun’, for example, in Act
+			III – are unconnected with the thematic web of themes. That the
+			stirring music for such passages is so memorable is simply a
+			testament to Wagner’s powers of musical characterization without
+			regard to the question of musical recurrence. What is equally
+			true, though, is that such moments are removed from the central
+			trajectory of musical ‘fragrances’ which motivated Wagner to
+			sketch out <hi
+			rend="italic">Lohengrin</hi>’s threefold web of
+			themes: the Grail in A/A flat, König Heinrich in C and the
+			Ortrud motifs in F sharp / F.</p></note> A few are
+			easy to label for the sake of convenience – <hi rend="small-caps">Gotteskampf</hi>
+			[Divine battle], <hi rend="small-caps">Gralsklänge</hi> [Grail sounds],
+			<hi rend="small-caps">Ruhm</hi> [Glory], <hi rend="small-caps">Feierliches geleit</hi> [Solemn
+			Procession], <hi rend="small-caps">Süsses Herz</hi> [Sweet heart] and
+			<hi rend="small-caps">Wonnezähren</hi> [tears of joy] – all in the major
+			mode. Then there are Ortrud’s eerie <hi rend="small-caps">Zauber</hi> [Magic] and
+			the <hi rend="small-caps">Versuchung</hi> [Temptation] motifs based on dissonant
+			harmonic collections in the F-sharp-minor realm.<note
+			place="bottom" xml:id="ftn39" n="39"><p>I discuss the harmony of Ortrud’s
+			<hi rend="small-caps">Versuchung</hi> [Temptation] in <hi
+			rend="italic">Wagner and the Erotic Impulse</hi> (Cambridge, MA: Harvard University Press,
+			2010), 101-2, and 232.</p></note> </p>
+			<p>Other themes, though, pose more intractable problems even in
+			devising heuristic names precisely because they either accrue
+			meanings over the course of the opera or are too rich in
+			significance to be pinned down to a single label. Chief among
+			these is <hi rend="small-caps">Elsas Unschuld</hi> [Elsa’s
+			innocence], which, if correctly characterised by its name,
+			should by no means make three appearances in the orchestral
+			Prelude to Act I of Lohengrin. Here – according to Wagner’s
+			prose programme<note place="bottom" xml:id="ftn40"
+			n="40"><p>Wagner, ‘Vorspiel zu <hi rend="italic">Lohengrin</hi>’,
+			<hi rend="italic">DS</hi> 2:201-3.</p></note> – the music recounts
+			the pre-history of the Grail cup brought down to earth by a host
+			of angels long before Elsa’s troubles began. And when he later
+			wrote about the character of this ‘motif’ and its unusual
+			harmonic progression in an essay from 1879, Wagner never
+			broached the somewhat mysterious question of why this ‘musical
+			phrase’ –labeled neither a theme nor a motif! - was included in
+			a Prelude that was intended to represent a poetic unity rather
+			than a potpourri of themes, as in an overture.<note
+			place="bottom" xml:id="ftn41" n="41"><p>Wagner, ‘Anwendung’, <hi
+			rend="italic">DS</hi>
+			9:340-2.</p></note></p>
+		</div>
+		<div>
+			<head>Abandoning the unitary idea of a leitmotif</head>
+			<p>The word ‘leitmotif’ does scant justice to the wealth of
+			techniques marking such music and its recurrences, and in fact
+			impoverishes our engagement with Wagner’s music and drama. I
+			queried at the outset how Thomas Mann could claim that Wagner
+			‘repeats a thing so many times’ so that ‘you believe it’. The
+			solution to the paradox is simple: what appears repetitive is
+			relentless and incessant variation enhancing the dramatic
+			experience. While Wagner’s ‘thematic web’ in <hi
+			rend="italic">Lohengrin</hi> pale before the density of thematic
+			recurrences that surface in his next work <i>Das Rheingold</i>,
+			there can be little doubt that in <i>Lohengrin</i> the composer
+			aspired to change how a listener grasped both character and
+			dramatic connections in opera via music. Whereas Theodor Uhlig
+			reserved his praise of <hi rend="italic">Lohengrin</hi> for this
+			‘musical unity in a much higher sense’ [<hi rend="italic">eine
+			musikalische Einheit in viel höherem Sinne</hi>], it was Wagner
+			who pointed Uhlig to ‘the spacious and broad fruition’ [<hi
+			rend="italic">breit und hell zur ausführung kommt</hi>] of his
+			themes and motives responding to a ‘vivid image’ [<hi
+			rend="italic">plastische Erscheinung</hi>] that ‘constantly
+			creates new forms’. </p>
+			<p>Even inexperienced listeners devoid of analytical reflection
+			register such processes by their often strong reactions. The
+			Grand Duke Carl Alexander of Saxony attended several of the
+			Liszt’s performances of <hi rend="italic">Lohengrin</hi> in
+			1850. In his diary, he writes: </p>
+			<quote rend="block">Never before have I found this emotion so
+			eloquently expressed as in <hi rend="italic">Lohengrin</hi>. I
+			could have wept ... The chords that accompany the appearance of
+			the swan ... touched me as when a long, separated part of a
+			whole is suddenly reunited with it. These chords belong to
+			me!!!”<note place="bottom" xml:id="ftn42" n="42"><p><hi
+			rend="italic">Niemals habe ich
+			diese Empfindung so beredt ausgedrückt gefunden wie im
+			Lohengrin. Ich hätte weinen können ... Die Akkorde, die das
+			Erscheinen des Schwans begleiten ..., haben mich berührt, wie
+			wenn ein lange abgesonderter Teil eines Ganzen sich plötzlich
+			mit ihm wieder vereinigt. Diese Akkorde gehören zu mir!!!
+			</hi>Thüringisches Hauptstaatsarchiv
+			Weimar: Großherzogliches Hausarchiv. Schriftlicher Nachlass Carl
+			Alexanders, A XXVI, Nr. 1948, Tagebuch, 30 September 1850. Cited
+			in Angelika Pöthe, Carl Alexander: Mäzen in Weimars “Silberner
+			Zeit (Cologne, Weimar and Vienna: Böhlau, 1998), 268. Citation
+			and translation by David Trippett in ‘Lohengrin Premiere’,
+			138.</p></note></quote>
+			<p>What moved Carl Alexander was nothing less than a burst of
+			emotion produced when Wagner extracted the two chords of <hi
+			rend="small-caps">Schwan</hi> from the second bar of <hi
+			rend="small-caps">Gral</hi> and married those two experiences
+			via a musical ‘synecdoche’. The ‘long separated part’ – two
+			chords of A major and F sharp minor – was ‘reunited’, not in
+			Wagner’s score nor in the poem – but in the Grand Duke’s head
+			and heart. The bonding of those experiences, first musical and
+			then dramatic, yields a sense of ownership impossible to
+			restrain. The response is all the more poignant because it was
+			untouched by the later tradition of ‘leitmotifs’ obsessed with
+			dramatic recall, and demonstrates how Wagner’s thematic web
+			casts spells even when one is unaware of its reach. The
+			‘leitmotif’ shines little light on these kinds of <hi
+			rend="italic">musical</hi> phenomena, as Wagner himself noted,
+			and obscures what we are capable of hearing and feeling. To
+			abandon the leitmotif – and bid welcome to Wagner’s constantly
+			varying recurrent themes and motifs – is to welcome the
+			subliminal effect of Wagner’s ‘vivid images’ in music that revel
+			in the interplay between affinities and contrasts, between sound
+			and sense.</p>
+		</div>
+		</body>
+	</text>
+</TEI>

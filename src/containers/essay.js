@@ -24,10 +24,14 @@ const HAS_PIANO = "http://id.loc.gov/authorities/performanceMediums/2013015550";
 function isElementInViewport(el){
 	var rect = el.getBoundingClientRect();
   return (
-    rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    rect.top >= 110 && // Based on the TEI container's CSS 
+      rect.left >= ((window.innerWidth || document.documentElement.clientWidth) / 2) - 350 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) - 190 && 
+			rect.right <= ((window.innerWidth || document.documentElement.clientWidth) /2) + 350
+    // rect.top >= 0 &&
+    //   rect.left >= 0 &&
+    //   rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+    // rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
   );
 }
 
