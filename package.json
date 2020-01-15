@@ -4,7 +4,7 @@
    "description": "Musicological digital companion for Lohengrin article",
    "main": "index.js",
    "scripts": {
-      "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -d --host 127.0.0.1"
+      "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -d --host 127.0.0.1 --port 8081"
    },
    "author": "Davids Weigl and Lewis, University of Oxford e-Research Centre",
    "license": "BSD-3-Clause",

@@ -154,7 +154,14 @@ var Instruments = {
   "contrabass": new InstrumentType(false,'Contrabass', 'vc', 'Strings', 'Contrabassi', 'Cb'),
   "men": new InstrumentType(false,'Men', 'Men', 'Cast', null, 'Men'),
   "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', null, 'Elsa'),
-  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', null, 'Loh'),
+  "ortrud": new InstrumentType(false,'Ortrud', 'O', 'Cast', null, 'Ort.'),
+  "friedrich": new InstrumentType(false,'Friedrich', 'F', 'Cast', null, 'Fried.'),
+  "könig": new InstrumentType(false,'König', 'K', 'Cast', null, 'Kön.'),
+  "women and noble boys soprano": new InstrumentType(false,'Women & boys S', 'S', 'Cast', null, 'S.'),
+  "women and noble boys alto": new InstrumentType(false,'Women & boys A', 'A', 'Cast', null, 'A.'),
+  "tenor": new InstrumentType(false,'Tenor', 'T', 'Cast', null, 'T.'),
+  "bass": new InstrumentType(false,'Bass', 'B', 'Cast', null, 'B.'),
+  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', null, 'Loh')
 };
 // Working with InstrumentType objects
 function instrumentMatch(type, multiplicity){

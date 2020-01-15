@@ -31,8 +31,6 @@ ReactDOM.render(
 							
 					 // ]}
 					 />
-		  <Route path="/TimeMachine" component={App} mode="TimeMachine" 
-						 graphUri="http://localhost:8080/annotations/AskingForbidden.json-ld"/>
 		</Router>
 	</Provider>
 	, document.querySelector('.container'));
