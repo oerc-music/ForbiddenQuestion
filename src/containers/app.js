@@ -561,6 +561,9 @@ class App extends Component {
 					</div>
 			);					
 		} else if(mode=="IterationInspect") {
+			if(Array.isArray(current)) {
+				current = current[0];
+			}
 			var commentaryuri = this.commentaryForMotif(current);
 			var audiouri = this.audioForMotif(current);
 			var miInfo = this.state.iterations ? this.state.iterations.find(x=>x['@id']==current) : false;
