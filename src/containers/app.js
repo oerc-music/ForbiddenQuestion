@@ -602,8 +602,8 @@ class App extends Component {
 													 annotations={this.props.graph.outcomes[0]['@graph']}
 													 segments={miInfo.segmentLineMembers}
 													 segmentLabels={this.state.segmentLabels}
-													 showTranslation={this.showTranslation}
-													 hideTranslation={this.hideTranslation}
+													 showTranslation={this.showTranslation.bind(this)}
+													 hideTranslation={this.hideTranslation.bind(this)}
 													 showEnglish={this.state.showTranslation}
 													 librettoTexts={lib}
 													 highlight={this.state.highlight}
@@ -701,8 +701,8 @@ class App extends Component {
 													 annotations={this.props.graph.outcomes[0]['@graph']}
 													 segments={miInfo.segmentLineMembers}
 													 segmentLabels={this.state.segmentLabels}
-													 showTranslation={this.showTranslation}
-													 hideTranslation={this.hideTranslation}
+													 showTranslation={this.showTranslation.bind(this)}
+													 hideTranslation={this.hideTranslation.bind(this)}
 													 highlight={this.state.highlight}
 													 showEnglish={this.state.showTranslation}
 													 librettoTexts={lib}
@@ -753,11 +753,13 @@ class App extends Component {
 			var commentaryuriR = this.commentaryForMotif(current[1]);
 			var audiouriR = this.audioForMotif(current[1]);
 			var language = this.state.language ? this.state.language : 'en';			
-			var libforL = this.librettoTextForMotif(current[0], language);
-			var libforR = this.librettoTextForMotif(current[1], language);
-			if(libforL && Array.isArray(libforL)) libforL = libforL[0];
-			if(libforR && Array.isArray(libforR)) libforR = libforR[0];
-//			console.log(libforL, libforR);
+			var libforL = this.librettoTextForMotif(current[0]);
+			var libforR = this.librettoTextForMotif(current[1]);
+			// var libforL = this.librettoTextForMotif(current[0], language);
+			// var libforR = this.librettoTextForMotif(current[1], language);
+//			if(libforL && Array.isArray(libforL)) libforL = libforL[0];
+//			if(libforR && Array.isArray(libforR)) libforR = libforR[0];
+			console.log(libforL, libforR);
 			if(miInfoL && miInfoR){
 				return (
 					<div className="wrapper">
@@ -801,8 +803,12 @@ class App extends Component {
 													 segmentLabels={this.state.segmentLabels}
 													 width={this.state.width*0.4}
 													 toggleLanguage={this.toggleLanguage.bind(this)}
+													 showTranslation={this.showTranslation.bind(this)}
+													 hideTranslation={this.hideTranslation.bind(this)}
 													 language={language}
-													 libretto={libforL}
+//													 libretto={libforL}
+													 librettoTexts={libforL}
+													 showEnglish={this.state.showTranslation}
 													 details={miInfoL}
 													 toggleCommentary={this.toggleLCommentary.bind(this)}
 													 audiouri={audiouriL}
@@ -822,11 +828,15 @@ class App extends Component {
 														 width={this.state.width*0.4}
 														 highlight={this.state.highlight}
 														 toggleLanguage={this.toggleLanguage.bind(this)}
+														 showTranslation={this.showTranslation.bind(this)}
+														 hideTranslation={this.hideTranslation.bind(this)}
 														 segments={miInfoR.segmentLineMembers}
 														 segmentLabels={this.state.segmentLabels}
 														 language={language}
 														 annotations={this.props.graph.outcomes[0]['@graph']}
-														 libretto={libforR}
+														 librettoTexts={libforR}
+														 showEnglish={this.state.showTranslation}
+//														 libretto={libforR}
 														 details={miInfoR}
 														 toggleCommentary={this.toggleRCommentary.bind(this)}
 														 audiouri={audiouriR}

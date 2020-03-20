@@ -164,7 +164,7 @@ export default class InspectPane extends Component {
 		var paradigmHead = this.props.paradigm ? <Tab>Paradigm</Tab> : false;
 		var vsHead = this.props.vocalScore ? <Tab>Vocal Score</Tab> : false;
 		var orchHead = this.props.orchestralScore ? <Tab>Orchestration</Tab> : false;
-		var librettoTab = this.props.libretto ? this.librettoPanel() : <TabPanel/> ;
+		var librettoTab = (this.props.libretto || this.props.librettoTexts) ? this.librettoPanel() : <TabPanel/> ;
 		var vrvOptions = {	breaks:'auto', adjustPageHeight:1,
 												spacingStaff: 0, spacingSystem: 12,
 												spacingLinear: 0.2, spacingNonLinear: 0.55,
