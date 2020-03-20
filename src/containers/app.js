@@ -264,16 +264,26 @@ class App extends Component {
 			this.setState({popup: e.target.getAttributeNS(null, 'target')});
 		}
 	}
+	clearAllPopups(){
+		console.log("bubble");
+		this.setState({popup: false,
+									 showCommentaryL: false,
+									 showCommentaryR: false,
+									 showTranslation: false});
+	}
 	clearPopup(){
 		this.setState({popup: false});
 	}
 	showPopup(uri){
+		e.stopPropagation();
 		this.setState({popup: uri});
 	}
-	toggleLCommentary(){
+	toggleLCommentary(e){
+		e.stopPropagation();
 		this.setState({showCommentaryL: !this.state.showCommentaryL});
 	}
-	toggleRCommentary(){
+	toggleRCommentary(e){
+		e.stopPropagation();
 		this.setState({showCommentaryR: !this.state.showCommentaryR});
 	}
 	timelineForVideoLinks(videoLinks){
@@ -423,17 +433,21 @@ class App extends Component {
 	prepareForCompare(motif){
 		this.setState({mode: 'readyForCompare', submode: 'addRight', leftMotif: motif});
 	}
-	compareRightMotif(){
+	compareRightMotif(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'TimeMachine', submode: 'addLeft', rightMotif: this.state.currentMotif[1]});
 	}
-	compareLeftMotif(){
+	compareLeftMotif(e){
 		var newMotif = Array.isArray(this.state.currentMotif) ? this.state.currentMotif[0] : this.state.currentMotif;
+		if(e) e.stopPropagation();
 		this.setState({mode: 'TimeMachine', submode: 'addRight', leftMotif: newMotif});
 	}
-	compareCollapseViaTM(){
+	compareCollapseViaTM(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'TimeMachine', submode: 'replaceSingle', currentMotif: this.state.currentMotif[0]});
 	}
-	returnToInspect(){
+	returnToInspect(e){
+		if(e) e.stopPropagation();
 		var newMotif = Array.isArray(this.state.currentMotif) ? this.state.currentMotif[0] : this.state.currentMotif;
 		this.setState({mode: 'IterationInspect', submode: false, currentMotif: newMotif});
 	}
@@ -444,31 +458,40 @@ class App extends Component {
 			this.setState({mode: 'IterationInspect', submode: false, currentMotif: motif});
 		}
 	}
-	swapMotif(){
+	swapMotif(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'TimeMachine', submode: 'replaceSingle'});
 	}
-	essayMode(){
+	essayMode(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'Essay'});
 	}
-	homeMode(){
+	homeMode(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'Home'});
 	}
-	introMode(){
+	introMode(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'Intro'});
 	}
-	aboutMode(){
+	aboutMode(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'About'});
 	}
-	videoMode(){
+	videoMode(e){
+		if(e) e.stopPropagation();
 		this.setState({mode: 'Video'});
 	}
-	toggleLanguage(){
+	toggleLanguage(e){
+		if(e) e.stopPropagation();
 		this.setState({language: (this.state.language=='de' ? 'en' : 'de')});
 	}
-	showTranslation(){
+	showTranslation(e){
+		if(e) e.stopPropagation();
 		this.setState({showTranslation: true});
 	}
-	hideTranslation(){
+	hideTranslation(e){
+		if(e) e.stopPropagation();
 		this.setState({showTranslation: false});
 	}
 	render() { 
@@ -496,7 +519,8 @@ class App extends Component {
 			var audiouri = this.audioForMotif(current);
 			return (
 				<div className="wrapper">
-					<Burger className="burg" id="theburg" TM={function(){return}} isOpen={false} video={this.videoMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}
+					<Burger className="burg" id="theburg" TM={function(e){e.stopPropagation(); return;}}
+									isOpen={false} video={this.videoMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}
 									iteration={this.returnToInspect.bind(this)} essay={this.essayMode.bind(this)}/>
 					<div className="topMenu">
 						<div className="title"><div className="icon timemachine"><img src="/style/icons/timemachine.svg"/></div>{this.state.submode=='addLeft' || this.state.submode=='addRight' ? 'Choose an iteration to compare...' : 'Time Machine'}</div>
@@ -573,7 +597,7 @@ class App extends Component {
 			var liblang = lib[language];
 			if(miInfo){
 				return (
-					<div className="wrapper" onClick={this.state.popup ? this.clearPopup.bind(this) : false}>
+					<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
 						<Burger className="burg" id="theburg" iteration={function(){return}} isOpen={false} video={this.videoMode.bind(this)}
 										TM={this.swapMotif.bind(this)} essay={this.essayMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}/>
 						<div className="topMenu">
@@ -759,10 +783,9 @@ class App extends Component {
 			// var libforR = this.librettoTextForMotif(current[1], language);
 //			if(libforL && Array.isArray(libforL)) libforL = libforL[0];
 //			if(libforR && Array.isArray(libforR)) libforR = libforR[0];
-			console.log(libforL, libforR);
 			if(miInfoL && miInfoR){
 				return (
-					<div className="wrapper">
+					<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
 						<Burger className="burg" id="theburg"
 										// iteration={function(){return;}}
 										iteration={this.returnToInspect.bind(this)}

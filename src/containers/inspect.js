@@ -43,7 +43,7 @@ export default class InspectPane extends Component {
   }
 	mediaController(){
 		return (
-				<div className="inspectCommentary">
+			<div className="inspectCommentary" onClick={function(e){e.stopPropagation();}}>
   				<Media key={ this.props.audiouri }>
 						<div className="media">
 							<div className="media-player">

@@ -69,6 +69,7 @@ class MEITimeline extends Component {
     var el = event.target;
 //		console.log(el.className);
 		var motif = el.className.baseVal.match(/F[0-9]+/)[0];
+		event.stopPropagation();
     //var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/)[0];
 		motif = shortnameToURI(motif);
     this.props.onMotifChange(motif);
@@ -78,6 +79,7 @@ class MEITimeline extends Component {
 		//		var motif = el.getAttributeNS(null, 'class').match(/F[0-9]+/)[0];
 //		console.log(el.className);
 		var motif = el.className.baseVal.match(/F[0-9]+/)[0];
+		event.stopPropagation();
 		motif = shortnameToURI(motif);
 		this.setState({hover:motif});
 		/*
@@ -96,10 +98,12 @@ class MEITimeline extends Component {
 		bub.style.left = (62+this.state.motifxx[motif])+"px";
 		*/
 	}
-	expand(){
+	expand(e){
+		if(e) e.stopPropagation();
 		this.setState({zoom: true});
 	}
-	contract(){
+	contract(e){
+		if(e) e.stopPropagation();
 		this.setState({zoom: false});
 	}
   render(){

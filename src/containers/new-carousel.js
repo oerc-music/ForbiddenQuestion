@@ -47,7 +47,8 @@ class MEICarousel extends Component {
 			}
 		}
 	}
-	pageClick(uri){
+	pageClick(uri, e){
+		if(e) e.stopPropagation();
 		switch(this.props.view){
 			case "orchestration":
 				this.props.TMClick(this.props.iterations.find(x=>x.orchestralScore==uri)['@id']);
