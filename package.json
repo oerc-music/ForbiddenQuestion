@@ -24,7 +24,7 @@
       "babel-preset-stage-1": "^6.1.18",
       "jsonld": "^1.5.1",
       "jsum": "^0.1.4",
-      "lodash": "^3.10.1",
+      "lodash": "^4.17.19",
       "meld-clients-core": "oerc-music/meld-clients-core.git#forbiddenQuestion",
       "n3": "^0.10.0",
       "querystring": "^0.2.0",
