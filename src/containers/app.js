@@ -261,11 +261,11 @@ class App extends Component {
 	}
 	commentaryClicked(e){
 		if(e.target.tagName=="TEI-REF"){
+			e.stopPropagation();
 			this.setState({popup: e.target.getAttributeNS(null, 'target')});
 		}
 	}
 	clearAllPopups(){
-		console.log("bubble");
 		this.setState({popup: false,
 									 showCommentaryL: false,
 									 showCommentaryR: false,
@@ -273,11 +273,11 @@ class App extends Component {
 	}
 	clearPopup(){
 		this.setState({popup: false});
-	}
+	}/*
 	showPopup(uri){
 		e.stopPropagation();
 		this.setState({popup: uri});
-	}
+	}*/
 	toggleLCommentary(e){
 		e.stopPropagation();
 		this.setState({showCommentaryL: !this.state.showCommentaryL});
