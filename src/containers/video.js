@@ -7,9 +7,8 @@ import CustomPlayPause from '../containers/react-media-player-play-pause';
 
 //import Score from 'meld-client/src/containers/score';
 //import TEI from '../containers/tei';
-import { fetchGraph } from 'meld-clients-core/src/actions/index';
+import { fetchGraph, registerClock, tickTimedResource } from 'meld-clients-core/lib/actions/index';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { registerClock, tickTimedResource } from 'meld-clients-core/src/actions/index'
 
 const MEIManifestation = "meldterm:MEIManifestation";
 const TEIManifestation = "meldterm:TEIManifestation";

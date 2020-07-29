@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux' ;
 import { bindActionCreators } from 'redux';
-import { registerTraversal, traverse, setTraversalObjectives, checkTraversalObjectives } from 'meld-clients-core/src/actions/index';
+import { registerTraversal, traverse, setTraversalObjectives, checkTraversalObjectives } from 'meld-clients-core/lib/actions/index';
 import MediaPlayer from '../components/mediaPlayer';
 import AudioPlayer from '../components/audioPlayer';
 import { Media, Player, controls, utils } from 'react-media-player';
-const { defaultPlayPause, CurrentTime, Progress, SeekBar, Duration, MuteUnmute, Volume, Fullscreen } = controls;
 import CustomPlayPause from '../containers/react-media-player-play-pause';
 //import { projectAnnotations } from '../actions/graph.js';
-const { formatTime } = utils;
-import {prefix} from 'meld-clients-core/src/library/prefixes';
+import {prefix} from 'meld-clients-core/lib/library/prefixes';
 
 //import Score from 'meld-client/src/containers/score';
 import Score from '../containers/score';
@@ -19,8 +17,8 @@ import Popup from '..//containers/popup';
 import InspectPane from '../containers/inspect';
 import OrchestralRibbon from '../containers/orchestralRibbon';
 //import TEI from '../containers/tei';
-import TEI from 'meld-clients-core/src/containers/tei';
-import MyImage from 'meld-clients-core/src/containers/image';
+import TEI from 'meld-clients-core/lib/containers/tei';
+import MyImage from 'meld-clients-core/lib/containers/image';
 import MEICarousel from '../containers/new-carousel';
 import MEITimeline from '../containers/timeline';
 import Essay from '../containers/essay';
@@ -31,6 +29,8 @@ import TwinControls from '../containers/controls';
 import SingleControls from '../containers/single-view-controls';
 //import { fetchGraph } from 'meld-clients-core/src/actions/index';
 
+const { defaultPlayPause, CurrentTime, Progress, SeekBar, Duration, MuteUnmute, Volume, Fullscreen } = controls;
+const { formatTime } = utils;
 const MEIManifestation = prefix.meldterm+"MEIManifestation";
 const MEIEm = "https://meld.linkedmusic.org/terms/MEIEmbodiment";
 const TEIEm = "https://meld.linkedmusic.org/terms/TEIEmbodiment";

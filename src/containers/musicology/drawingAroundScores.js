@@ -1,5 +1,5 @@
-var SVGNS = "http://www.w3.org/2000/svg";
 import {svgRoundedRect, svgText, nsResolver, svgGroup} from '../../library/svgUtils';
+var SVGNS = "http://www.w3.org/2000/svg";
 /*
 function svgText(svgEl, x, y, cname, id, style, content){
   var el = document.createElementNS(SVGNS, "text");

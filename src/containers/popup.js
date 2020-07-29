@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TEI from 'meld-clients-core/src/containers/tei';
+import TEI from 'meld-clients-core/lib/containers/tei';
 
 export default class Popup extends Component {
 	constructor(props) { 

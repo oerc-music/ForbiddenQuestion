@@ -1,7 +1,7 @@
 import {browserHistory} from 'react-router';
 import axios from 'axios';
 import jsonld from 'jsonld'
-import { ANNOTATION_PATCHED, ANNOTATION_POSTED, ANNOTATION_HANDLED, ANNOTATION_NOT_HANDLED, ANNOTATION_SKIPPED } from 'meld-clients-core/src/actions/meldActions';
+import { ANNOTATION_PATCHED, ANNOTATION_POSTED, ANNOTATION_HANDLED, ANNOTATION_NOT_HANDLED, ANNOTATION_SKIPPED } from 'meld-clients-core/lib/actions/meldActions';
 
 export const HAS_BODY = "oa:hasBody"
 export const FETCH_SCORE = 'FETCH_SCORE';

@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import OrchestralRibbon from '../containers/orchestralRibbon';
 import Score from '../containers/score';
-import TEI from 'meld-clients-core/src/containers/tei';
+import TEI from 'meld-clients-core/lib/containers/tei';
 import Swiper from 'react-id-swiper';
 import InlineSVG from 'svg-inline-react';
-import {prefix} from 'meld-clients-core/src/library/prefixes';
+import {prefix} from 'meld-clients-core/lib/library/prefixes';
+import { InstrumentType } from 'meld-clients-core/lib/library/MEIRibbonUtils';
 const defaultVrvOptions = {
 	ignoreLayout:1,
 	adjustPageHeight:1,

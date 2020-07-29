@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux' ;
 import { bindActionCreators } from 'redux';
-import {prefix} from 'meld-clients-core/src/library/prefixes';
+import {prefix} from 'meld-clients-core/lib/library/prefixes';
 /*const { formatTime } = utils;*/
 
 //import Score from 'meld-client/src/containers/score';
 //import TEI from '../containers/tei';
-import TEI from 'meld-clients-core/src/containers/tei';
-import MyImage from 'meld-clients-core/src/containers/image';
+import TEI from 'meld-clients-core/lib/containers/tei';
+import MyImage from 'meld-clients-core/lib/containers/image';
 import { Media, Player, controls, utils } from 'react-media-player';
 import CustomPlayPause from '../containers/react-media-player-play-pause';
-import { fetchGraph } from 'meld-clients-core/src/actions/index';
+import { fetchGraph } from 'meld-clients-core/lib/actions/index';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 const {
   PlayPause,

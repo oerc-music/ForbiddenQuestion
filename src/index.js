@@ -1,19 +1,21 @@
-import React, { Component }  from 'react';
+// import React, { Component }  from 'react';
+import React  from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
-import { Router, Route, browserHistory } from 'react-router'
+// import { Router, Route, browserHistory } from 'react-router'
 
-import { reducers } from 'meld-clients-core/src/reducers';
+import { reducers } from 'meld-clients-core/lib/reducers';
 import App from './containers/app';
-//import ForbiddenQuestion from './containers/musicology/forbiddenQuestion';
 
-//const createStoreWithMiddleware = applyMiddleware(thunk, ReduxPromise)(createStore);
-
-//	<Provider store={createStoreWithMiddleware(lohengrinReducers)}>
-
+ReactDOM.render(
+  <Provider store={createStore(reducers, applyMiddleware(thunk, ReduxPromise))}>
+    <App graphUri="http://localhost:8081/annotations/AskingForbidden.json-ld" />
+  </Provider>
+  , document.querySelector('.container'));
+/*
 ReactDOM.render(
 		<Provider store={createStore(reducers, applyMiddleware(thunk, ReduxPromise))}>
 		<Router history={browserHistory}> 
@@ -34,3 +36,4 @@ ReactDOM.render(
 		</Router>
 	</Provider>
 	, document.querySelector('.container'));
+*/

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import { writeInfoToScore, boundingBoxesForElements, drawMotifBoxes } from '../containers/musicology/drawingAroundScores';
-import { fetchScore, fetchGraph, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-clients-core/src/actions/index';
+import { fetchScore, fetchGraph, scoreNextPage, scorePrevPage, HAS_BODY, HAS_TARGET } from 'meld-clients-core/lib/actions/index';
 import { 
 	MARKUP_EMPHASIS, 
 	handleEmphasis,

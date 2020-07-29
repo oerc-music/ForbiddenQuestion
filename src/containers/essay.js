@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 
 //import Score from 'meld-client/src/containers/score';
 //import TEI from '../containers/tei';
-import TEI from 'meld-clients-core/src/containers/tei';
-import MyImage from 'meld-clients-core/src/containers/image';
-import { fetchGraph } from 'meld-clients-core/src/actions/index';
+import TEI from 'meld-clients-core/lib/containers/tei';
+import MyImage from 'meld-clients-core/lib/containers/image';
+import { fetchGraph } from 'meld-clients-core/lib/actions/index';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const MEIManifestation = "meldterm:MEIManifestation";
