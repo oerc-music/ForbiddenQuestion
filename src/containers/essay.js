@@ -52,6 +52,7 @@ export default class Essay extends Component {
     return (
 			<TEI key="/Essay/AskingAForbiddenQuestion.tei"
 			     uri="/Essay/AskingAForbiddenQuestion.tei"
+					 annotations={[]}
 					 // motif={ this.props.current }
 					 scrollFun={this.inViewRefs.bind(this)}/>
     );

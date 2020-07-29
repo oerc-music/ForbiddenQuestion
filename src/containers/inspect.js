@@ -34,7 +34,18 @@ const Carousel= "meldterm:MEICarousel";
 const CarouselClassic= "meldterm:MEIClassicCarousel";
 const FOR_ORCHESTRA = "http://id.loc.gov/authorities/performanceMediums/2013015516";
 const HAS_PIANO = "http://id.loc.gov/authorities/performanceMediums/2013015550";
+const additionalInstruments = {
+	// Lohengrin-specific 'instruments'
+  "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', null, 'Elsa'),
+  "ortrud": new InstrumentType(false,'Ortrud', 'O', 'Cast', null, 'Ort.'),
+  "friedrich": new InstrumentType(false,'Friedrich', 'F', 'Cast', null, 'Fried.'),
+  "könig": new InstrumentType(false,'König', 'K', 'Cast', null, 'Kön.'),
+  "women and noble boys soprano": new InstrumentType(false,'Women & boys S', 'S', 'Cast', null, 'S.'),
+  "women and noble boys alto": new InstrumentType(false,'Women & boys A', 'A', 'Cast', null, 'A.'),
+  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', null, 'Loh')
+}
 
+			
 export default class InspectPane extends Component {
   constructor(props) {
     super(props);
@@ -84,12 +95,16 @@ export default class InspectPane extends Component {
 					<div className="librettoTab">
 						<div className="inspectLibretto">
 							<TEI key={this.props.position+"-"+this.props.libretto}
-									 annotations={this.props.annotations} uri={this.props.librettoTexts.de} />
+									 //annotations={this.props.annotations}
+									 annotations={[]}
+									 uri={this.props.librettoTexts.de} />
 						</div>
 						{this.props.showEnglish ?
 							( <div className="English inspect dark">
 								<TEI key={this.props.position+"-"+this.props.libretto}
-											 annotations={this.props.annotations} uri={this.props.librettoTexts.en} />
+										 //annotations={this.props.annotations}
+										 annotations={[]}
+										 uri={this.props.librettoTexts.en} />
 								</div>
 							) : null }
 					<button className="translationButton" onClick={buttonAction}>Translation</button>
@@ -116,7 +131,9 @@ export default class InspectPane extends Component {
 						</div>
 						<div className="inspectLibretto">
 							<TEI key={this.props.position+"-"+this.props.libretto}
-									 annotations={this.props.annotations} uri={this.props.libretto} />
+									 //annotations={this.props.annotations}
+									 annotations={[]}
+									 uri={this.props.libretto} />
 						</div>
 						{this.props.toggleCommentary ? this.mediaController() : false}
 					</div>
@@ -209,11 +226,11 @@ export default class InspectPane extends Component {
 				 </TabPanel>)
 				: false;
 		var orchTab = this.props.orchestralScore ?
-				(<TabPanel><OrchestralRibbon key={this.props.position+"-"+this.props.orchestralScore} uri={this.props.orchestralScore} width={this.props.width-10} height={this.props.height - (this.props.hasPlayer ? 300 : 260)} barNo={this.props.details[prefix.meld+"barNumberInAct"] ? this.props.details[prefix.meld+"barNumberInAct"]['@value'] : false}/>
+				(<TabPanel><OrchestralRibbon key={this.props.position+"-"+this.props.orchestralScore} uri={this.props.orchestralScore} width={this.props.width-10} height={this.props.height - (this.props.hasPlayer ? 300 : 260)} barNo={this.props.details[prefix.meld+"barNumberInAct"] ? this.props.details[prefix.meld+"barNumberInAct"]['@value'] : false} additionalInstruments={additionalInstruments}/>
 				 { this.props.orchestrationProse ?
 					 (<div className={this.props.hasPlayer ? "shorter inspect orchestrationProse"
 														: "inspect orchestrationProse"}>
-						<TEI key={this.props.orchestrationProse} showAnnotations={false}
+							<TEI key={this.props.orchestrationProse} showAnnotations={false} annotations={[]}
 					       uri={this.props.orchestrationProse}/>
 						</div>) : false}
 				 {this.props.toggleCommentary ? this.mediaController() : false}

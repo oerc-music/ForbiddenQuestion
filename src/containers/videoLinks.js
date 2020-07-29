@@ -114,13 +114,15 @@ class VideoLinks extends Component {
 			 && this.props.uri in this.props.timesync.mediaResources){
 			cT = this.props.timesync.mediaResources[this.props.uri]['currentTime'];
 			var syncs = this.props.timesync.mediaResources[this.props.uri]['times'];
-			var times = Object.keys(syncs).map((t)=> Number(t));
-			var window = 5;
-			for(var i=0; i<times.length; i++){
-				if(cT>times[i] && cT < (syncs[times[i]].end ? syncs[times[i]].end : times[i]+window)){
-					links.push(syncs[times[i]]);
+			if(syncs){
+				var times = Object.keys(syncs).map((t)=> Number(t));
+				var window = 5;
+				for(var i=0; i<times.length; i++){
+					if(cT>times[i] && cT < (syncs[times[i]].end ? syncs[times[i]].end : times[i]+window)){
+						links.push(syncs[times[i]]);
+					}
 				}
-			}
+			} else console.log("no syncs", this.props.timesync, this.props.uri);
 		}
 		var linkDivs = this.makeLinks(links);
 /*		if(document.getElementsByTagName('tei-link').item(0)){

@@ -104,7 +104,8 @@ class App extends Component {
   }
   
   componentDidMount() {
-		if(this.props.graphUri || this.props.route.graphUri) { 
+		if(this.props.graphUri) { 
+//		if(this.props.graphUri || this.props.route.graphUri) { 
 			//const graphUri = (this.props.graphUri || this.props.route.graphUri );
 			const graphUri = "/Essay/data.json-ld";
 			this.props.registerTraversal(graphUri,
@@ -499,7 +500,8 @@ class App extends Component {
 		// targets in our topLevel
 		if(!this.state.iterations) return (<div className="wrapper">Loading...</div>);
 		var current = this.state.currentMotif || 'https://meld.linkedmusic.org/companion/F1';
-		var mode = this.state.mode || this.props.route.mode || 'Home'; //IterationInspect';
+		//		var mode = this.state.mode || this.props.route.mode || 'Home'; //IterationInspect';
+		var mode = this.state.mode || 'Home'; //IterationInspect';
 		var view = this.state.preferredView || 'score';
 		var popup = null;
 		if(this.state.popup) {
@@ -518,7 +520,7 @@ class App extends Component {
 			var commentaryuri = this.commentaryForMotif(current);
 			var audiouri = this.audioForMotif(current);
 			return (
-				<div className="wrapper">
+				<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
 					<Burger className="burg" id="theburg" TM={function(e){e.stopPropagation(); return;}}
 									isOpen={false} video={this.videoMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}
 									iteration={this.returnToInspect.bind(this)} essay={this.essayMode.bind(this)}/>
@@ -541,14 +543,14 @@ class App extends Component {
 				                 onMotifChange={this.handleMotifChange.bind(this)}
 												 TMClick={this.handleTMClick.bind(this)}
 												 segmentLabels={this.state.segmentLabels}
- 												 position={this.props.location.query.position}
- 												 supplements={this.props.location.query.supplements}
+// 												 position={this.props.location.query.position}
+// 												 supplements={this.props.location.query.supplements}
 												 iterations={this.state.iterations}
  												 layout="classic"/>
-						<div className="TMcommentary carousel dark">
+						<div className="TMcommentary carousel dark" onClick={this.commentaryClicked.bind(this)}>
 							{commentaryuri ?
-								<TEI key={ commentaryuri } uri={ commentaryuri } motif={ current } 
-							 handleTEIRef={this.showPopup.bind(this)}
+							 <TEI key={ commentaryuri } uri={ commentaryuri } motif={ current } annotations={[]}
+//							 handleTEIRef={this.showPopup.bind(this)}
 											 title={"Commentary"}/>
 								: <div className="emptyCommentary"/>}
 								{audiouri ?
@@ -582,7 +584,8 @@ class App extends Component {
 													 iterations={this.state.iterations}
 													 />
 						</div>
-					</div>
+					{popup}
+				</div>
 			);					
 		} else if(mode=="IterationInspect") {
 			if(Array.isArray(current)) {
@@ -595,6 +598,7 @@ class App extends Component {
 			//			console.log(this.state.iterations, current, miInfo, miInfo[prefix.compVocab+'hasOrchestrationDescription']);
 			var lib = this.librettoTextForMotif(current);
 			var liblang = lib[language];
+			console.log(this.props.graph.outcomes);
 			if(miInfo){
 				return (
 					<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
@@ -659,9 +663,9 @@ class App extends Component {
                              details={miInfo}
 														 commentary={this.state.showCommentaryL ?
 																				 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
-																					 <TEI key={ commentaryuri } showAnnotations={false}
+																					 <TEI key={ commentaryuri } showAnnotations={false} annotations={[]}
 																									 onClick={function(e){console.log('ok', e.target)}}
-																								handleTEIRef={this.showPopup.bind(this)}
+//																								handleTEIRef={this.showPopup.bind(this)}
 																									uri={ commentaryuri } motif={ current }/>
 																				 </div>
 																			 : false}/>
@@ -737,8 +741,8 @@ class App extends Component {
 													 height={this.state.height - 84 - 197}
 													 width={this.state.width*0.4}
 													 commentary={this.state.showCommentaryL ?
-																			 <div className="inspect commentary dark">
-																					 <TEI key={ commentaryuri } showAnnotations={false}
+																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
+																				 <TEI key={ commentaryuri } showAnnotations={false} annotations={[]}
 																									uri={ commentaryuri } motif={ current }/>
 																				 </div>
 																			 : false}/>
@@ -838,8 +842,8 @@ class App extends Component {
 													 orchestrationProse={miInfoL[prefix.compVocab+'hasOrchestrationDescription'] ? miInfoL[prefix.compVocab+'hasOrchestrationDescription']['@id'] : false}
 													 highlight={this.state.highlight}
 													 commentary={this.state.showCommentaryL ?
-																			 <div className="inspect commentary dark">
-																			 <TEI key={ commentaryuriL } 
+																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
+																				 <TEI key={ commentaryuriL } annotations={[]}
 																									uri={ commentaryuriL } motif={ current[0] }/>
 																				 </div>
 																			 : false}/>
@@ -865,8 +869,8 @@ class App extends Component {
 														 audiouri={audiouriR}
 														 orchestrationProse={miInfoR[prefix.compVocab+'hasOrchestrationDescription'] ? miInfoR[prefix.compVocab+'hasOrchestrationDescription']['@id'] : false}
 														 commentary={this.state.showCommentaryR ?
-																			 <div className="inspect commentary dark">
-																					 <TEI key={ commentaryuriR }
+																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
+																				 <TEI key={ commentaryuriR } annotations={[]}
 																									uri={ commentaryuriR } motif={ current[1] }/>
 																				 </div>
 																			 : false}/>
@@ -902,6 +906,7 @@ class App extends Component {
 														 iterations={this.state.iterations}
 														 />
 							</div>
+							{popup}
 						</div>
 					</div>
 				);

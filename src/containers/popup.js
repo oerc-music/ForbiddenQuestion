@@ -7,7 +7,7 @@ export default class Popup extends Component {
 	}
 
   render () {
-		var TEIBlocks = this.props.uris.map(uri=><TEI key={ uri } uri={ uri } />);
+		var TEIBlocks = this.props.uris.map(uri=><TEI key={ uri } uri={ uri } annotations={[]} />);
 		console.log('yay');
     return (
 			<div className="background">

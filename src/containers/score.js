@@ -77,6 +77,7 @@ class Score extends Component {
 					} else {
 						svg = this.props.score.vrvTk.renderData(this.props.score.MEI[this.props.uri], options);
 						this.props.score.SVG[this.props.uri] = svg;
+						if(!this.props.score.options) this.props.score.options = {};
 						this.props.score.options[this.props.uri] = options;
 					}
 //					this.setState({MEI: this.props.score.MEI[this.props.uri], SVG: svg});

@@ -22,6 +22,16 @@ const defaultVrvOptions = {
 	//	pageWidth: 1400
 		pageWidth: 1300
 }
+const additionalInstruments = {
+	// Lohengrin-specific 'instruments'
+  "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', null, 'Elsa'),
+  "ortrud": new InstrumentType(false,'Ortrud', 'O', 'Cast', null, 'Ort.'),
+  "friedrich": new InstrumentType(false,'Friedrich', 'F', 'Cast', null, 'Fried.'),
+  "könig": new InstrumentType(false,'König', 'K', 'Cast', null, 'Kön.'),
+  "women and noble boys soprano": new InstrumentType(false,'Women & boys S', 'S', 'Cast', null, 'S.'),
+  "women and noble boys alto": new InstrumentType(false,'Women & boys A', 'A', 'Cast', null, 'A.'),
+  "lohengrin": new InstrumentType(false,'Lohengrin', 'Lo', 'Cast', null, 'Loh')
+}
 class MEICarousel extends Component {
 	constructor(props) {
 		super(props);
@@ -294,6 +304,7 @@ class MEICarousel extends Component {
 																										 width="350" height="400"
 																										 barNo={this.props.iterations[fsixx[ix]][prefix.meld+"barNumberInAct"] ?
 																														this.props.iterations[fsixx[ix]][prefix.meld+"barNumberInAct"]['@value'] : false}
+																									 additionalInstruments={additionalInstruments}
 			   																						 extraClasses="carousel" uri={m}/>
 											 </div>
 									 )}
@@ -309,7 +320,8 @@ class MEICarousel extends Component {
 						{toDraw.map( (v, ix) =>
 												 <div key={ix} className="carouselItemWrapper">
 														 <OrchestralRibbon key={ v } uri={ v } width="350"
-																							   height="600"/>
+																							 additionalInstruments={additionalInstruments}
+																							 height="600"/>
 												 </div>)}
 			</Swiper>
 					</div>);
