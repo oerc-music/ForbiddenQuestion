@@ -21,8 +21,8 @@ import TEI from 'meld-clients-core/lib/containers/tei';
 import MyImage from 'meld-clients-core/lib/containers/image';
 import MEICarousel from '../containers/new-carousel';
 import MEITimeline from '../containers/timeline';
-import Essay from '../containers/essay';
-import EssayLinks from '../containers/essayLinks';
+import Essay from 'meld-clients-core/lib/containers/essay';
+import EssayLinks from 'meld-clients-core/lib/containers/essayLinks';
 import Video from '../containers/video';
 import VideoLinks from '../containers/videoLinks';
 import TwinControls from '../containers/controls';
@@ -124,6 +124,7 @@ class App extends Component {
     this.setState({currentMotif: motif});
   }
 	setVisibleLinks(links){
+		console.log("setting", links);
 		this.setState({visibleLinks: links});
 	}
   handleTMClick(motif){
@@ -549,7 +550,7 @@ class App extends Component {
  												 layout="classic"/>
 						<div className="TMcommentary carousel dark" onClick={this.commentaryClicked.bind(this)}>
 							{commentaryuri ?
-							 <TEI key={ commentaryuri } uri={ commentaryuri } motif={ current } annotations={[]}
+							 <TEI key={ commentaryuri } uri={ commentaryuri } motif={ current } 
 //							 handleTEIRef={this.showPopup.bind(this)}
 											 title={"Commentary"}/>
 								: <div className="emptyCommentary"/>}
@@ -663,7 +664,7 @@ class App extends Component {
                              details={miInfo}
 														 commentary={this.state.showCommentaryL ?
 																				 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
-																					 <TEI key={ commentaryuri } showAnnotations={false} annotations={[]}
+																					 <TEI key={ commentaryuri } showAnnotations={false} 
 																									 onClick={function(e){console.log('ok', e.target)}}
 //																								handleTEIRef={this.showPopup.bind(this)}
 																									uri={ commentaryuri } motif={ current }/>
@@ -742,7 +743,7 @@ class App extends Component {
 													 width={this.state.width*0.4}
 													 commentary={this.state.showCommentaryL ?
 																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
-																				 <TEI key={ commentaryuri } showAnnotations={false} annotations={[]}
+																				 <TEI key={ commentaryuri } showAnnotations={false} 
 																									uri={ commentaryuri } motif={ current }/>
 																				 </div>
 																			 : false}/>
@@ -924,7 +925,8 @@ class App extends Component {
 					<div className="topMenu">
 						<div className="title"><div className="icon essay"><img src="/style/icons/essay.svg"/></div>Essay</div>
 					</div>
-					<Essay current={ current } updateLinks={ this.setVisibleLinks.bind(this) }/>
+					<Essay current={ current } updateLinks={ this.setVisibleLinks.bind(this) }
+					       uri={"/Essay/AskingAForbiddenQuestion.tei"}/>
 					<EssayLinks visible={ this.state.visibleLinks }
 											advanceTime={this.waiter.bind(this)}
 											iterations={ this.state.iterations }
