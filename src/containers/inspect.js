@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux' ;
-import { bindActionCreators } from 'redux';
-import MediaPlayer from '../components/mediaPlayer';
-import AudioPlayer from '../components/audioPlayer';
 import { Media, Player, controls, utils } from 'react-media-player';
 import CustomPlayPause from '../containers/react-media-player-play-pause';
 import {prefix} from 'meld-clients-core/lib/library/prefixes';
@@ -10,30 +6,13 @@ import { InstrumentType } from 'meld-clients-core/lib/library/MEIRibbonUtils';
 
 //import Score from 'meld-client/src/containers/score';
 import Score from '../containers/score';
-import Burger from '../containers/burger';
 import OrchestralRibbon from 'meld-clients-core/lib/containers/orchestralRibbon';
 //import TEI from '../containers/tei';
 import TEI from 'meld-clients-core/lib/containers/tei';
-import MyImage from 'meld-clients-core/lib/containers/image';
-import MEICarousel from '../containers/new-carousel';
-import MEITimeline from '../containers/timeline';
-import TwinControls from '../containers/controls';
-import SingleControls from '../containers/single-view-controls';
-import { fetchGraph } from 'meld-clients-core/lib/actions/index';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const { defaultPlayPause, CurrentTime, Progress, SeekBar, Duration, MuteUnmute, Volume, Fullscreen } = controls;
 const { formatTime } = utils;
-const MEIManifestation = "meldterm:MEIManifestation";
-const TEIManifestation = "meldterm:TEIManifestation";
-const IIIFManifestation = "meldterm:IIIFManifestation";
-const VideoManifestation = "meldterm:VideoManifestation";
-const AudioManifestation = "meldterm:AudioManifestation";
-const ImageManifestation = "meldterm:ImageManifestation";
-const Carousel= "meldterm:MEICarousel";
-const CarouselClassic= "meldterm:MEIClassicCarousel";
-const FOR_ORCHESTRA = "http://id.loc.gov/authorities/performanceMediums/2013015516";
-const HAS_PIANO = "http://id.loc.gov/authorities/performanceMediums/2013015550";
 const additionalInstruments = {
 	// Lohengrin-specific 'instruments'
   "elsa": new InstrumentType(false,'Elsa', 'E', 'Cast', null, 'Elsa'),
@@ -114,10 +93,10 @@ export default class InspectPane extends Component {
 			);
 		} else if(this.props.libretto){
 			var deDiv,enDiv;
-			if(this.props.language=='de'){
+			if(this.props.language==='de'){
 				deDiv = <div className='option active'>German</div>;
 				enDiv = <div className='option clickable' onClick={this.props.toggleLanguage}>English</div>;
-			} else if (this.props.language=='en'){
+			} else if (this.props.language==='en'){
 				deDiv = <div className='option clickable' onClick={this.props.toggleLanguage}>German</div>;
 				enDiv = <div className='option active'>English</div>;
 			}
@@ -206,7 +185,7 @@ export default class InspectPane extends Component {
 				if(!Array.isArray(em)) em = [em];
 				return {'@id':x['@id'],
 								'anchors':em.filter(y=>memberFragment(y, this.props.vocalScore)),
-								'audio':em.filter(y=>y['@type']==prefix.meld+'AudioEmbodiment' || y['@type'].indexOf(prefix.meld+'AudioEmbodiment')>-1)}}.bind(this));
+								'audio':em.filter(y=>y['@type']===prefix.meld+'AudioEmbodiment' || y['@type'].indexOf(prefix.meld+'AudioEmbodiment')>-1)}}.bind(this));
 		var vsTab = this.props.vocalScore ?
 				(<TabPanel>
 				   <Score key={this.props.position+"-"+this.props.vocalScore}
@@ -278,8 +257,8 @@ function memberFragment(el, uri){
 	var ms = el['http://www.w3.org/2000/01/rdf-schema#member']
 	var matchend = uri.length;
 	for(var i=0; i<ms.length; i++){
-		if(ms[i]['@id']==uri) return true;
-		if(ms[i]['@id'].indexOf(uri)==0 && (ms[i]['@id'].substring(matchend, matchend+1)=='#' || ms[i]['@id'].substring(matchend, matchend+1)=='?')) return true;
+		if(ms[i]['@id']===uri) return true;
+		if(ms[i]['@id'].indexOf(uri)===0 && (ms[i]['@id'].substring(matchend, matchend+1)==='#' || ms[i]['@id'].substring(matchend, matchend+1)==='?')) return true;
 	}
 	return false;
 }

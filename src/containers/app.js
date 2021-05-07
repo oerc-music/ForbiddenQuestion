@@ -2,60 +2,42 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux' ;
 import { bindActionCreators } from 'redux';
 import { registerTraversal, traverse, setTraversalObjectives, checkTraversalObjectives } from 'meld-clients-core/lib/actions/index';
-import MediaPlayer from '../components/mediaPlayer';
-import AudioPlayer from '../components/audioPlayer';
 import { Media, Player, controls, utils } from 'react-media-player';
 import CustomPlayPause from '../containers/react-media-player-play-pause';
 //import { projectAnnotations } from '../actions/graph.js';
 import {prefix} from 'meld-clients-core/lib/library/prefixes';
 
-//import Score from 'meld-client/src/containers/score';
-import Score from '../containers/score';
 import Burger from '../containers/burger';
 import Home from '../containers/landing';
 import Popup from '../containers/popup';
 import InspectPane from '../containers/inspect';
-import OrchestralRibbon from '../containers/orchestralRibbon';
-//import TEI from '../containers/tei';
 import TEI from 'meld-clients-core/lib/containers/tei';
-import MyImage from 'meld-clients-core/lib/containers/image';
 import MEICarousel from '../containers/new-carousel';
 import MEITimeline from '../containers/timeline';
 import Essay from 'meld-clients-core/lib/containers/essay';
 import EssayLinks from 'meld-clients-core/lib/containers/essayLinks';
 import Video from 'meld-clients-core/lib/containers/video';
 import VideoLinks from 'meld-clients-core/lib/containers/videoLinks';
-import TwinControls from '../containers/controls';
-import SingleControls from '../containers/single-view-controls';
-//import { fetchGraph } from 'meld-clients-core/src/actions/index';
 
 const { defaultPlayPause, CurrentTime, Progress, SeekBar, Duration, MuteUnmute, Volume, Fullscreen } = controls;
 const { formatTime } = utils;
-const MEIManifestation = prefix.meldterm+"MEIManifestation";
 const MEIEm = "https://meld.linkedmusic.org/terms/MEIEmbodiment";
 const TEIEm = "https://meld.linkedmusic.org/terms/TEIEmbodiment";
-const TEIM = "https://meld.linkedmusic.org/terms/TEIManifestation";
-const TEIManifestation = prefix.meldterm+"TEIManifestation";
-const IIIFManifestation = prefix.meldterm+"IIIFManifestation";
-const VideoManifestation = prefix.meldterm+"VideoManifestation";
-const AudioManifestation = prefix.meldterm+"AudioManifestation";
 const AuEm = prefix.meldterm+"AudioEmbodiment";
 const ImageManifestation = prefix.meldterm+"ImageManifestation";
-const Carousel= prefix.meldterm+"MEICarousel";
-const CarouselClassic= "meldterm:MEIClassicCarousel";
 const FOR_ORCHESTRA = "http://id.loc.gov/authorities/performanceMediums/2013015516";
 const HAS_PIANO = "http://id.loc.gov/authorities/performanceMediums/2013015550";
 const VIDEOURI = "https://lohengrin.linkedmusic.org/Essay/rethinkingWagnersLeitmotif.mp4";
 const MAX_TRAVERSERS = 30;
 
 const donotfollow = ["https://meld.linkedmusic.org/terms/",
-										 "https://meld.linkedmusic.org/annotations/AskingForbi",
+										 "https://meld.linkedmusic.org/annotations/AskingForbidden_",
 										 "https://meld.linkedmusic.org/companion/lyr",
 										 "https://meld.linkedmusic.org/companion/3",
 										 "https://meld.linkedmusic.org/companion/1",
 										 "https://meld.linkedmusic.org/companion/0",
 										 "https://meld.linkedmusic.org/companion/2",
-										 "https://meld.linkedmusic.org/annotations/",
+//										 "https://meld.linkedmusic.org/annotations/",
 										 "https://meld.linkedmusic.org/companion/add-",
 										 "https://meld.linkedmusic.org/companion/cdr",
 										 "https://meld.linkedmusic.org/companion/stage",
@@ -104,17 +86,18 @@ class App extends Component {
   }
   
   componentDidMount() {
-		if(this.props.graphUri) { 
+		if(this.props.graphUri || true) { 
 //		if(this.props.graphUri || this.props.route.graphUri) { 
 			//const graphUri = (this.props.graphUri || this.props.route.graphUri );
-			const graphUri = "/Essay/data.json-ld";
+			//const graphUri = "/Essay/data.json-ld";
+			const graphUri = "https://meld.linkedmusic.org/annotations/AskingForbidden.json-ld";
 			this.props.registerTraversal(graphUri,
 //																	 {numHops: 3,
-																	 {numHops: 0,
-																			objectPrefixWhitelist: ["https://meld.linkedmusic.org", "http://localhost"],
-																		objectPrefixBlacklist: donotfollow,
-																		propertyPrefixBlacklist: ["http://www.linkedmusic.org/ontologies/segment/"],
-																		objectBlacklistTest: avoidThesePatterns
+																	 {numHops: 4,
+																		extendObjectPrefix: ["https://meld.linkedmusic.org", "http://localhost"],
+																		ignoreObjectPrefix: donotfollow,
+																		// propertyPrefixBlacklist: ["http://www.linkedmusic.org/ontologies/segment/"],
+																		// objectBlacklistTest: avoidThesePatterns
 																	 });
 			//this.props.fetchGraph(graphUri);
 			window.addEventListener("resize", this.updateDimensions.bind(this));
@@ -167,6 +150,7 @@ class App extends Component {
 				break;
 			case 'inspect':
 				this.setState({mode: 'IterationInspect', currentMotif: motif, leftMotif: false, rightMotif: false});
+				// no default
 		}
 	}
 	waiter(){
@@ -216,7 +200,7 @@ class App extends Component {
   }
 	commentaryForMotif(motif){
 		if(this.state.iterations){
-			var motifInfo = this.state.iterations.find(x=>x['@id']==motif);
+			var motifInfo = this.state.iterations.find(x=>x['@id']===motif);
 			if(motifInfo) return motifInfo.commentary;
 			return false;
 		} else {
@@ -224,17 +208,18 @@ class App extends Component {
 		}
 	}
 	componentDidUpdate(prevProps, prevState){
-//		console.log('updating');
+		//		console.log('updating');
 		if(prevProps && "graph" in prevProps) {
-//			console.log('updating');
-			if(prevProps.traversalPool.running == 1 && this.props.traversalPool.running ==0){
+			//			console.log('updating');
+			if(prevProps.traversalPool.running===1 && this.props.traversalPool.running===0){
 				// check our traversal objectives if the graph has updated
 //				if(prevProps.graph.graph.length !== this.props.graph.graph.length) {
 				//					console.log('checking graph');
 				// console.log(this.props.graph.graph.length)
-				if(this.props.graph.graph.length<400) return;
+//				if(this.props.graph.graph.length<400) return;
 				console.log("updating – it's finished traversing");
 				this.props.checkTraversalObjectives(this.props.graph.graph, this.props.graph.objectives);
+				this.updateLists();
 				return;/*
 				//				}
 				if(prevProps.graph.outcomesHash !== this.props.graph.outcomesHash) {
@@ -250,11 +235,16 @@ class App extends Component {
 				if(prevProps.graph.outcomesHash !== this.props.graph.outcomesHash) {
 //					console.log('rebuilding structures');
 					// outcomes have changed, need to update our projections!
+					this.props.checkTraversalObjectives(this.props.graph.graph, this.props.graph.objectives);
 					this.updateLists();
 				} else {
 				}
-//				console.log("done?");
+				
 //				console.log(prevProps.traversalPool);				
+			} else if(!Object.keys(this.props.traversalPool.pool).length) {
+				console.log("Nothing left, though some traversers still running");
+				// this.props.checkTraversalObjectives(this.props.graph.graph, this.props.graph.objectives);
+				// this.updateLists();
 			}
 		}
 	}
@@ -262,7 +252,7 @@ class App extends Component {
 		return segment=>segment['@id']===target['@id'];
 	}
 	commentaryClicked(e){
-		if(e.target.tagName=="TEI-REF"){
+		if(e.target.tagName==="TEI-REF"){
 			e.stopPropagation();
 			this.setState({popup: e.target.getAttributeNS(null, 'target')});
 		}
@@ -309,24 +299,24 @@ class App extends Component {
 		}
 	}
 	updateLists(){
-		var annot, mi, seg, meis, teis, videoLinks, mic, segItems;
+		var mi, seg, videoLinks, segItems;
 		const POF = "http://purl.org/vocab/frbr/core#part";
-		const ASSOC = "http://example.com/must-revisit-these/associatedWith";
 		const EMBOD = "http://purl.org/vocab/frbr/core#embodiment";
-//		console.log("updating lists", this.props.graph.outcomes.map(x=>x['@graph']));
 		if(Object.keys(this.props.graph.outcomes).length< this.props.graph.outcomes.length){
 			// Still processing objectives
 			return;
 		}
 		// [mi, seg, meis, teis, segItems] = this.props.graph.outcomes;
 		[mi, seg, segItems, videoLinks] = this.props.graph.outcomes;
-		if(!mi || !seg || !mi['@graph'].length || !seg['@graph'].length) {
+		if(!mi || !seg || !segItems || !videoLinks
+			 || !('@graph' in mi) || !('@graph' in seg) || !('@graph' in segItems) || !('@graph' in videoLinks) 
+			 || !mi['@graph'].length || !seg['@graph'].length || !segItems['@graph'].length || !videoLinks['@graph'].length) {
 			return;
 		} else {
 		}
 		var iterations = mi['@graph'].slice(0).sort((x, y) =>
 																								(JSONLDInt(y[prefix.meld+'actNumber'])< JSONLDInt(x[prefix.meld+'actNumber']))
-																								|| (JSONLDInt(x[prefix.meld+'actNumber']) == JSONLDInt(y[prefix.meld+'actNumber'])
+																								|| (JSONLDInt(x[prefix.meld+'actNumber']) === JSONLDInt(y[prefix.meld+'actNumber'])
 																										&& JSONLDInt(y[prefix.meld+'barNumberInAct']) < JSONLDInt(x[prefix.meld+'barNumberInAct'])));
 		if(videoLinks && videoLinks['@graph'].length) this.timelineForVideoLinks(videoLinks['@graph']);
 		for(var i=0; i<iterations.length; i++){
@@ -347,15 +337,15 @@ class App extends Component {
 			if(mii.embodiments){
 				for(var emi=0; emi<mii.embodiments.length; emi++){
 					if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']
-						 && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']==FOR_ORCHESTRA){
+						 && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===FOR_ORCHESTRA){
 						mii.orchestralScore = mii.embodiments[emi]['@id'];
-					} else if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'] && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']==HAS_PIANO){
+					} else if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'] && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===HAS_PIANO){
 						mii.vocalScore = mii.embodiments[emi]['@id'];
-					}	else if(mii.embodiments[emi]['@type']=="https://meld.linkedmusic.org/terms/TEIEmbodiment"
-									  && mii.embodiments[emi]['http://schema.org/inLanguage']=='de') {
+					}	else if(mii.embodiments[emi]['@type']==="https://meld.linkedmusic.org/terms/TEIEmbodiment"
+									  && mii.embodiments[emi]['http://schema.org/inLanguage']==='de') {
 						mii.de = mii.embodiments[emi]['@id'];
-					} else if(mii.embodiments[emi]['@type']=="https://meld.linkedmusic.org/terms/TEIEmbodiment"
-									  && mii.embodiments[emi]['http://schema.org/inLanguage']=='en') {
+					} else if(mii.embodiments[emi]['@type']==="https://meld.linkedmusic.org/terms/TEIEmbodiment"
+									  && mii.embodiments[emi]['http://schema.org/inLanguage']==='en') {
 						mii.en = mii.embodiments[emi]['@id'];
 					} 
 				}
@@ -396,7 +386,7 @@ class App extends Component {
 	}
 	audioForMotif(motif){
 		if(this.state.iterations){
-			var motifInfo = this.state.iterations.find(x=>x['@id']==motif);
+			var motifInfo = this.state.iterations.find(x=>x['@id']===motif);
 			if(motifInfo && motifInfo.embodimentLists.MP3.length) return motifInfo.embodimentLists.MP3[0];
 			return false;
 		} else {
@@ -405,7 +395,7 @@ class App extends Component {
 	}
 	librettoTextForMotif(motif, language){
 		if(this.state.iterations && motif){
-			var motifInfo = this.state.iterations.find(x=>x['@id']==motif);
+			var motifInfo = this.state.iterations.find(x=>x['@id']===motif);
 //			console.log(motifInfo, '----------------------');
 			if(language) return motifInfo[language];
 			var texts = {de: false, en:false};
@@ -486,7 +476,7 @@ class App extends Component {
 	}
 	toggleLanguage(e){
 		if(e) e.stopPropagation();
-		this.setState({language: (this.state.language=='de' ? 'en' : 'de')});
+		this.setState({language: (this.state.language==='de' ? 'en' : 'de')});
 	}
 	showTranslation(e){
 		if(e) e.stopPropagation();
@@ -505,38 +495,39 @@ class App extends Component {
 		var mode = this.state.mode || 'Home'; //IterationInspect';
 		var view = this.state.preferredView || 'score';
 		var popup = null;
+		var commentaryuri, audiouri, miInfo, language, lib, liblang;
 		if(this.state.popup) {
 //			console.log("pop");
 			popup = <Popup key={this.state.popup} uris={this.state.popup.split(' ')}/>;
 		}
 //		if(this.props.route.mode=="TimeMachine" || this.state.mode=="TimeMachine"){
-		if(mode=="TimeMachine"){
+		if(mode==="TimeMachine"){
 			if(Array.isArray(current)){
-				if(this.state.submode == 'addLeft'){
+				if(this.state.submode === 'addLeft'){
 					current=current[0];
-				} else if (this.state.submode == 'addRight'){
+				} else if (this.state.submode === 'addRight'){
 					current=current[1];
 				}
 			}
-			var commentaryuri = this.commentaryForMotif(current);
-			var audiouri = this.audioForMotif(current);
+			commentaryuri = this.commentaryForMotif(current);
+			audiouri = this.audioForMotif(current);
 			return (
 				<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
 					<Burger className="burg" id="theburg" TM={function(e){e.stopPropagation(); return;}}
 									isOpen={false} video={this.videoMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}
 									iteration={this.returnToInspect.bind(this)} essay={this.essayMode.bind(this)}/>
 					<div className="topMenu">
-						<div className="title"><div className="icon timemachine"><img src="/style/icons/timemachine.svg"/></div>{this.state.submode=='addLeft' || this.state.submode=='addRight' ? 'Choose an iteration to compare...' : 'Time Machine'}</div>
+						<div className="title"><div className="icon timemachine"><img alt="Interactive timeline of the opera" src="/style/icons/timemachine.svg"/></div><span>{this.state.submode==='addLeft' || this.state.submode==='addRight' ? 'Choose an iteration to compare...' : 'Time Machine'}</span></div>
 						<div className="optionBlock">
-							{view=='score'
+							{view==='score'
 								? <div className='option active'>Vocal Score</div>
 							: <div className='option clickable' onClick={this.scoreMode.bind(this)}>Vocal Score</div>}
 							<div className='separator'/>
-							{view=='orchestration'
+							{view==='orchestration'
 								? <div className='option active'>Orchestration</div>
 							: <div className='option clickable' onClick={this.orchestrationMode.bind(this)}>Orchestration</div>}
 							<div className='separator'/>
-							<div className={view=='libretto' ?  'option active'
+							<div className={view==='libretto' ?  'option active'
 									 : 'option clickable' } onClick={this.librettoMode.bind(this)}>Poem</div>
 						</div>
 					</div>
@@ -588,25 +579,24 @@ class App extends Component {
 					{popup}
 				</div>
 			);					
-		} else if(mode=="IterationInspect") {
+		} else if(mode==="IterationInspect") {
 			if(Array.isArray(current)) {
 				current = current[0];
 			}
-			var commentaryuri = this.commentaryForMotif(current);
-			var audiouri = this.audioForMotif(current);
-			var miInfo = this.state.iterations ? this.state.iterations.find(x=>x['@id']==current) : false;
-			var language = this.state.language ? this.state.language : 'en';
+			commentaryuri = this.commentaryForMotif(current);
+			audiouri = this.audioForMotif(current);
+			miInfo = this.state.iterations ? this.state.iterations.find(x=>x['@id']===current) : false;
+			language = this.state.language ? this.state.language : 'en';
 			//			console.log(this.state.iterations, current, miInfo, miInfo[prefix.compVocab+'hasOrchestrationDescription']);
-			var lib = this.librettoTextForMotif(current);
-			var liblang = lib[language];
-			console.log(this.props.graph.outcomes);
+			lib = this.librettoTextForMotif(current);
+			liblang = lib[language];
 			if(miInfo){
 				return (
 					<div className="wrapper" onClick={this.clearAllPopups.bind(this)}>
 						<Burger className="burg" id="theburg" iteration={function(){return}} isOpen={false} video={this.videoMode.bind(this)}
 										TM={this.swapMotif.bind(this)} essay={this.essayMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}/>
 						<div className="topMenu">
-							<div className="title"><div className="icon timemachine"><img src="/style/icons/iteration.svg"/></div>Iteration</div>
+							<div className="title"><div className="icon timemachine"><img alt="" src="/style/icons/iteration.svg"/></div><span>Iteration</span></div>
 							<div className="optionBlock">
 								<div className="option active">Inspect</div>
 								<div className='separator'/>
@@ -691,21 +681,21 @@ class App extends Component {
 					<div>Loading data...</div>
 				);
 			}
-		} else if(mode=="readyForCompare") {
-			var commentaryuri = this.commentaryForMotif(current);
-			var audiouri = this.audioForMotif(current);
-			var miInfo = this.state.iterations ? this.state.iterations.find(x=>x['@id']==current) : false;
-			var language = this.state.language ? this.state.language : 'en';
+		} else if(mode==="readyForCompare") {
+			commentaryuri = this.commentaryForMotif(current);
+			audiouri = this.audioForMotif(current);
+			miInfo = this.state.iterations ? this.state.iterations.find(x=>x['@id']===current) : false;
+			language = this.state.language ? this.state.language : 'en';
 			//			console.log(this.state.iterations, current, miInfo, miInfo[prefix.compVocab+'hasOrchestrationDescription']);
-			var lib = this.librettoTextForMotif(current);
-			var liblang = lib[language];
+			lib = this.librettoTextForMotif(current);
+			liblang = lib[language];
 			if(miInfo){
 				return (
 					<div className="wrapper">
 						<Burger className="burg" id="theburg" iteration={function(){return}} isOpen={false} video={this.videoMode.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}
 										TM={this.swapMotif.bind(this)} essay={this.essayMode.bind(this)}/>
 						<div className="topMenu">
-							<div className="title"><div className="icon timemachine"><img src="/style/icons/iteration.svg"/></div>Iteration</div>
+							<div className="title"><div className="icon timemachine"><img alt="" src="/style/icons/iteration.svg"/></div><span>Iteration</span></div>
 							<div className="optionBlock">
 								<div className="option clickable" onClick={this.returnToInspect.bind(this)}>Inspect</div>
 								<div className='separator'/>
@@ -773,15 +763,15 @@ class App extends Component {
 					<div>Loading data...</div>
 				);
 			}
-		} else if(mode=="IterationCompare") {
-			var miInfoL = this.state.iterations ? this.state.iterations.find(x=>x['@id']==current[0]) : false;
-			var miInfoR = this.state.iterations ? this.state.iterations.find(x=>x['@id']==current[1]) : false;
+		} else if(mode==="IterationCompare") {
+			var miInfoL = this.state.iterations ? this.state.iterations.find(x=>x['@id']===current[0]) : false;
+			var miInfoR = this.state.iterations ? this.state.iterations.find(x=>x['@id']===current[1]) : false;
 			var commentaryuriL = this.commentaryForMotif(current[0]);
 //			console.log(commentaryuriL, current[0]);
 			var audiouriL = this.audioForMotif(current[0]);
 			var commentaryuriR = this.commentaryForMotif(current[1]);
 			var audiouriR = this.audioForMotif(current[1]);
-			var language = this.state.language ? this.state.language : 'en';			
+			language = this.state.language ? this.state.language : 'en';			
 			var libforL = this.librettoTextForMotif(current[0]);
 			var libforR = this.librettoTextForMotif(current[1]);
 			// var libforL = this.librettoTextForMotif(current[0], language);
@@ -801,7 +791,7 @@ class App extends Component {
 										TM={this.compareCollapseViaTM.bind(this)}
 										Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}/>
 						<div className="topMenu">
-							<div className="title"><div className="icon timemachine"><img src="/style/icons/iteration.svg"/></div>Iteration</div>
+							<div className="title"><div className="icon timemachine"><img alt="" src="/style/icons/iteration.svg"/></div><span>Iteration</span></div>
 							<div className="optionBlock">
 								<div className="option clickable" onClick={this.returnToInspect.bind(this)}>Inspect</div>
 								<div className='separator'/>
@@ -923,7 +913,7 @@ class App extends Component {
 									iteration={this.returnToInspect.bind(this)}
 									TM={this.swapMotif.bind(this)} Home={this.homeMode.bind(this)} about={this.aboutMode.bind(this)}/>
 					<div className="topMenu">
-						<div className="title"><div className="icon essay"><img src="/style/icons/essay.svg"/></div>Essay</div>
+						<div className="title"><div className="icon essay"><img alt="" src="/style/icons/essay.svg"/></div><span>Essay</span></div>
 					</div>
 					<Essay current={ current } updateLinks={ this.setVisibleLinks.bind(this) }
 					       uri={"/Essay/AskingAForbiddenQuestion.tei"}/>
@@ -953,7 +943,7 @@ class App extends Component {
 									iteration={this.returnToInspect.bind(this)}
 									TM={this.swapMotif.bind(this)}/>
 					<div className="topMenu">
-						<div className="title"><div className="icon essay"><img src="/style/icons/video.svg"/></div>Video</div>
+						<div className="title"><div className="icon essay"><img alt="" src="/style/icons/video.svg"/></div><span>Video</span></div>
 					</div>
 					<Video current={ current } uri={VIDEOURI}/>
 					<VideoLinks uri={VIDEOURI}
@@ -976,7 +966,7 @@ class App extends Component {
 				</div>
 				
 			)
-		} else if (mode=="Home"){
+		} else if (mode==="Home"){
 			var burg = (<Burger className="burg" id="theburg" iteration={this.inspectMotif.bind(this, current)} isOpen={false} video={this.videoMode.bind(this)} TM={this.swapMotif.bind(this)} essay={this.essayMode.bind(this)} Home={()=>null} about={this.aboutMode.bind(this)}/>);
 			return (
 				<Home burger={burg}
@@ -989,7 +979,7 @@ class App extends Component {
 							width={this.state.width}
 				      essay={this.essayMode.bind(this)}/>
 			);
-		} else if(mode=="Intro"){
+		} else if(mode==="Intro"){
 			return (
 				<div className="intro">
 					<div className="closeButton" onClick={this.homeMode.bind(this)}>Close</div>
@@ -1002,7 +992,7 @@ class App extends Component {
 					</div>
 				</div>
 			)
-		} else if(mode=="About"){
+		} else if(mode==="About"){
 			return (
 				<div className="intro">
 					<div className="closeButton" onClick={this.homeMode.bind(this)}>Close</div>
@@ -1107,8 +1097,8 @@ class App extends Component {
 };
 function typeTest(type, jldObj){
 	if(jldObj['@type']){
-		if(typeof(jldObj['@type'])=='string'){
-			return jldObj['@type']==type;
+		if(typeof(jldObj['@type'])==='string'){
+			return jldObj['@type']===type;
 		} else {
 			return jldObj['@type'].indexOf(type)>-1;
 		}
@@ -1117,7 +1107,7 @@ function typeTest(type, jldObj){
 }
 function JSONLDInt(obj){
 	// FIXME: test type
-	if(!obj || !'@value' in obj) {
+	if(!obj || !('@value' in obj)) {
 //		console.log('Missed for Object: ', obj);
 		return 0;
 	}
@@ -1162,7 +1152,7 @@ function addEmbodimentToIteration(segmentEmbodiment, iteration){
 		if(Array.isArray(members)){
 			var bits = segmentEmbodiment['http://www.w3.org/2000/01/rdf-schema#member'].map((x)=>x['@id']);
 			if(bits){
-				var uris = bits.forEach(bit=>embodimentSet.add(bit.split('#')[0]));
+				bits.forEach(bit=>embodimentSet.add(bit.split('#')[0]));
 			}
 		} else if(members['@id']){
 			embodimentSet.add(members['@id'].split('#')[0]);
