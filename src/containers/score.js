@@ -40,9 +40,9 @@ class Score extends Component {
 	constructor(props) { 
 		super(props);
 
-		this.state = { 
+		this.state = {
+			refresh: false,
 			score: {},
-			MEI: false,
 			SVG: false,
 			options: false,
 			// vrvTk: new verovio.toolkit(),
@@ -64,42 +64,23 @@ class Score extends Component {
     return true;
 	}
 	render() {
-		if(Object.keys(this.props.score).length) {
-			if(!this.state.MEI || this.state.MEI!== this.props.score.MEI[this.props.uri] || (this.props.options && this.props.options!== this.state.options)){
-				if(this.props.score.MEI[this.props.uri]) {
-					var svg = '';
-					var options = (this.props.longerOptions
-												 && ((this.props.score.MEI[this.props.uri].match(/<measure/g) || []).length) >8)
-							? this.props.longerOptions
-							: (this.props.options || defaultVrvOptions);
-					if(this.props.score.SVG[this.props.uri] && this.props.score.options && this.optionsEq(this.props.score.options[this.props.uri], options)) {
-						svg = this.props.score.SVG[this.props.uri];
-					} else {
-						svg = this.props.score.vrvTk.renderData(this.props.score.MEI[this.props.uri], options);
-						this.props.score.SVG[this.props.uri] = svg;
-						if(!this.props.score.options) this.props.score.options = {};
-						this.props.score.options[this.props.uri] = options;
-					}
-//					this.setState({MEI: this.props.score.MEI[this.props.uri], SVG: svg});
-//					if(this.props.options) this.setState({options: this.props.options});
-				} else /*if (this.props.score.SVG[this.props.uri]) {
-					svg = this.props.score.SVG[this.props.uri];
-					this.setState({SVG: svg});
-				} else */{
-					svg = '';
-				}
-			} else {
-				svg = this.state.SVG;
+		if(Object.keys(this.props.score).length && !this.state.refresh) {
+			//
+			if(this.props.uri in this.props.score.SVG
+				 && this.props.score.SVG[this.props.uri]
+				 && this.props.uri in this.props.score.MEI
+				 && this.props.score.MEI[this.props.uri]) {
+				var svg = this.props.score.SVG[this.props.uri][1].data;
+				var classes = this.props.className ? this.props.className+" scorepane" : "scorepane";
+				if(this.props.extraClasses) classes += ' '+this.props.extraClasses;
+				return (
+					<div id={this.props.uri} className={classes}>
+						<div className="controls" />
+						<div className="annotations" />
+						<InlineSVG className="score" src={svg }/>
+					</div>
+				);
 			}
-			var classes = this.props.className ? this.props.className+" scorepane" : "scorepane";
-			if(this.props.extraClasses) classes += ' '+this.props.extraClasses;
-			return (
-				<div id={this.props.uri} className={classes}>
-					<div className="controls" />
-					<div className="annotations" />
-					<InlineSVG className="score" src={svg }/>
-				</div>
-			);
 		}
 		return <div>Loading...</div>;
 	}
@@ -128,10 +109,29 @@ class Score extends Component {
 		}
 	}
 	componentDidMount() { 
-		this.props.fetchScore(this.props.uri);
+		this.props.fetchScore(this.props.uri, this.props.options);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		if(this.props.longOptions
+			 && this.props.score && this.props.uri in this.props.score.SVG
+			 && this.props.score.SVG[this.props.uri]
+			 && this.props.uri in this.props.score.MEI){
+			var mei = this.props.score.MEI[this.props.uri];
+			var options = (this.props.longerOptions
+										 && ((this.props.score.MEI[this.props.uri].match(/<measure/g) || []).length) >8)
+					? this.props.longerOptions
+					: (this.props.options || defaultVrvOptions);
+			if(!this.optionsEq(options, this.props.score.pageState[this.props.uri].currentOptions)){
+				this.props.fetchScore(this.props.uri, options);
+				this.setState({refresh: true});
+				return;
+			} else {
+				if(this.state.refresh){
+					this.setState({refresh: false});
+				}
+			}
+		}
 		let annotations = this.props.annotations;
 		this.addExtras();
 		if(!Array.isArray(annotations)) { 
@@ -141,39 +141,6 @@ class Score extends Component {
 //			console.log("Found old Larry-meld style topLevel annotation, converting...")
 			annotations = annotations[0]["http://www.w3.org/ns/oa#hasBody"]
 		}
-		/*
-		annotations.map( (annotation) => {
-			//console.log("annotation is: ", annotation)
-			if(typeof annotation === 'undefined') { return }
-			// each annotation...
-			var annotationset = annotation["http://www.w3.org/ns/oa#hasTarget"];
-			if(!Array.isArray(annotationset)) annotationset = [annotationset];
-			const frags = annotationset.map( (annotationTarget) => { 
-				// each annotation target
-				if(annotationTarget["@id"] in this.props.score.componentTargets) {
-          // if this is my target, grab frag ids according to media type
-          const mediaTypes = Object.keys(this.props.score.componentTargets[annotationTarget["@id"]]);
-          let myFrags = {};
-          mediaTypes.map( (type) => {
-            if(type === "MEI") { 
-              // only grab MY frag IDs, for THIS mei file
-              myFrags[type] = this.props.score.componentTargets[annotationTarget["@id"]][type].filter( (frag) => {
-                return frag.substr(0, frag.indexOf("#")) === this.props.uri;
-              })
-            } else {
-              //TODO think about what to do here to filter (e.g. multiple audios) 
-              myFrags[type] = this.props.score.componentTargets[annotationTarget["@id"]][type]; 
-            }
-          });
-          // and apply any annotations
-          this.handleMELDActions(annotation, myFrags);
-				} else if(annotationTarget["@id"] == this.props.session) { 
-					// this annotation applies to the *session*, e.g. a page turn
-					this.handleMELDActions(annotation, null);
-				} else {
-				}
-			});
-			});*/
 		if(!document.getElementsByClassName('systemSegmentInfo-'+this.props.position).length){
 			this.drawInfo();
 		}			
