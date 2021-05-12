@@ -1,7 +1,7 @@
 {
   "name": "meld-forbidden-question",
-  "version": "0.0.1",
-  "description": "Musicological digital companion for Lohengrin article",
+  "version": "1.0.0",
+  "description": "Musicological digital companion for Lohengrin article by Prof. Laurence Dreyfus",
   "main": "index.js",
   "scripts": {
     "start": "PORT=8081 react-scripts start"
