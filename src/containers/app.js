@@ -107,7 +107,6 @@ class App extends Component {
     this.setState({currentMotif: motif});
   }
 	setVisibleLinks(links){
-		console.log("setting", links);
 		this.setState({visibleLinks: links});
 	}
   handleTMClick(motif){
@@ -163,29 +162,12 @@ class App extends Component {
   }
   componentWillMount() {
 		this.props.setTraversalObjectives([
-			// {
-			// 	"@type": "http://www.w3.org/ns/oa#Annotation"
-			// },
 			{
-				"@type": "https://meld.linkedmusic.org/companion/vocab/MotifIteration"/*,
-				"http://purl.org/vocab/frbr/core#part": {
-					
-				 },
-				 "https://meld.linkedmusic.org/companion/vocab/hasContext": {
-				 }*/
+				"@type": "https://meld.linkedmusic.org/companion/vocab/MotifIteration"
 			},
 			{
 				"@type": "https://www.linkedmusic.org/ontologies/segment/Segment",
 			},
-			// {
-			// 	"@type": "https://meld.linkedmusic.org/terms/MEIManifestation"
-			// },
-			// {
-			// 	"@type": "https://meld.linkedmusic.org/terms/TEIManifestation"
-			// },
-			// {
-			// 	"@type": "https://meld.linkedmusic.org/companion/vocab/MotifIterationContext",
-			// },
 			{
 				"@type": "https://meld.linkedmusic.org/companion/vocab/MotifSegment"
 			},
@@ -208,9 +190,7 @@ class App extends Component {
 		}
 	}
 	componentDidUpdate(prevProps, prevState){
-		//		console.log('updating');
 		if(prevProps && "graph" in prevProps) {
-			//			console.log('updating');
 			if(prevProps.traversalPool.running===1 && this.props.traversalPool.running===0){
 				// check our traversal objectives if the graph has updated
 //				if(prevProps.graph.graph.length !== this.props.graph.graph.length) {
@@ -220,14 +200,7 @@ class App extends Component {
 				console.log("updating – it's finished traversing");
 				this.props.checkTraversalObjectives(this.props.graph.graph, this.props.graph.objectives);
 				this.updateLists();
-				return;/*
-				//				}
-				if(prevProps.graph.outcomesHash !== this.props.graph.outcomesHash) {
-//					console.log('rebuilding structures');
-					// outcomes have changed, need to update our projections!
-					this.updateLists();
-				} else {
-				}*/
+				return;
 			} else if(Object.keys(this.props.traversalPool.pool).length && this.props.traversalPool.running < MAX_TRAVERSERS){
 				var uri = Object.keys(this.props.traversalPool.pool)[0];
 				this.props.traverse(uri, this.props.traversalPool.pool[uri]);
@@ -298,6 +271,7 @@ class App extends Component {
 																																			 bodyMedia: bodyMedia, annotation: videoLinks[i]};
 		}
 	}
+
 	updateLists(){
 		var mi, seg, videoLinks, segItems;
 		const POF = "http://purl.org/vocab/frbr/core#part";
@@ -330,6 +304,8 @@ class App extends Component {
 			if(mii[prefix.compVocab+'hasCommentary'] && mii[prefix.compVocab+'hasContext']){
 				mii.commentary = mii[prefix.compVocab+'hasCommentary']['@id'];
 				context = mii[prefix.compVocab+'hasContext'];
+				if(context && "@id" in context && !("@type" in context))
+					context = this.props.graph.graph.find(x=>(x["@id"]===context["@id"]));
 				if(context[EMBOD]){
 					mii.embodiments = Array.isArray(context[EMBOD]) ? context[EMBOD] : [context[EMBOD]];
 				}
@@ -396,7 +372,6 @@ class App extends Component {
 	librettoTextForMotif(motif, language){
 		if(this.state.iterations && motif){
 			var motifInfo = this.state.iterations.find(x=>x['@id']===motif);
-//			console.log(motifInfo, '----------------------');
 			if(language) return motifInfo[language];
 			var texts = {de: false, en:false};
 			if(motifInfo && motifInfo.de) texts.de = motifInfo.de;
@@ -652,7 +627,7 @@ class App extends Component {
 														 height={this.state.height -84 -197}
 														 width={this.state.width*0.4}
                              details={miInfo}
-														 commentary={this.state.showCommentaryL ?
+														 commentary={this.state.showCommentaryL && commentaryuri ?
 																				 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
 																					 <TEI key={ commentaryuri } showAnnotations={false} 
 																									 onClick={function(e){console.log('ok', e.target)}}
@@ -731,7 +706,7 @@ class App extends Component {
                   				 details={miInfo}
 													 height={this.state.height - 84 - 197}
 													 width={this.state.width*0.4}
-													 commentary={this.state.showCommentaryL ?
+													 commentary={this.state.showCommentaryL && commentaryuri ?
 																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
 																				 <TEI key={ commentaryuri } showAnnotations={false} 
 																									uri={ commentaryuri } motif={ current }/>
@@ -832,7 +807,7 @@ class App extends Component {
 													 audiouri={audiouriL}
 													 orchestrationProse={miInfoL[prefix.compVocab+'hasOrchestrationDescription'] ? miInfoL[prefix.compVocab+'hasOrchestrationDescription']['@id'] : false}
 													 highlight={this.state.highlight}
-													 commentary={this.state.showCommentaryL ?
+													 commentary={this.state.showCommentaryL && commentaryuriL ?
 																			 <div className="inspect commentary dark"  onClick={this.commentaryClicked.bind(this)}>
 																				 <TEI key={ commentaryuriL } annotations={[]}
 																									uri={ commentaryuriL } motif={ current[0] }/>

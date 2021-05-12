@@ -4,7 +4,7 @@ import CustomPlayPause from '../containers/react-media-player-play-pause';
 import {prefix} from 'meld-clients-core/lib/library/prefixes';
 import { InstrumentType } from 'meld-clients-core/lib/library/MEIRibbonUtils';
 
-//import Score from 'meld-client/src/containers/score';
+//import Score from 'meld-clients-core/lib/containers/score';
 import Score from '../containers/score';
 import OrchestralRibbon from 'meld-clients-core/lib/containers/orchestralRibbon';
 //import TEI from '../containers/tei';
@@ -67,7 +67,8 @@ export default class InspectPane extends Component {
 		);
 	}
 	librettoPanel(){
-		if(this.props.librettoTexts){
+		if(this.props.librettoTexts && this.props.librettoTexts.de
+			 && this.props.librettoTexts.en){
 			var buttonAction = this.props.showEnglish ? this.props.hideTranslation : this.props.showTranslation;
 			return (
 				<TabPanel>
