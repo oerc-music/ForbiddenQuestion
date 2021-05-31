@@ -312,8 +312,19 @@ class App extends Component {
 			} 
 			if(mii.embodiments){
 				for(var emi=0; emi<mii.embodiments.length; emi++){
+										if(!('@type' in mii.embodiments[emi])) {
+						var embo = this.props.graph.graph.find(x=>x['@id']===mii.embodiments[emi]['@id']);
+						if(embo && '@type' in embo) {
+							console.log("JSON-LD missed one:", embo, mii.embodiments[emi]);
+							mii.embodiments[emi] = embo;
+						}
+					}
 					if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']
-						 && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===FOR_ORCHESTRA){
+						 && (mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===FOR_ORCHESTRA
+								 ||
+								 (Array.isArray(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'])
+									&& '@id' in mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]
+									&& mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]['@id']))){
 						mii.orchestralScore = mii.embodiments[emi]['@id'];
 					} else if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'] && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===HAS_PIANO){
 						mii.vocalScore = mii.embodiments[emi]['@id'];
