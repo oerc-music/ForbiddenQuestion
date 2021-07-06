@@ -307,26 +307,65 @@ class App extends Component {
 				if(context && "@id" in context && !("@type" in context))
 					context = this.props.graph.graph.find(x=>(x["@id"]===context["@id"]));
 				if(context[EMBOD]){
-					mii.embodiments = Array.isArray(context[EMBOD]) ? context[EMBOD] : [context[EMBOD]];
+					mii.embodiments = Array.isArray(context[EMBOD]) ? context[EMBOD].slice() : [context[EMBOD]];
 				}
 			} 
 			if(mii.embodiments){
 				for(var emi=0; emi<mii.embodiments.length; emi++){
-										if(!('@type' in mii.embodiments[emi])) {
+					if(!('@type' in mii.embodiments[emi])) {
+						// The framing hasn't worked
 						var embo = this.props.graph.graph.find(x=>x['@id']===mii.embodiments[emi]['@id']);
-						if(embo && '@type' in embo) {
-							console.log("JSON-LD missed one:", embo, mii.embodiments[emi]);
+						var embomore = this.props.graph.graph.filter(x=>x['@id']===mii.embodiments[emi]['@id']);
+						if(embomore.length){
+							embo = embomore[0];
+							for(var graphi=1; graphi<embomore.length; graphi++){
+								let keys = Object.keys(embomore[graphi]);
+								for(var k=0; k<keys.length; k++){
+									let key = keys[k];
+									let embentry = embomore[graphi][keys[k]];
+									if(key==='@id') continue;
+									if(key in embo) {
+										if(Array.isArray(embo[key])) {
+											if(Array.isArray(embentry)){
+												embo[key] = embo[key].concat(embentry);
+											} else {
+												embo[key].push(embentry);
+											}
+										} else {
+											if(Array.isArray(embentry)){
+												embo[key] = [embo[key]].concat(embentry);
+											} else {
+												embo[key] = [embo[key], embentry];
+											}
+										}
+										console.log(embo);
+									} else {
+										embo[key] = embentry;
+										console.log(embo);
+									}
+								}
+							}
 							mii.embodiments[emi] = embo;
-						}
+						} 
 					}
+					// 	if(embo && '@type' in embo) {
+					// 		console.log("JSON-LD missed one:", embo, mii.embodiments[emi], embomore);
+					// 		mii.embodiments[emi] = embo;
+					// 	}
+					// }
 					if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']
 						 && (mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===FOR_ORCHESTRA
 								 ||
 								 (Array.isArray(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'])
 									&& '@id' in mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]
-									&& mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]['@id']))){
+									&& mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]['@id']===FOR_ORCHESTRA))){
 						mii.orchestralScore = mii.embodiments[emi]['@id'];
-					} else if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'] && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===HAS_PIANO){
+					} else if(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']
+										&& mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215']['@id']===HAS_PIANO
+										||
+										(Array.isArray(mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'])
+										 && '@id' in mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]
+										 && mii.embodiments[emi]['http://rdaregistry.info/Elements/e/p20215'][0]['@id']===HAS_PIANO)){
 						mii.vocalScore = mii.embodiments[emi]['@id'];
 					}	else if(mii.embodiments[emi]['@type']==="https://meld.linkedmusic.org/terms/TEIEmbodiment"
 									  && mii.embodiments[emi]['http://schema.org/inLanguage']==='de') {
@@ -604,7 +643,8 @@ class App extends Component {
 													 toggleCommentary={this.toggleLCommentary.bind(this)}
 													 orchestrationProse={miInfo[prefix.compVocab+'hasOrchestrationDescription'] ? miInfo[prefix.compVocab+'hasOrchestrationDescription']['@id'] : false}
 													 audiouri={audiouri}
-													 annotations={this.props.graph.outcomes[0]['@graph']}
+													 annotations={this.props.graph.outcomes && this.props.graph.outcomes.length
+																				&& '@graph' in this.props.graph.outcomes[0] ? this.props.graph.outcomes[0]['@graph'] : false}
 													 segments={miInfo.segmentLineMembers}
 													 segmentLabels={this.state.segmentLabels}
 													 showTranslation={this.showTranslation.bind(this)}
@@ -622,7 +662,8 @@ class App extends Component {
 														 hasPlayer={false}
 														 toggleLanguage={this.toggleLanguage.bind(this)}
 														 language={language}
-														 annotations={this.props.graph.outcomes[0]['@graph']}
+														 annotations={this.props.graph.outcomes && this.props.graph.outcomes.length
+																					&& '@graph' in this.props.graph.outcomes[0] ? this.props.graph.outcomes[0]['@graph'] : false}
 														 highlight={this.state.highlight}
 														 segments={miInfo.segmentLineMembers}
 														 segmentLabels={this.state.segmentLabels}
