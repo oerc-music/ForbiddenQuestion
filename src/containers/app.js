@@ -40,8 +40,10 @@ const donotfollow = ["https://meld.linkedmusic.org/terms/",
 //										 "https://meld.linkedmusic.org/annotations/",
 										 "https://meld.linkedmusic.org/companion/add-",
 										 "https://meld.linkedmusic.org/companion/cdr",
+										 "https://meld.linkedmusic.org/companion/commentaries",
+										 "https://meld.linkedmusic.org/companion/libretto",
 										 "https://meld.linkedmusic.org/companion/stage",
-										 "https://meld.linkedmusic.org/companion/lohengrinSegmentLine.nq#",
+//										 "https://meld.linkedmusic.org/companion/lohengrinSegmentLine.nq#",
 										 "https://meld.linkedmusic.org/resources/lohengrin/libretto#"];
 
 function avoidThesePatterns(uri) {
@@ -204,7 +206,9 @@ class App extends Component {
 			} else if(Object.keys(this.props.traversalPool.pool).length && this.props.traversalPool.running < MAX_TRAVERSERS){
 				var uri = Object.keys(this.props.traversalPool.pool)[0];
 				this.props.traverse(uri, this.props.traversalPool.pool[uri]);
-			} else if(this.props.traversalPool.running===0){
+//			} else if(this.props.traversalPool.running===0){
+			} else if(this.props.traversalPool.running<=0){
+//				console.log("Pool is negative", this.props.traversalPool, prevProps.graph.outcomesHash===this.props.graph.outcomesHash);
 				if(prevProps.graph.outcomesHash !== this.props.graph.outcomesHash) {
 //					console.log('rebuilding structures');
 					// outcomes have changed, need to update our projections!

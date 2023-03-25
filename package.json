@@ -23,7 +23,7 @@
     "browserslist": "*",
     "jsonld": "^5.0.0",
     "jsum": "^0.1.4",
-    "meld-clients-core": "oerc-music/meld-clients-core.git",
+    "meld-clients-core": "oerc-music/meld-clients-core.git#traversal-robustness",
     "n3": "^1.0.3",
     "querystring": "^0.2.0",
     "react": "^16.0.0",
